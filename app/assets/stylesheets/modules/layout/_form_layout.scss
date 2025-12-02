@@ -260,12 +260,16 @@ $connector-length-lg: $spacing-6;
 // Actions outside of the form section
 
 .form__actions--section {
-  border: $border-base;
-  border-radius: $br-5px;
+  background: transparent;
 
   @include breakpoint-up($medium-screen) {
+    background-color: $form-bg;
+    border: $border-base;
+    border-radius: $br-5px;
     display: flex;
     grid-column: 1 / span 4;
+    justify-content: end;
+    margin: 0;
     padding: $form-paddings-sm;
 
     > * + * {

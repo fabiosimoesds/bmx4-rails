@@ -1,31 +1,23 @@
+@use "sass:math";
+
 .slider_radios {
   .input-field {
-    border: $form-border;
-    border-radius: $br-5px;
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden;
-    position: relative;
-
-    .radio {
-      border-right: $border-light;
-      display: block;
-      flex: 1 0 0;
-
-      &:last-of-type {
-        border-right: none;
-      }
-    }
 
     label {
-      @include transition(background-color, color);
+      @include transition(background-color, color, border-color);
 
       align-items: center;
       background-color: $background-color-lightest;
+      border-top: $form-border;
+      border-bottom: $form-border;
       color: $font-color-base;
       cursor: pointer;
       display: flex;
+      font-size: $font-size-base;
       height: 100%;
+      line-height: math.ceil($leading-tighter * $font-size-base);
       margin: 0;
       padding: $spacing-3 $spacing-5 + $spacing-2;
       text-align: center;
@@ -36,38 +28,59 @@
         background-color: $background-color-light;
       }
     }
-  }
 
-  input[type='radio'] {
-    display: none;
+    .radio {
+      flex: 1 1;
 
-    &:checked + label {
-      color: $font-color-lightest;
-      background-color: $form-active-color;
+      label {
+        border-right: $border-light;
+      }
+
+      &:first-of-type {
+        label {
+          border-left: $border-light;
+          border-radius: $br-5px 0 0 $br-5px;
+        }
+      }
+
+      &:last-of-type {
+        label {
+          border-radius: 0 $br-5px $br-5px 0;
+        }
+      }
+
+      input[type='radio'] {
+        display: none;
+
+        &:checked + label {
+          color: $font-color-lightest;
+          background-color: $form-active-color;
+          border-color: $form-active-color;
+        }
+      }
+
+      &.disabled input[type='radio'],
+      input[type='radio'][disabled] {
+        + label {
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: $background-color-lightest;
+          }
+        }
+
+        &:checked + label {
+          background-color: $form-disabled-active-color;
+          border-color: $form-disabled-active-color;
+        }
+      }
     }
   }
 
   &.field--errors .input-field,
   &.field--errors .input-field .radio {
-    border-color: $danger;
-  }
-
-  &.disabled .input-field .radio {
-    border-right-color: $form-disabled-active-color;
-
-    &:last-of-type {
-      border-right: none;
-    }
-  }
-
-  &.disabled input[type='radio'],
-  input[type='radio'][disabled] {
-    + label {
-      background-color: $form-disabled-color;
-    }
-
-    &:checked + label {
-      background-color: $form-disabled-active-color;
+    label {
+      border-color: $danger;
     }
   }
 }

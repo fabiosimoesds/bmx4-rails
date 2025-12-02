@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Pagy::Backend
+  include Pagy::Method
   include Pundit::Authorization
   protect_from_forgery with: :exception
   rescue_from Pundit::NotAuthorizedError, with: :account_not_authorized
@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
   private

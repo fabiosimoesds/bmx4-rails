@@ -11,7 +11,7 @@
 <div class="page-container mt--10">
   <% ['primary-brand', 'secondary-brand', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'grey', 'light', 'success', 'warning', 'danger', 'info'].each do |colour| %>
     <div class="callout callout--<%= colour %> mb--6">
-      <div><i class="fal fa-lg fa-exclamation-triangle mr--3"></i></div>
+      <div class="callout__icon"><i class="fa-regular fa-lg fa-question-circle"></i></div>
       <div class="callout__text">This is a <%= colour %> callout.</div>
     </div>
   <% end %>
@@ -31,9 +31,9 @@
 
     <div class="clearfix my--4"></div>
 
-    <div class="pill pill--icon"><i class="fas fa-sm fa-pencil"></i></div>
+    <div class="pill pill--icon"><i class="fa-solid fa-sm fa-pencil"></i></div>
     <% ['primary-brand', 'secondary-brand', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'grey', 'light'].each do |colour| %>
-      <div class="pill pill--<%= colour %> pill--icon"><i class="fas fa-sm fa-pencil"></i></div>
+      <div class="pill pill--<%= colour %> pill--icon"><i class="fa-solid fa-sm fa-pencil"></i></div>
     <% end %>
 
     <div class="clearfix my--4"></div>
@@ -57,19 +57,19 @@
     <div class="clearfix my--4"></div>
 
     <% ['5', '4', '3', '2', '1'].each do |index| %>
-      <div class="pill -pill-size--<%= index %> pill--primary-brand pill--icon"><i class="fas fa-sm fa-pencil"></i></div>
+      <div class="pill -pill-size--<%= index %> pill--primary-brand pill--icon"><i class="fa-solid fa-sm fa-pencil"></i></div>
     <% end %>
     <% (0..5).each do |index| %>
-      <div class="pill pill-size--<%= index %> pill--primary-brand pill--icon"><i class="fas fa-sm fa-pencil"></i></div>
+      <div class="pill pill-size--<%= index %> pill--primary-brand pill--icon"><i class="fa-solid fa-sm fa-pencil"></i></div>
     <% end %>
 
     <div class="clearfix my--4"></div>
 
     <% ['5', '4', '3', '2', '1'].each do |index| %>
-      <div class="pill -pill-size--<%= index %> pill--primary-brand pill--bordered pill--icon"><i class="fas fa-sm fa-pencil"></i></div>
+      <div class="pill -pill-size--<%= index %> pill--primary-brand pill--bordered pill--icon"><i class="fa-solid fa-sm fa-pencil"></i></div>
     <% end %>
     <% (0..5).each do |index| %>
-      <div class="pill pill-size--<%= index %> pill--primary-brand pill--bordered pill--icon"><i class="fas fa-sm fa-pencil"></i></div>
+      <div class="pill pill-size--<%= index %> pill--primary-brand pill--bordered pill--icon"><i class="fa-solid fa-sm fa-pencil"></i></div>
     <% end %>
   </div>
 </div>

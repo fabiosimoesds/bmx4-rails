@@ -26,16 +26,16 @@ const createConfirmModal = (element) => {
   }
 
   if (alert_style === 'danger') {
-    alert_icon = `<i class="far fa-exclamation-triangle fa-2x color--danger-dark p--3 mb--5px"></i>`
+    alert_icon = `<i class="fa-regular fa-exclamation-triangle fa-2x color--danger-dark p--3 mb--5px"></i>`
   } else if (alert_style === 'success') {
-    alert_icon = `<i class="far fa-check fa-2x color--success-dark p--3"></i>`
+    alert_icon = `<i class="fa-regular fa-check fa-2x color--success-dark p--3"></i>`
   }
 
   var content = `<div class="alert-screen" aria-dialog tabindex="-1">
                   <div class="alert-bg"></div>
                   <div class="alert-modal">
                     <div class="alert__main">
-                      <i data-behavior="close" class="alert__close far fa-times"></i>
+                      <i data-behavior="close" class="alert__close fa-regular fa-times"></i>
 
                       <div class="display--flex align-items--center justify-content--center mb--5">
                         <div class="alert__icon alert__icon--${alert_style}">

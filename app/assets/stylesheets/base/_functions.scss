@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:list";
+
 // a function to combine multiple mappings of variables into a single mapping
 // a mapping is similar to a hash, where there is a key and a value
 // if extra styles are needed they can be defined in project_specific.scss and combined with the basic colour maps in relevant files
@@ -5,10 +8,10 @@
 @function map-combine($maps...) {
   $collection: ();
 
-  // map-merge combines two maps together into a single map
+  // map.merge combines two maps together into a single map
   // this new mapping is then merged with each of the next key-value pairings in the map
   @each $mapping in $maps {
-    $collection: map-merge($collection, $mapping);
+    $collection: map.merge($collection, $mapping);
   }
 
   @return $collection;
@@ -24,7 +27,7 @@
   // join combines two lists together into a single list
   // this new list is then merged with each item in the next list
   @each $list in $lists {
-    $collection: join($collection, $list);
+    $collection: list.join($collection, $list);
   }
 
   @return $collection;

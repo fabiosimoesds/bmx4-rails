@@ -1,4 +1,4 @@
-@use 'sass:math';
+@use "sass:math";
 
 // Transition Properties
 // transition--margin, transition--all, transition--text-indent
@@ -87,7 +87,7 @@ $transform-axis: x, y;
     }
 
     .translate-#{$key}--#{$i}pc {
-      --transform-translate-#{$key}: #{round(percentage($i * 0.01))};
+      --transform-translate-#{$key}: #{math.round(math.percentage($i * 0.01))};
     }
 
     // Negative
@@ -102,7 +102,7 @@ $transform-axis: x, y;
     }
 
     .-translate-#{$key}--#{$i}pc {
-      --transform-translate-#{$key}: #{round(percentage(-$i * 0.01))};
+      --transform-translate-#{$key}: #{math.round(math.percentage(-$i * 0.01))};
     }
   }
 }

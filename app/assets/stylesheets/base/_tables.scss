@@ -54,7 +54,11 @@ th {
   }
 
   a {
-    @extend .link--light;
+    color: $font-color-base;
+
+    &:hover {
+      color: $primary-color-dark;
+    }
   }
 }
 
@@ -80,5 +84,24 @@ td {
 
 // to be used when a table cell contains only a link (in conjunction with .link--cell on the a tag)
 .cell--link {
+  font-size: modular-scale(1);
   padding: $spacing-0;
+
+  @include breakpoint-up($large-screen) {
+    font-size: modular-scale(0);
+  }
+}
+
+.cell--stacked {
+  color: $font-color-light;
+  display: block;
+  font-size: modular-scale(-1);
+}
+
+thead .cell--stacked {
+  font-weight: $fw-normal;
+}
+
+tbody .cell--stacked {
+  font-weight: $fw-light;
 }

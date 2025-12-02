@@ -1,0 +1,69 @@
+<% provide(:title, 'Own Profile') %>
+
+<div class="page__header">
+  <div class="page__heading">
+    <h2 class="heading__title">My Profile</h2>
+  </div>
+</div>
+
+<form action="#" class="page-sections">
+  <input type="hidden" name="_method" value="patch" autocomplete="off">
+
+  <div class="page-section">
+    <div class="form-sidebar">
+      <div class="form-sidebar__section">
+        <h4 class="page-sidebar__title">Personal Information</h4>
+        <p>Manage the information associated with your account.</p>
+      </div>
+    </div>
+
+    <div class="form-main">
+      <div class="form-main__section">
+        <div class="form__body">
+          <div class="form__inputs">
+            <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes: 'form__input--s2-m2-l6', id: 'full_name', label: 'Full Name', required: true, icon_classes: 'fa-regular fa-user' } %>
+            <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes: 'form__input--s2-m2-l6', id: 'email', label: 'Email Address', required: true, icon_classes: 'fa-regular fa-envelope' } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section page-section--actions">
+    <div class="form__actions form__actions--section">
+      <input type="submit" name="commit" value="Update Profile" class="button button--success">
+    </div>
+  </div>
+</form>
+
+<form action="#" class="page-sections">
+  <input type="hidden" name="_method" value="patch" autocomplete="off">
+
+  <div class="page-section">
+    <div class="form-sidebar">
+      <div class="form-sidebar__section">
+        <h4 class="page-sidebar__title">Change Password</h4>
+        <p>Update your password and secure your account.</p>
+        <p>Your password must be at least 8 characters.</p>
+      </div>
+    </div>
+
+    <div class="form-main">
+      <div class="form-main__section">
+        <div class="form__body">
+          <div class="form__inputs">
+            <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes: 'form__input--s2-m2-l6', id: 'current_password', label: 'Current Password', required: true, icon_classes: 'fa-regular fa-key', hint: 'Your current password is required to update your password' } %>
+            <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes: 'form__input--s2-m2-l6 form__input--new-line', id: 'new_password', label: 'New Password', required: true, icon_classes: 'fa-regular fa-lock', hint: 'Your new password must be at least 8 characters' } %>
+            <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes: 'form__input--s2-m2-l6', id: 'new_password_confirmation', label: 'New Password Confirmation', required: true, icon_classes: 'fa-regular fa-lock' } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section page-section--actions">
+    <div class="form__actions form__actions--section">
+      <input type="submit" name="commit" value="Update Password" class="button button--success">
+    </div>
+  </div>
+</form>

@@ -73,6 +73,10 @@
   background-color: $success-lighter;
 }
 
+.alert__icon--info {
+  background-color: $information-lighter;
+}
+
 .alert__actions {
   align-items: center;
   display: flex;

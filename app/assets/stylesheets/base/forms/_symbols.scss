@@ -23,7 +23,7 @@
 
   input,
   select {
-    padding-left: calc(#{$spacing-3} + 1ch + #{$spacing-3}); // spacing for: LHS of icon, width of icon, RHS of icon
+    padding-left: calc(#{$spacing-4} + 1ch + #{$spacing-4}); // spacing for: LHS of icon, width of icon, RHS of icon
   }
 }
 

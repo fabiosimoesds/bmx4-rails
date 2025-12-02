@@ -1,0 +1,20 @@
+<div class="filter">
+  <div class="filter__name" data-action="click->filter#toggleFilterMenu"><span><%= local_assigns[:filter_name] %></span><i class="fa-solid fa-chevron-down"></i></div>
+
+  <div class="filter__form <%= local_assigns[:filter_classes] %>">
+    <%#= example_array = [{ state: :value_1, name: 'Value 1', sup: 'subtext' }, { state: :value_2, name: 'Value 2', sup: 'subtext' }] %>
+    <% local_assigns[:options].each do |filter| %>
+      <div class="control">
+        <input class="boolean optional" type="checkbox" name="q[<%= filter[:state] %>][]" id="q_<%= filter[:state] %>_" value="0" data-action="change->filter#updateFilterState">
+        <label class="boolean optional" for="q_<%= filter[:state] %>_">
+          <div>
+            <div><%= filter[:name] %></div>
+            <% if filter[:sup].present? %>
+              <div class="-font-size--2 color--light font--normal"><%= filter[:sup] %></div>
+            <% end %>
+          </div>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>

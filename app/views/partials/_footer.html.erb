@@ -1,14 +1,15 @@
 <div class="footer print:display--none">
   <div class="footer__left">
     <%= link_to 'Cookies Policy', '#', target: :_blank %>
-    <i class="mr--3 fas fa-horizontal-rule fa-rotate-90"></i>
+    <i class="mr--3 fa-solid fa-horizontal-rule fa-rotate-90"></i>
     <%= link_to 'Privacy Policy', '#', target: :_blank %>
-    <i class="mr--3 fas fa-horizontal-rule fa-rotate-90"></i>
+    <i class="mr--3 fa-solid fa-horizontal-rule fa-rotate-90"></i>
     <%= link_to 'Terms of Service', '#', target: :_blank %>
-    <i class="mr--3 fas fa-horizontal-rule fa-rotate-90"></i>
+    <i class="mr--3 fa-solid fa-horizontal-rule fa-rotate-90"></i>
     <%= link_to 'About Athena', '#', target: :_blank %>
-    <i class="mr--3 fas fa-horizontal-rule fa-rotate-90"></i>
-    <%= mail_to '#', 'Contact Support', target: :_blank %>
+    <i class="mr--3 fa-solid fa-horizontal-rule fa-rotate-90"></i>
+    <%# TODO: Add the correct support email %>
+    <%= mail_to 'athena@example.com', 'Contact Support', target: :_blank %>
   </div>
 
   <div class="footer__right">

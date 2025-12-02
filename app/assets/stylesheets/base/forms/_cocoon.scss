@@ -22,6 +22,7 @@
 
   border: $border-light;
   border-radius: $br-5px;
+  font-size: modular-scale(1);
   gap: $spacing-3;
   grid-column-end: span 2;
   margin: 0 $spacing-4 0 0;
@@ -35,6 +36,7 @@
   }
 
   @include breakpoint-up($large-screen) {
+    font-size: modular-scale(0);
     grid-column-end: span 12;
   }
 }
@@ -56,10 +58,15 @@
     color: $font-color-lightest;
     font-size: modular-scale(-1);
     display: flex;
+    font-size: modular-scale(0);
     height: $size;
     justify-content: center;
     text-align: center;
     width: $size;
+
+    @include breakpoint-up($large-screen) {
+      font-size: modular-scale(-1);
+    }
   }
 
   a:hover {
@@ -71,11 +78,13 @@
 .cocoon__add {
   @extend %col-end--s2, %col-end--m4, %col-end--l12;
 
+  font-size: modular-scale(1);
   grid-column-start: 1;
   margin-right: $spacing-4;
   max-width: 50em;
 
   @include breakpoint-up($large-screen) {
+    font-size: modular-scale(0);
     margin-right: 0;
   }
 }

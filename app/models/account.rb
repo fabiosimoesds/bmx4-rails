@@ -3,6 +3,8 @@
 # Table name: accounts
 #
 #  id                     :bigint           not null, primary key
+#  accepted_terms_at      :datetime
+#  account_type           :integer          default("admin"), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
@@ -17,6 +19,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  super_admin            :boolean          default(FALSE), not null
 #  time_zone              :string           default("Europe/London"), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -36,11 +39,38 @@ class Account < ApplicationRecord
 
   has_person_name
 
+  attribute :terms_of_service, :boolean, default: false
+
+  # Email is validated in the devise validatable module if: :email_required? (which is true by default)
+  validates_presence_of :time_zone, :account_type
+  validates_presence_of :accepted_terms_at, if: :invitation_accepted?
+
+  validates :name, full_name: true
+
+  validates_acceptance_of :terms_of_service, allow_nil: false, acceptance: true, if: :invited_and_signing_up?
+
+  validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone::MAPPING.values
+
+  after_invitation_accepted :set_accepted_terms_at
+
+  enum :account_type, { admin: 0, other: 1 }
+
   ransacker :full_name do |parent|
-    Arel::Nodes::NamedFunction.new('CONCAT_WS', [
-      Arel::Nodes.build_quoted(' '), parent.table[:first_name], parent.table[:last_name],
-    ])
+    Arel::Nodes::InfixOperation.new('||',
+      Arel::Nodes::InfixOperation.new('||',
+        parent.table[:first_name], Arel::Nodes.build_quoted(' ')),
+      parent.table[:last_name])
   end
+
+  # rubocop:disable Airbnb/OptArgParameters
+  def self.ransackable_attributes(auth_object = nil)
+    ['id', 'full_name', 'first_name', 'last_name', 'email', 'updated_at', 'account_type']
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
+  # rubocop:enable Airbnb/OptArgParameters
 
   def sentry_account_hash
     {
@@ -51,6 +81,16 @@ class Account < ApplicationRecord
   end
 
   def masqueradable?(current_account)
-    true
+    self.id != current_account.id
+  end
+
+  private
+
+  def invited_and_signing_up?
+    self.invitation_accepted_at.present? && self.accepted_terms_at.blank?
+  end
+
+  def set_accepted_terms_at
+    self.update(accepted_terms_at: Time.zone.now)
   end
 end

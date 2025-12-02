@@ -1,20 +1,23 @@
-@use 'sass:math';
+@use "sass:math";
+@use "sass:string";
+@use "sass:map";
+@use "sass:list";
 
 // functions
 @function _assign-inputs($inputs, $pseudo: null) {
   $list: ();
 
   @each $input in $inputs {
-    $input: unquote($input);
+    $input: string.unquote($input);
     $input: if($pseudo, $input + ':' + $pseudo, $input);
-    $list: append($list, $input, comma);
+    $list: list.append($list, $input, comma);
   }
 
   @return $list;
 }
 
 @function _fetch-bourbon-setting($setting) {
-  @return map-get(map-merge($_bourbon-defaults, $bourbon), $setting);
+  @return map.get(map.merge($_bourbon-defaults, $bourbon), $setting);
 }
 
 @function strip-unit($value) {
@@ -22,8 +25,8 @@
 }
 
 @function modular-scale($increment, $value: _fetch-bourbon-setting('modular-scale-base'), $ratio: _fetch-bourbon-setting('modular-scale-ratio')) {
-  $v1: nth($value, 1);
-  $v2: nth($value, length($value));
+  $v1: list.nth($value, 1);
+  $v2: list.nth($value, list.length($value));
   $value: $v1;
 
   // scale $v2 to just above $v1

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $flex-directions: row, row-reverse, column, column-reverse;
 
 @each $key in $flex-directions {
@@ -71,7 +73,7 @@ $flex-wraps: wrap, wrap-reverse, nowrap;
   // flex-basis--2pc, flex-basis--20em
   
   .flex-basis--#{$i}pc {
-    flex-basis: round(percentage($i * 0.01));
+    flex-basis: math.round(math.percentage($i * 0.01));
   }
 
   .flex-basis--#{$i}em {
@@ -82,7 +84,7 @@ $flex-wraps: wrap, wrap-reverse, nowrap;
   // lg:flex-basis--100pc, md:flex-basis--1em
 
   @include breakpoint-all-sizes("flex-basis--#{$i}pc") {
-    flex-basis: round(percentage($i * 0.01));
+    flex-basis: math.round(math.percentage($i * 0.01));
   }
 
   @include breakpoint-all-sizes("flex-basis--#{$i}em") {

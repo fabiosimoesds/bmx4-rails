@@ -12,10 +12,12 @@
 
     <form action="#">
       <div class="form__inputs">
-        <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'name', label: 'Full name', required: true } %>
+        <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'name', label: 'Full Name', required: true } %>
+
         <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'email', label: 'Email Address', required: true } %>
-        <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'phone_number', label: 'Phone Number', type: 'number', required: true } %>
+
         <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'password', label: 'Password', type: 'password', required: true, hint: 'Your password must be at least 8 characters' } %>
+
         <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'password_confirmation', label: 'Password Confirmation', type: 'password', required: true } %>
 
         <%= render partial: 'templates/base/partials/inputs/checkbox', locals: {
@@ -26,7 +28,7 @@
       </div>
 
       <div class="form__actions">
-        <%= render partial: 'templates/base/partials/inputs/button', locals: { wrapper_classes:'button--wide button--primary', id: 'signup', label: 'Sign Up' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { classes:'button--wide button--primary', id: 'signup', label: 'Sign Up' } %>
       </div>
     </form>
 

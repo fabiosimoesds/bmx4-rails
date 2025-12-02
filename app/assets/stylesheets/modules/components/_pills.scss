@@ -58,7 +58,7 @@ $basic-pill-colors: (
   'light' $background-color-light $background-color-dark
 );
 
-$all-pill-colors: list-combine($basic-pill-colors);
+$all-pill-colors: list-combine($basic-pill-colors, $account-type-colors);
 
 @each $modifier, $bg, $color in $all-pill-colors {
   .pill--#{$modifier} {

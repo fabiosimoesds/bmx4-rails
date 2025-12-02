@@ -1,8 +1,16 @@
 $header-image-size: 4rem;
 
 .header {
-  background-color: $primary-background-color;
+  background-color: $background-color-lightest;
+  border-bottom: $border-base;
   color: $font-color-base;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-4;
+
+  @include breakpoint-up($medium-screen) {
+    position: static;
+  }
 }
 
 .header__heading {
@@ -31,7 +39,7 @@ $header-image-size: 4rem;
 }
 
 .header__site-title {
-  background-image: url('logos/logo_icon_white.png');
+  background-image: url('logos/logo_icon.png');
   background-position: left center;
   background-repeat: no-repeat;
   background-size: contain;

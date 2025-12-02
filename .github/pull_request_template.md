@@ -8,6 +8,13 @@
 
 **Page/Action Name**
 
+Optional Table
+
+|<img width=250/>Screen Size<img width=250/>|Image|
+|-----------------------------------------|------|
+|Large|insert_image|
+|Medium|insert_image|
+|Small|insert_image|
 
 
 ## Deployment Instructions:

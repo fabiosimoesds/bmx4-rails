@@ -6,15 +6,17 @@ import tippy from 'tippy.js'
 
 export default class extends Controller {
   static values = {
-    successMessage: String,
-    errorMessage: String,
+    successMessage: { type: String, default: 'Copied!' },
+    errorMessage: { type: String, default: 'Failed!' },
     copyable: String,
+    tippyOffset: { type: Array, default: [0, 10] },
   }
 
   tooltip(message) {
     tippy(this.element, {
       content: message,
       showOnCreate: true,
+      offset: this.tippyOffsetValue,
       onHidden(instance) {
         instance.destroy()
       },
@@ -26,29 +28,21 @@ export default class extends Controller {
     if (this.copyableValue) {
       navigator.clipboard.writeText(this.copyableValue).then(
         function () {
-          controller.tooltip(controller.successMessage)
+          controller.tooltip(controller.successMessageValue)
         },
         function () {
-          controller.tooltip(controller.errorMessage)
+          controller.tooltip(controller.errorMessageValue)
         },
       )
     } else {
       navigator.clipboard.writeText(event.currentTarget.innerText).then(
         function () {
-          controller.tooltip(controller.successMessage)
+          controller.tooltip(controller.successMessageValue)
         },
         function () {
-          controller.tooltip(controller.errorMessage)
+          controller.tooltip(controller.errorMessageValue)
         },
       )
     }
-  }
-
-  get successMessage() {
-    return this.successMessageValue || 'Copied!'
-  }
-
-  get errorMessage() {
-    return this.errorMessageValue || 'Failed!'
   }
 }

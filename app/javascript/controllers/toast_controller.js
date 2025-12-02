@@ -4,7 +4,7 @@ import { Controller } from '@hotwired/stimulus'
 
 <div data-controller="toast" data-toast-timeout-value="0" class="toast">
   <div class="toast__message">Toast Message</div>
-  <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  <i class="toast__close fa-regular fa-times" data-action="click->toast#remove"></i>
 </div>
 */
 

@@ -1,3 +1,5 @@
+<% provide(:title, 'Accept Invitation') %>
+
 <div class="onboarding__modal">
   <div class="onboarding__image"></div>
 
@@ -8,14 +10,26 @@
     <p class="-font-size--1 font--light line-height--tight">Enter your details below to create your account and get started</p>
 
     <%= simple_form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+
       <div class="form__inputs">
-        <%= f.error_notification %>
         <%= f.hidden_field :invitation_token %>
 
         <%= f.input :name, label: 'Full Name', wrapper_html: { class: 'form__input--s2-m4-l12' }, required: true %>
+
         <%= f.input :email, label: 'Email Address', wrapper_html: { class: 'form__input--s2-m4-l12' }, required: true %>
-        <%= f.input :password, wrapper_html: { class: 'form__input--s2-m4-l12' }, required: true, hint: 'Your password must be at least 8 characters' %>
-        <%= f.input :password_confirmation, wrapper_html: { class: 'form__input--s2-m4-l12'} , required: true %>
+
+        <%= f.input :password,
+              wrapper_html: { class: 'form__input--s2-m4-l12' },
+              required: true,
+              hint: ("Your password must be at least #{@minimum_password_length} characters" if @minimum_password_length),
+              input_html: { autocomplete: 'new-password' } %>
+
+        <%= f.input :password_confirmation,
+              label: 'Confirm Password',
+              wrapper_html: { class: 'form__input--s2-m4-l12'},
+              required: true,
+              input_html: { autocomplete: 'new-password' } %>
 
         <%= render partial: 'templates/base/partials/inputs/checkbox', locals: {
                   classes: 'form__input--s2-m4-l12',

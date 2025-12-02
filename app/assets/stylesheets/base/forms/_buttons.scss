@@ -13,14 +13,14 @@
   cursor: pointer;
   display: inline-block;
   font-family: $font-family-base;
-  font-size: $font-size-base;
+  font-size: $font-size-base * strip-unit(modular-scale(1)); // button has a line height issue that comes from using the module-scale directly.
   font-weight: $fw-bold;
   flex: 0 0 auto;
   letter-spacing: $tracking-tight;
   line-height: $leading-none;
   margin: 0;
   overflow: hidden;
-  padding: $spacing-4 $spacing-6;
+  padding: $spacing-5 $spacing-6;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -28,6 +28,11 @@
   user-select: none;
   vertical-align: middle;
   white-space: normal;
+
+  @include breakpoint-up($large-screen) {
+    font-size: $font-size-base;
+    padding: $spacing-4 $spacing-6;
+  }
 
   &:active,
   &:focus,
@@ -295,4 +300,76 @@ $white-button-colors:
 [type='submit'].button--broad {
   padding-left: $spacing-10;
   padding-right: $spacing-10;
+}
+
+.button__actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: $spacing-6;
+  justify-content: flex-start;
+
+  // breakpoint-down so styles are applied in a downwards direction and not carried to larger screens where other classes would try to set their sizes
+  @include breakpoint-down($medium-screen) {
+    .button,
+    .button--link,
+    .action-menu,
+    .actions__menu {
+      width: 100%;
+    }
+
+    .button--link {
+      border: $border-secondary-light;
+      border-radius: $br-5px;
+      font-size: modular-scale(1);
+      font-weight: $fw-bold;
+      letter-spacing: $tracking-tight;
+      padding: $spacing-5 $spacing-6;
+      text-align: center;
+
+      i {
+        display: inline;
+      }
+
+      @each $modifier, $bg, $color, $change-bg, $change-color in $stroke-button-colors {
+        &.link--#{$modifier} {
+          border-color: $bg;
+          color: $color;
+
+          &:hover {
+            background-color: $bg;
+            border-color: $bg;
+            color: $change-color;
+          }
+
+          &:active,
+          &:focus {
+            background-color: $change-bg;
+            border-color: $change-bg;
+            color: $change-color;
+          }
+        }
+      }
+
+      &.link--disabled {
+        background-color: $form-disabled-color;
+        border-color: $form-disabled-color;
+        color: $font-color-lightest;
+
+        &:hover {
+          background-color: $form-disabled-color;
+          border-color: $form-disabled-color;
+          color: $font-color-lightest;
+        }
+      }
+    }
+  }
+
+  @include breakpoint-up($medium-screen) {
+    align-items: center;
+    flex-direction: row;
+    font-size: modular-scale(0);
+    font-weight: $fw-normal;
+    letter-spacing: $tracking-normal;
+    justify-content: flex-end;
+  }
 }

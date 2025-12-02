@@ -10,41 +10,45 @@
   @include transition(background);
 
   align-items: center;
-  border-radius: $br-5px;
-  color: $font-color-lightest;
+  color: $font-color-darkest;
   display: flex;
   font-weight: $fw-normal;
   line-height: $leading-none;
-  margin-bottom: $spacing-3;
+  margin-bottom: $spacing-4;
   position: relative;
 
   @include breakpoint-up($large-screen) {
     margin-bottom: 0;
   }
 
-  a {
-    color: $font-color-lightest;
+  a,
+  form,
+  .button--link {
+    color: $font-color-darkest;
     cursor: pointer;
     display: inline-block;
-    padding: $spacing-2 $spacing-3;
+    font-size: modular-scale(1);
+    padding: $spacing-3;
     position: relative;
     width: 100%;
 
+    @include breakpoint-up($large-screen) {
+      font-size: modular-scale(0);
+      padding: $spacing-3 $spacing-4;
+    }
+
     &:hover {
-      color: $font-color-lightest;
+      color: $font-color-darkest;
     }
   }
 
-  &:hover {
-    background-color: $primary-background-color;
+  .button--link {
+    font-size: modular-scale(0);
+    padding: 0;
   }
-}
-
-.menu-item--active {
-  background-color: $background-color-darkest;
 
   &:hover {
-    background-color: $background-color-darkest;
+    background-color: $bc-lightest;
   }
 }
 
@@ -52,10 +56,6 @@
 
 .menu-item--sub {
   cursor: pointer;
-
-  &:hover {
-    color: $primary-color-light;
-  }
 }
 
 .menu-item__chevron {
@@ -94,75 +94,93 @@
   .menu-item {
     &.menu-item--active,
     &:has(.menu-item--active) {
+      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+
       .primary-menu__link {
-        background-color: $background-color-lightest;
-        color: $primary-color-dark;
-        border-radius: $br-5px;
-  
-        &:hover {
-          background-color: $background-color-lightest;
-          color: $primary-color-dark;
+        box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+        font-weight: $fw-semibold;
+      }
+    }
+
+    @include breakpoint-up($large-screen) {
+      height: 100%;
+
+      &.menu-item--active,
+      &:has(.menu-item--active) {
+        .primary-menu__link {
+          box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
         }
       }
     }
-    @include breakpoint-up($large-screen) {
-      margin-right: $spacing-4;
-    }
   }
 
-  .primary-menu__link {
-    @include transition(background-color, color);
+  .menu--sub {
+    margin-top: $spacing-3;
 
-    align-self: center;
-    background-color: $primary-background-color-dark;
-    border-radius: $br-5px;
-    padding: $spacing-4 $spacing-5;
-
-    &:hover {
-      background-color: $background-color-lightest;
-      color: $primary-color-dark;
+    .menu-item.menu-item--active {
+      box-shadow: none;
     }
 
     @include breakpoint-up($medium-screen) {
-      padding: $spacing-3 $spacing-5;
-      font-size: modular-scale(-1);
+      margin-top: $spacing-1;
+    }
+  }
+
+  .primary-menu__link,
+  form {
+    @include transition(box-shadow);
+
+    align-items: center;
+    background-color: $bc-lightest;
+    color: $font-color-darkest;
+    display: inline-flex;
+    height: 100%;
+
+    &:hover {
+      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary;
     }
 
     @include breakpoint-up($large-screen) {
       font-size: modular-scale(0);
+
+      &:hover {
+        box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary;
+      }
     }
 
-    a {
+    a,
+    &.button--link {
       border-bottom: none;
+      box-shadow: none;
     }
   }
 
   .menu-item--sub {
-    flex-direction: column;
+    display: block;
+    background-color: $bc-lightest;
 
     @include breakpoint-up($large-screen) {
+      display: flex;
       flex-direction: row;
     }
 
-    .menu-item {
-      a {
-        color: $font-color-lightest;
+    .primary-menu__link {
+      @include transition(background-color, color, box-shadow);
 
-        &:hover {
-          color: $primary-color-dark;
+      align-self: center;
+      font-size: modular-scale(1);
+      padding: $spacing-3;
 
-          @include breakpoint-up($large-screen) {
-            color: $font-color-base;
-          }
-        }
-
-        @include breakpoint-up($large-screen) {
-          color: $font-color-base;
-        }
+      @include breakpoint-up($large-screen) {
+        font-size: modular-scale(0);
+        padding: $spacing-3 $spacing-4;
       }
+    }
 
-      @include breakpoint-up($medium-screen) {
-        font-size: modular-scale(-1);
+    .menu-item {
+      a,
+      .button--link {
+        color: $font-color-darkest;
       }
 
       @include breakpoint-up($large-screen) {
@@ -180,17 +198,25 @@
   margin: 0 0 0 $spacing-6;
 
   @include breakpoint-up($large-screen) {
-    align-items: center;
+    align-items: stretch;
     display: flex;
   }
 
-  .user__name {
-    color: $white;
-    padding: $spacing-3;
+  .menu-item {
+    align-items: stretch;
+    display: flex;
 
     &:hover {
-      color: $white;
+      color: $font-color-darkest;
+      box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary;
     }
+  }
+
+  .user__name {
+    align-items: center;
+    color: $font-color-darker;
+    display: flex;
+    padding: $spacing-3;
   }
 }
 
@@ -203,7 +229,6 @@
   padding: 0;
   top: 100%;
   width: 100%;
-
   z-index: $z-index-3;
 
   @include breakpoint-up($large-screen) {
@@ -211,7 +236,7 @@
     border: $border-base;
     border-radius: $br-5px;
     box-shadow: $shadow-2;
-    padding: $spacing-2 0;
+    padding: $spacing-3 0;
     position: absolute;
     right: 0;
     top: calc(100% + #{$spacing-1});
@@ -219,30 +244,50 @@
   }
 
   .menu-item {
-    background-color: rgba($primary-background-color-dark, 0.5);
-    border-radius: $br-5px;
-    color: $font-color-lightest;
+    color: $font-color-darker;
     margin-left: $spacing-4;
 
     @include breakpoint-up($large-screen) {
-      background-color: unset;
-      border-radius: 0;
       margin-left: 0;
     }
 
-    a {
-      color: $font-color-base;
-      padding: $spacing-3 $spacing-4;
+    a,
+    form {
+      padding: $spacing-3;
       width: 100%;
+
+      @include breakpoint-up($large-screen) {
+        padding: $spacing-3 $spacing-4;
+      }
     }
 
     &.menu-item--active,
     &.menu-item--active a {
       background-color: $background-color-lighter;
+      font-weight: $fw-semibold;
     }
 
-    &:hover {
+    &:hover a,
+    &:hover form {
       background-color: $background-color-lighter;
+      color: $font-color-darkest;
+    }
+  }
+
+  .menu-item + .menu-item.menu-item--divider {
+    border-top: $bw-2px solid $background-color-light;
+
+    @include breakpoint-up($large-screen) {
+      margin-top: calc(#{$spacing-2} + #{$bw-2px});
+    }
+
+    a,
+    .button--link {
+      margin-top: $spacing-3;
+
+      @include breakpoint-up($large-screen) {
+        margin-top: $spacing-2;
+      }
     }
   }
 
@@ -281,7 +326,7 @@
   padding: $spacing-3 0;
 
   @include breakpoint-up($large-screen) {
-    color: $font-color-base;
+    color: $font-color-darker;
     margin-top: $spacing-1;
     padding: $spacing-2 0;
   }
@@ -297,12 +342,16 @@
 .menu--always-popover {
   box-shadow: $shadow-2;
   left: 0;
-  padding: $spacing-2 0;
+  padding: $spacing-4 0;
   position: absolute;
   width: 13em;
 
   @include breakpoint-up($medium-screen) {
     left: auto;
     right: 0;
+  }
+
+  @include breakpoint-up($large-screen) {
+    padding: $spacing-2 0;
   }
 }

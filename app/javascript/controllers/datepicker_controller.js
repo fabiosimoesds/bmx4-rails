@@ -43,7 +43,8 @@ export default class extends Controller {
   dateLinked2TargetConnected(target) {
     dayjs.extend(customParseFormat)
 
-    let linked2 = this.setDateInput(target, true)
+    let unsetDefaultDate = target.hasAttribute('data-default') && target.dataset.default == 'false'
+    let linked2 = this.setDateInput(target, unsetDefaultDate)
 
     this.dateLinked1Targets.forEach((linked1) => {
       this.linkDatepickers(linked2, target, linked1)
@@ -64,7 +65,8 @@ export default class extends Controller {
   datetimeLinked2TargetConnected(target) {
     dayjs.extend(customParseFormat)
 
-    let linked2 = this.setDatetimeInput(target, true)
+    let unsetDefaultDate = target.hasAttribute('data-default') && target.dataset.default == 'false'
+    let linked2 = this.setDatetimeInput(target, unsetDefaultDate)
 
     this.datetimeLinked1Targets.forEach((linked1) => {
       this.linkDatepickers(linked2, target, linked1)
@@ -72,6 +74,8 @@ export default class extends Controller {
   }
 
   setDateInput(target, unsetDefaultDate) {
+    const hour = parseInt(target.dataset.hour ?? '0', 10)
+
     let options = {
       display: {
         components: {
@@ -84,8 +88,9 @@ export default class extends Controller {
       localization: {
         locale: 'en-GB',
         format: 'dd/MM/yyyy',
+        startOfTheWeek: 1,
       },
-      defaultDate: DateTime.convert(dayjs().startOf('day').add(32, 'hours').toDate(), 'en-GB'),
+      defaultDate: DateTime.convert(dayjs().startOf('day').add(hour, 'hours').toDate(), 'en-GB'),
     }
 
     if (unsetDefaultDate) {
@@ -96,13 +101,26 @@ export default class extends Controller {
   }
 
   setDatetimeInput(target, unsetDefaultDate) {
+    const hour = parseInt(target.dataset.hour ?? '0', 10)
+    const minute = parseInt(target.dataset.minute ?? '0', 10)
+
     let options = {
+      display: {
+        viewMode: this.defaultViewValue,
+      },
       localization: {
         locale: 'en-GB',
         hourCycle: 'h23',
         format: 'dd/MM/yyyy HH:mm',
+        startOfTheWeek: 1,
       },
-      defaultDate: DateTime.convert(dayjs().startOf('day').add(32, 'hours').toDate(), 'en-GB'),
+      defaultDate: DateTime.convert(dayjs().startOf('day').add(hour, 'hours').add(minute, 'minutes').toDate(), 'en-GB'),
+    }
+
+    if (target.hasAttribute('data-default-view')) {
+      options.display = {
+        viewMode: target.dataset.defaultView,
+      }
     }
 
     if (unsetDefaultDate) {
@@ -142,12 +160,12 @@ export default class extends Controller {
 
     if (target.hasAttribute('data-duration-field')) {
       duration_field = target.dataset.durationField
+    }
 
-      if (datetime1.hasAttribute(`data-${duration_field}`)) {
-        date = dayjs(date)
-          .add(datetime1.getAttribute(`data-${duration_field}`), 'hours')
-          .toDate()
-      }
+    if (datetime1.hasAttribute(`data-${duration_field}`)) {
+      date = dayjs(date)
+        .add(datetime1.getAttribute(`data-${duration_field}`), 'hours')
+        .toDate()
 
       linked2.dates.setValue(DateTime.convert(date, 'en-GB'))
     }

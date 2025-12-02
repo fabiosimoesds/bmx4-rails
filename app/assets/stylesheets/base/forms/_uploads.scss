@@ -187,19 +187,29 @@ button.uppy-DragDrop-container {
 
 // multiple files upload
 
-.uppy-DragDrop-inner i {
-  margin-bottom: $spacing-2;
-}
+[data-controller='single-upload'] button,
+[data-controller='multi-upload'] button {
+  .uppy-c-icon {
+    display: none;
+  }
+  .uppy-DragDrop-inner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+  }
 
-.uppy-DragDrop-label {
-  margin-bottom: $spacing-3;
-}
+  .uppy-DragDrop-label {
+    font-size: modular-scale(0);
+    font-weight: $fw-normal;
+  }
 
-.uppy-c-icon {
-  display: none;
-}
+  .uppy-DragDrop-note {
+    color: $font-color-light;
+    font-size: modular-scale(-1);
 
-.uppy-DragDrop-note {
-  color: $font-color-base;
-  font-size: modular-scale(-2);
+    &:empty {
+      display: none;
+    }
+  }
 }

@@ -56,3 +56,14 @@ en:
       day_month: '%d %B'
       month_year: '%B %Y'
       short_month_year: '%b %y'
+  pagy:
+    p11n: 'OneOther'
+    aria_label:
+      nav:
+        one: 'Pagination Link'
+        other: 'Pagination Links'
+      previous: 'Previous'
+      next: 'Next'
+    previous: "<i class='fa-solid fa-chevron-left'></i>"
+    next: "<i class='fa-solid fa-chevron-right'></i>"
+    gap: '…'

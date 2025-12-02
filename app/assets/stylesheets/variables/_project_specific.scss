@@ -32,3 +32,8 @@
     scene-notif-purchased: '\f38a', // credit-card-front
   );
 */
+
+$account-type-colors: (
+  'admin' $blue-50 $blue-500,
+  'other' $orange-50 $orange-500,
+);

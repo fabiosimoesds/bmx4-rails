@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Cursor
 // cursor--auto, cursor--progress
 
@@ -18,7 +20,7 @@ $cursors: auto, default, pointer, wait, text, move, help, not-allowed, progress,
 
 @for $i from 0 through 100 {
   .opacity--#{$i} {
-    opacity: round(percentage($i * 0.01));
+    opacity: math.round(math.percentage($i * 0.01));
   }
 }
 

@@ -18,7 +18,7 @@ export default class extends Controller {
 
   connect() {
     if (this.hasToggleTarget) {
-      this.toggleObject()
+      this.toggleObjects()
     }
 
     if (this.hasBooleanTarget) {

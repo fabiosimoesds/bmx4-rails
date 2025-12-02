@@ -62,7 +62,7 @@ $all-notification-icons: map-combine(
 // applies FA icons to the timeline item icon dependant on the scene event type
 @each $modifier, $icon in $all-notification-icons {
   .timeline-item__icon.timeline-item__icon--#{$modifier}::after {
-    font-family: 'Font Awesome 5 Pro';
+    font-family: 'Font Awesome 6 Pro';
     font-weight: 900; // Font Awesome solid icon
     content: $icon;
     margin-bottom: -2px;

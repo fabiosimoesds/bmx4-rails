@@ -1,9 +1,11 @@
 .callout {
+  align-items: center;
   background-color: $background-color-lightest;
   border-radius: $br-5px;
   border: $border-base;
   display: flex;
-  padding: $spacing-5;
+  gap: $spacing-3;
+  padding: $spacing-6;
 }
 
 $basic-callout-colors: (
@@ -33,16 +35,20 @@ $all-callout-colors: list-combine($basic-callout-colors);
   }
 }
 
-.callout__text {
-  margin-top: 1px;
-  font-size: modular-scale(-1);
-}
-
 .callout--action {
   align-items: center;
+  flex-direction: column;
 
-  .callout__text {
-    margin-top: 0;
-    margin-bottom: 2px;
+  @include breakpoint-up($medium-screen) {
+    flex-direction: row;
+  }
+
+  .button {
+    width: 100%;
+
+    @include breakpoint-up($medium-screen) {
+      width: auto;
+      margin-left: auto;
+    }
   }
 }

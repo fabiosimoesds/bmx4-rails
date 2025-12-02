@@ -1,0 +1,68 @@
+<% provide(:title, 'Edit User') %>
+
+<div class="bg--danger-dark color--red-50 p--4">
+  <div class="page-container display--flex justify-content--center align-items--center">
+    <div class="mr--6">Logged in as alice.doe@example.com</div>
+
+    <a href="#" class="button button--white button--danger">Log out</a>
+  </div>
+</div>
+
+<div class="page__header">
+  <div class="page__heading page__heading--actions">
+    <div class="heading__main">
+      <h2 class="heading__title">Edit User</h2>
+    </div>
+
+    <div class="heading__actions">
+      <%= button_to '#', class: 'button--link link--danger link--icon font--bold', method: :delete, form: {
+        data: {
+          turbo: true,
+          turbo_confirm: true,
+          controller: 'turbo-confirm',
+          turbo_confirm_title_value: 'Are your sure you want to delete this user?',
+          turbo_confirm_body_value: 'You will not be able to undo this action.',
+          turbo_confirm_button_text_value: "Delete User",
+          turbo_confirm_alert_style_value: "danger" } } do %>
+
+        <i class="fa-regular fa-trash-alt mr--3"></i>Delete User
+      <% end %>
+
+      <a class="button button--stroke" data-confirm="Are you sure you want to log in as Alice?" data-subtext="Changes you make will take effect as if they did them." href="#">
+        <i class="fa-regular fa-theater-masks mr--3"></i>Log in as Amar
+      </a>
+    </div>
+  </div>
+</div>
+
+<form action="#" class="page-sections">
+  <input type="hidden" name="_method" value="patch" autocomplete="off">
+
+  <div class="page-section">
+    <div class="form-sidebar">
+      <div class="form-sidebar__section">
+        <h4 class="page-sidebar__title">User Information</h4>
+        <p>Manage Alice's personal information and contact details.</p>
+        <p>Alice can also edit some of these details themselves via the My Profile page.</p>
+      </div>
+    </div>
+
+    <div class="form-main">
+      <div class="form-main__section">
+        <div class="form__body">
+          <div class="form__inputs">
+            <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes: 'form__input--s2-m2-l6', id: 'full_name', label: 'Full Name', required: true, icon_classes: 'fa-regular fa-user', value: 'Alice Doe', hint: 'eg. Mr Smith, John Smith' } %>
+            <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes: 'form__input--s2-m2-l6', id: 'email', label: 'Email Address', required: true, icon_classes: 'fa-regular fa-envelope', value: 'alice.doe@example.com' } %>
+            <%= render partial: 'templates/base/partials/inputs/select', locals: { wrapper_classes: 'form__input--s2-m2-l6 form__input--new-line', id: 'account_type', label: 'Type', required: true, disabled: true, options: [['other', 'Other'], ['admin', 'Admin']] } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section page-section--actions">
+    <div class="form__actions form__actions--section">
+      <input type="submit" name="commit" value="Update User" class="button button--success">
+    </div>
+  </div>
+</form>

@@ -137,3 +137,17 @@ $section-md-padding: $spacing-6 $spacing-7;
     grid-column: 4 / span 9;
   }
 }
+
+.page-section--actions {
+  grid-template-columns: none;
+  margin-top: -$spacing-5;
+
+  @include breakpoint-up($medium-screen) {
+    margin-top: -$spacing-3;
+  }
+
+  @include breakpoint-up($large-screen) {
+    margin-top: -$spacing-5;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}

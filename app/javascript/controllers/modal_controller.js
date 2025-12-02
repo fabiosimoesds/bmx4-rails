@@ -10,7 +10,7 @@ import { Controller } from '@hotwired/stimulus'
       <div class="modal__title"></div>
 
       <a class="ml--4 font-size--3 link--brand cursor--pointer" data-action="click->modal#remove">
-        <i class="fas fa-sm fa-times"></i>
+        <i class="fa-solid fa-sm fa-times"></i>
       </a>
     </div>
 
@@ -41,8 +41,8 @@ export default class extends Controller {
     document.getElementById(event.currentTarget.dataset.modalId).classList.remove('display--none')
   }
 
-  toggleModal() {
-    this.element.classList.toggle('display--none')
+  toggleModal(event) {
+    document.getElementById(event.currentTarget.dataset.modalId).classList.toggle('display--none')
   }
 
   remove() {

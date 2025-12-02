@@ -1,6 +1,6 @@
 class FullNameValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    record.errors.add(attribute, (options[:message] || full_name?(record, value)[1])) unless full_name?(record, value)[0]
+    record.errors.add(attribute, options[:message] || full_name?(record, value)[1]) unless full_name?(record, value)[0]
   end
 
   def full_name?(object, name)

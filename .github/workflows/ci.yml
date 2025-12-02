@@ -1,7 +1,7 @@
 name: Continuous Integration
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize] # will run when a PR is opened, or is pushed/merged into/has code pulled from the base branch
 jobs:
   build:
     name: Build
@@ -11,18 +11,19 @@ jobs:
       RACK_ENV: test
       NODE_ENV: test
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install native dependencies
         run: |
+          sudo apt-get update
           sudo apt-get install -y build-essential libc-dev libffi-dev tzdata postgresql-client libpq-dev imagemagick git
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         id: ruby
         with:
-          ruby-version: 3.1.3
+          ruby-version: 3.4.7
       - uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '22.x'
       - name: Cache gems
         uses: actions/cache@v3
         with:
@@ -49,7 +50,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
       - name: Cache yarn packages
         uses: actions/cache@v3
         with:
@@ -60,7 +64,7 @@ jobs:
       - name: Install modules
         run: yarn  --pure-lockfile
       - name: Run prettier
-        run: ./node_modules/prettier/bin-prettier.js ./app/javascript --check --config ./prettier.config.js
+        run: ./node_modules/prettier/bin/prettier.cjs ./app/javascript --check --config ./prettier.config.js
   rubocop:
     name: Rubocop
     needs: build
@@ -70,20 +74,21 @@ jobs:
       RACK_ENV: test
       NODE_ENV: test
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Install native dependencies
         run: |
+          sudo apt-get update
           sudo apt-get install -y build-essential libc-dev libffi-dev tzdata postgresql-client libpq-dev imagemagick git
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         id: ruby
         with:
-          ruby-version: 3.1.3
+          ruby-version: 3.4.7
       - uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '22.x'
       - name: Cache gems
         uses: actions/cache@v3
         with:

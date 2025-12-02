@@ -1,15 +1,13 @@
 import * as Sentry from '@sentry/browser'
-import { Integrations } from '@sentry/tracing'
 
 let sentryScript = document.getElementById('sentry-js')
 
-if (sentryScript.hasAttribute('data-sentry-dsn')) {
+if (sentryScript && sentryScript.hasAttribute('data-dsn')) {
   Sentry.init({
-    dsn: sentryScript.attributes['data-sentry-dsn'].value,
-    // TODO: change athena to the actual app name
-    release: 'athena@1.0.0',
-    integrations: [new Integrations.BrowserTracing()],
-    tracesSampleRate: 0,
+    dsn: sentryScript.attributes['data-dsn'].value,
+    release: 'athena@1.0.0', // 'release' is based on latest sprint or upgrade
+    integrations: [Sentry.browserTracingIntegration()],
+    tracesSampleRate: parseFloat(sentryScript.attributes['data-traces-sample-rate'].value),
   })
 
   if (sentryScript.hasAttribute('data-current-account')) {

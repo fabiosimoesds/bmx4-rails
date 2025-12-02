@@ -1,5 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
   prepend_view_path 'app/views/mailers' # Create mailer your template in this same path
+  # TODO define default from address
   default from: 'from@example.com'
   layout 'mailer'
   helper(EmailsHelper)

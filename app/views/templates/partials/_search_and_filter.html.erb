@@ -1,0 +1,13 @@
+<form class="model_search" id="model_search" action="/models" accept-charset="UTF-8" method="get">
+  <div class="search-and-filter mb--6" data-controller="filter" data-action="click@window->filter#closeOutside">
+    <%= render partial: 'templates/partials/search', locals: { placeholder: 'Search by model name..' } %>
+
+    <div class="filters mt--4">
+      <%= render partial: 'templates/partials/filter', locals: { filter_name: 'Options', options: [{ state: 1, name: 'Option 1' }, { state: 2, name: 'Option 2' }] } %>
+      <%= render partial: 'templates/partials/filter', locals: { filter_name: 'Options', options: [{ state: 1, name: 'Option 1' }, { state: 2, name: 'Option 2' }] } %>
+      <%= render partial: 'templates/partials/filter', locals: { filter_name: 'Options', options: [{ state: 1, name: 'Option 1' }, { state: 2, name: 'Option 2' }] } %>
+
+      <input type="submit" value="Apply" class="button filter__button" data-disable-with="Apply">
+    </div>
+  </div>
+</form>

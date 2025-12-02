@@ -1,35 +1,41 @@
+<% provide(:title, 'Reset Password') %>
+
 <div class="onboarding__modal">
   <div class="onboarding__image"></div>
 
   <div class="onboarding__body">
-    <%= image_tag 'logos/logo_full', class: "w--10em" %>
+    <%= image_tag 'logos/logo_full', class: 'w--10em' %>
 
     <h3 class="mt--4 mb--0">Change Your Password <span class="emoji emoji-lock-and-key"></span></h3>
     <p class="-font-size--1 font--light line-height--tight">Create a new password for your account.</p>
 
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form__inputs px--0 py--4' }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'py--4' }) do |f| %>
       <%= f.error_notification %>
 
-      <%= f.input :reset_password_token, as: :hidden %>
-      <%= f.full_error :reset_password_token %>
+      <div class="form__inputs">
+        <%= f.input :reset_password_token, as: :hidden %>
+        <%= f.full_error :reset_password_token %>
 
-      <%= f.input :password,
-            label: "New password",
-            required: true,
-            autofocus: true,
-            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-            wrapper_html: { class: 'form__input form__input--s2-m4-l12' },
-            input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password,
+              label: 'New Password',
+              required: true,
+              autofocus: true,
+              hint: ("Your password must be at least #{@minimum_password_length} characters" if @minimum_password_length),
+              wrapper_html: { class: 'form__input form__input--s2-m4-l12' },
+              input_html: { autocomplete: 'new-password' } %>
 
-      <%= f.input :password_confirmation,
-                label: "Confirm password",
-                required: true,
-                wrapper_html: { class: 'form__input form__input--s2-m4-l12' },
-                input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                  label: 'Confirm Password',
+                  required: true,
+                  wrapper_html: { class: 'form__input form__input--s2-m4-l12' },
+                  input_html: { autocomplete: 'new-password' } %>
+      </div>
 
-      <%= f.submit 'Change Password', class: 'form__input form__input--s2-m4-l12 button--primary p--5' %>
+
+      <div class="form__actions">
+        <%= f.submit 'Change Password', class: 'button--wide button--primary' %>
+      </div>
     <% end %>
   </div>
 </div>
 
-<%= render "devise/shared/links" %>

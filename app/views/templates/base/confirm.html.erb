@@ -1,13 +1,19 @@
 <div class="page-container mt--10">
   <div class="display--grid grid-col--6 gap--8">
-    <button class="button button--danger" data-confirm="Are you sure you want to archive Alison Hodgson's user account? This action will prevent Alison from being able to login.">Archive</button>
-    <a href="/templates/base" class="button button--success" data-confirm="Are you sure you want to navigate away to the Base Templates?" data-alert-style="success">Go to Base</a>
-    <%= link_to 'Go Back Templates Index', templates_engine_path, class: 'button button--info', data: { confirm: 'Are you sure you want to go to the Templates Index?', subtext: 'You will be able to undo this action.', alert_style: 'info' } %>
+    <%= link_to 'Go Back Templates Index', templates_engine_path, class: 'button button--info',  data: {
+        turbo: true,
+        turbo_method: :get,
+        turbo_confirm: :go_back_templates_index,
+        controller: 'turbo-confirm',
+        turbo_confirm_title_value: 'Are you sure you want to go to the Templates Index?',
+        turbo_confirm_body_value: 'You will be able to undo this action.',
+        turbo_confirm_button_text_value: "Yes, I'm sure",
+        turbo_confirm_alert_style_value: "info" } %>
 
     <%= button_to 'Turbo Confirm', '#', class: 'button button--success', form: {
       data: {
         turbo: true,
-        turbo_confirm: true,
+        turbo_confirm: :turbo_confirm,
         controller: 'turbo-confirm',
         turbo_confirm_title_value: 'Are you sure you want to open Turbo Confirm?',
         turbo_confirm_body_value: "This action can't be undone",

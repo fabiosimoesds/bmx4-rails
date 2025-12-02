@@ -10,12 +10,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_include_tag 'application', defer: true %>
+    <%= javascript_include_tag 'application', defer: true, data: { turbo_track: Rails.env.production? ? 'reload' : '' } %>
 
-    <%= stylesheet_link_tag 'https://pro.fontawesome.com/releases/v5.15.4/css/all.css', integrity: 'sha384-rqn26AG5Pj86AF4SO72RK5fyefcQ/x32DNQfChxWvbXIyXFePlEktwD18fEz+kQU', crossorigin: 'anonymous' %>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'https://kit.fontawesome.com/f440a3ba4a.css', crossorigin: 'anonymous' %>
+    <%= stylesheet_link_tag 'application', data: { turbo_track: Rails.env.production? ? 'reload' : '' } %>
+    <%= stylesheet_link_tag 'emoji', media: 'all', data: { turbo_track: Rails.env.production? ? 'reload' : '' } %>
 
     <%= render partial: 'partials/analytics' if Rails.env.production? %>
+
     <%= javascript_include_tag 'hotwire-livereload', defer: true if Rails.env.development? %>
 
     <%= render 'application/favicon' %>

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $positions: static, relative, absolute, fixed, sticky, inherit, initial, unset;
 
 @each $key in $positions {
@@ -58,7 +60,7 @@ $tbrl: top, bottom, right, left;
     }
 
     .#{$prop}--#{$i}pc {
-      #{$prop}: round(percentage($i * 0.01));
+      #{$prop}: math.round(math.percentage($i * 0.01));
     }
 
     // Negative
@@ -73,7 +75,7 @@ $tbrl: top, bottom, right, left;
     }
 
     .-#{$prop}--#{$i}pc {
-      #{$prop}: round(percentage(-$i * 0.01));
+      #{$prop}: math.round(math.percentage(-$i * 0.01));
     }
 
     // Positive breakpoints
@@ -88,7 +90,7 @@ $tbrl: top, bottom, right, left;
     }
 
     @include breakpoint-all-sizes("#{$prop}--#{$i}pc") {
-      #{$prop}: round(percentage($i * 0.01));
+      #{$prop}: math.round(math.percentage($i * 0.01));
     }
 
     // Negative breakpoints
@@ -103,7 +105,7 @@ $tbrl: top, bottom, right, left;
     }
 
     @include breakpoint-all-sizes("#{$prop}--#{$i}pc") {
-      #{$prop}: round(percentage(-$i * 0.01));
+      #{$prop}: math.round(math.percentage(-$i * 0.01));
     }
   }
 }

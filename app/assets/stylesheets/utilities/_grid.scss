@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $grid-sections: (
   col: column,
   row: row,
@@ -42,11 +44,11 @@ $grid-sections: (
     }
 
     @include breakpoint-all-sizes('#{$name}-start--#{$i}') {
-      grid-#{$prop}-start: $i / $i;
+      grid-#{$prop}-start: math.div($i, $i);
     }
 
     @include breakpoint-all-sizes('#{$name}-end--#{$i}') {
-      grid-#{$prop}-end: $i / $i;
+      grid-#{$prop}-end: math.div($i, $i);
     }
   }
 

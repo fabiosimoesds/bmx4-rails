@@ -112,7 +112,7 @@ export default class extends Controller {
           file.currentTarget.querySelector('.nested-field__name').innerText = file.name
 
           if (file.currentTarget.classList.contains('cocoon-watch')) {
-            // incremenet cocoon count each time a cocoon field is inserted so we have a unique id
+            // increment cocoon count each time a cocoon field is inserted so we have a unique id
             cocoon_count++
 
             // set container id and cocoon_id field for turbo streams replace action

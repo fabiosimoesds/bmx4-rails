@@ -16,7 +16,7 @@ import { Controller } from '@hotwired/stimulus'
 
     <li class="menu-item menu-item--sub">
       <div class="primary-menu__link" data-action="click->menu#toggleSubMenu">
-        Text 2<i class="ml--2 fas fa-sm fa-chevron-down"></i>
+        Text 2<i class="ml--2 fa-solid fa-sm fa-chevron-down"></i>
       </div>
 
       <ul class="menu menu--sub">

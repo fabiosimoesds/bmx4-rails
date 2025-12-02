@@ -1,5 +1,5 @@
 <% if account_masquerade? %>
   <%= link_to 'Logout', back_masquerade_path(current_account), class: local_assigns[:classes] %>
 <% else %>
-  <%= link_to 'Logout', destroy_account_session_path, method: :delete, class: local_assigns[:classes] %>
+  <%= button_to 'Logout', destroy_account_session_path, method: :delete, class: local_assigns[:classes].to_s + ' ' + local_assigns[:button_classes].to_s %>
 <% end %>

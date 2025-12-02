@@ -220,28 +220,28 @@ export default class extends Controller {
     switch (file_type) {
       case 'application/msword':
       case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-        preview += '<i class="far fa-2x fa-file-word"></i>'
+        preview += '<i class="fa-regular fa-2x fa-file-word"></i>'
         break
       case 'application/vnd.ms-excel':
       case 'application/xls':
       case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-        preview += '<i class="far fa-2x fa-file-excel"></i>'
+        preview += '<i class="fa-regular fa-2x fa-file-excel"></i>'
         break
       case 'application/pdf':
-        preview += '<i class="far fa-2x fa-file-pdf"></i>'
+        preview += '<i class="fa-regular fa-2x fa-file-pdf"></i>'
         break
       case 'application/vnd.ms-powerpoint':
       case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
-        preview += '<i class="far fa-2x fa-file-powerpoint"></i>'
+        preview += '<i class="fa-regular fa-2x fa-file-powerpoint"></i>'
         break
       case 'text/csv':
-        preview += '<i class="far fa-2x fa-file-csv"></i>'
+        preview += '<i class="fa-regular fa-2x fa-file-csv"></i>'
         break
       case 'application/octet-stream': // any 'unknown' style documents
-        preview += '<i class="far fa-2x fa-cube"></i>'
+        preview += '<i class="fa-regular fa-2x fa-cube"></i>'
         break
       default:
-        preview += '<i class="far fa-2x fa-file"></i>'
+        preview += '<i class="fa-regular fa-2x fa-file"></i>'
         break
     }
 
@@ -260,8 +260,10 @@ export default class extends Controller {
     this.formInputTarget.value = null
     this.previewTarget.innerHTML = null
 
-    // remove the file from Uppy so the user can upload the same file again
-    this.uppy.removeFile(this.uppy.getFiles()[0].id)
+    // Uppy version 1 does require this as was causing issues when replacing files back to back
+    if (this.uppy.getFiles().length > 0) {
+      this.uppy.removeFile(this.uppy.getFiles()[0].id)
+    }
   }
 
   // show a tooltip on the submit actions when a file is uploading

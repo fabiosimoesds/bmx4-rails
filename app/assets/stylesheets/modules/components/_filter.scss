@@ -5,16 +5,31 @@
   }
 }
 
+.search {
+  display: flex;
+  width: 100%;
+
+  @include breakpoint-up($medium-screen) {
+    width: auto;
+  }
+}
+
 .search__input {
   margin: 0;
+  border-color: $bc-light;
+
+  &:hover {
+    border-color: $bc-base;
+  }
 
   &:active,
   &:focus {
     box-shadow: none;
+    border-color: $information-dark;
   }
 
   @include breakpoint-up($medium-screen) {
-    max-width: 25em;
+    width: 24em;
   }
 }
 
@@ -27,6 +42,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  gap: $spacing-4;
   justify-content: flex-start;
   width: 100%;
 
@@ -38,14 +54,29 @@
 
 .filter,
 .filter__button {
-  font-size: modular-scale(-1);
+  margin: 0;
   position: relative;
-  margin: 0 0 $spacing-4;
   width: 100%;
 
   @include breakpoint-up($medium-screen) {
-    margin: 0 $spacing-4 0 0;
+    font-size: modular-scale(-1);
     width: auto;
+  }
+}
+
+.filter {
+  font-weight: $fw-semibold;
+
+  i {
+    margin-left: $spacing-3;
+  }
+}
+
+.filter__button {
+  padding: $spacing-4 $spacing-4;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $spacing-3 $spacing-4;
   }
 }
 
@@ -58,8 +89,18 @@
   border-radius: $br-5px;
   cursor: pointer;
   display: flex;
+  font-size: modular-scale(1);
+  justify-content: space-between;
   padding: $spacing-2 $spacing-5;
   text-align: center;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $spacing-2 $spacing-5;
+  }
+
+  @include breakpoint-up($large-screen) {
+    font-size: modular-scale(0);
+  }
 
   &:hover {
     border-color: $bc-base;
@@ -68,7 +109,7 @@
 
 .filter__name--active {
   border-color: currentColor;
-  color: $primary-color;
+  color: $information-dark;
 
   &:hover {
     border-color: currentColor;
@@ -105,6 +146,14 @@
     &:last-of-type {
       border-bottom: none;
     }
+  }
+}
+
+.filter__form--datepicker {
+  padding: 0 $spacing-4 $spacing-4 $spacing-4;
+
+  label {
+    padding-left: 0;
   }
 }
 

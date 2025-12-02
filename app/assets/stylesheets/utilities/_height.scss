@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @each $prop in $norm-min-max {  
   @each $key, $var in $spaces {
     // Spacings
@@ -28,7 +30,7 @@
     }
 
     .#{$prop}h--#{$i}pc {
-      #{$prop}height: round(percentage($i * 0.01));
+      #{$prop}height: math.round(math.percentage($i * 0.01));
     }
 
     // Units breakpoints
@@ -43,7 +45,7 @@
     }
 
     @include breakpoint-all-sizes("#{$prop}h--#{$i}pc") {
-      #{$prop}height: round(percentage($i * 0.01));
+      #{$prop}height: math.round(math.percentage($i * 0.01));
     }
   }
 }

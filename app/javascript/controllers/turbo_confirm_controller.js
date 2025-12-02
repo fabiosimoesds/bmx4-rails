@@ -16,17 +16,19 @@ export default class extends Controller {
   generateDialog() {
     const alert_icon =
       this.alertStyleValue === 'danger'
-        ? `<i class="far fa-exclamation-triangle fa-2x color--danger-dark p--3 mb--5px"></i>`
+        ? `<i class="fa-regular fa-exclamation-triangle fa-2x color--danger-dark p--3 mb--5px"></i>`
         : this.alertStyleValue === 'success'
-        ? `<i class="far fa-check fa-2x color--success-dark p--3"></i>`
-        : null
+          ? `<i class="fa-regular fa-check fa-2x color--success-dark p--3"></i>`
+          : this.alertStyleValue === 'info'
+            ? `<i class="fa-regular fa-circle-exclamation fa-2x color--information-dark p--3"></i>`
+            : null
 
-    const dialogHTML = `<dialog id="turbo-confirm-dialog">
+    const dialogHTML = `<dialog id="turbo-confirm-dialog-${this.element.dataset.turboConfirm}">
                           <div class="alert-screen" aria-dialog tabindex="-1">
                               <div class="alert-bg"></div>
                               <form method="dialog" class="alert-modal">
                                 <div class="alert__main">
-                                  <i data-behaviour="close" class="alert__close far fa-times"></i>
+                                  <i data-behaviour="close" class="alert__close fa-regular fa-times"></i>
 
                                   <div class="display--flex align-items--center justify-content--center mb--5">
                                     <div class="alert__icon alert__icon--${this.alertStyleValue}">${alert_icon}</div>
@@ -43,7 +45,7 @@ export default class extends Controller {
                           </dialog>`
 
     document.body.insertAdjacentHTML('beforeend', dialogHTML)
-    this.dialogElement = document.getElementById('turbo-confirm-dialog')
+    this.dialogElement = document.getElementById(`turbo-confirm-dialog-${this.element.dataset.turboConfirm}`)
 
     this.dialogElement.querySelector('[data-behaviour="close"]').addEventListener('click', (event) => {
       this.dialogElement.close('cancel')
@@ -60,19 +62,27 @@ export default class extends Controller {
   }
 
   setupDialog() {
-    Turbo.setConfirmMethod(() => {
-      this.dialogElement.showModal()
+    // Store the original confirm handler if it exists
+    const originalConfirm = Turbo.config.forms.confirm
 
-      return new Promise((resolve) => {
-        this.dialogElement.addEventListener(
-          'close',
-          () => {
-            resolve(this.dialogElement.returnValue === 'confirm')
-          },
-          { once: true },
-        )
-      })
-    })
+    Turbo.config.forms.confirm = (element) => {
+      if (element === this.element.dataset.turboConfirm) {
+        this.dialogElement.showModal()
+
+        return new Promise((resolve) => {
+          this.dialogElement.addEventListener(
+            'close',
+            () => {
+              resolve(this.dialogElement.returnValue === 'confirm')
+            },
+            { once: true },
+          )
+        })
+      }
+
+      // Fall back to original confirm handler for other elements
+      return originalConfirm?.(element)
+    }
 
     this.dialogElement.focus()
   }
