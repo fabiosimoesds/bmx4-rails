@@ -1,0 +1,22 @@
+pre-commit:
+  parallel: true
+  commands:
+    rubocop:
+      files: git diff --name-only --staged
+      glob: "*.rb"
+      run: bundle exec rubocop {files} --autocorrect --force-exclusion -c ./.rubocop.yml && git add {files}
+    erb_lint:
+      files: git diff --name-only --staged
+      glob: "*.erb"
+      run: bundle exec erb_lint {files}
+    prettier:
+      files: git diff --name-only --staged
+      glob: "*.{js,vue}"
+      run: yarn prettier --write {files} --config ./prettier.config.js && git add {files}
+    check-typos:
+      files: git diff --name-only --staged
+      run: typos --diff {files} --config config/_typos.toml
+    fix-typos:
+      files: git diff --name-only --staged
+      run: typos --write-changes {files} --config config/_typos.toml
+      stage_fixed: true

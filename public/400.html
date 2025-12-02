@@ -1,0 +1,219 @@
+<!-- TODO change Athena to App Name -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" name="viewport">
+    <title>400 | Athena</title>
+    <link rel="stylesheet" media="screen" href="https://use.typekit.net/moo0jhw.css">
+
+    <style>
+      * {
+        --transform-translate-x: 0;
+        --transform-translate-y: 0;
+        --transform-rotate: 0;
+        --transform-skew-x: 0;
+        --transform-skew-y: 0;
+        --transform-scale-x: 1;
+        --transform-scale-y: 1;
+        box-sizing: border-box;
+      }
+
+      html {
+        display: block;
+      }
+      
+      head {
+        display: none;
+      }
+
+      body {
+        background-color: #fafafa;
+        color: #525252;
+        display: flex;
+        flex-direction: column;
+        font-family: "Outfit", "Open Sans", "Roboto", sans-serif;
+        font-feature-settings: "kern", "liga", "pnum";
+        font-size: 14px;
+        line-height: 1.5;
+        min-height: 100vh;
+        margin: 0;
+        position: relative;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        color: #171717;
+        font-family: "Outfit", "Open Sans", "Roboto", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 1em 0 0.5em;
+
+        hyphens: auto;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      h1 {
+        font-size: 1.8020324707em;
+      }
+
+      p {
+        margin: 0 0 0.25em;
+      }
+
+      a {
+        color: #33a6bd;
+        text-decoration: none;
+        transition: 300ms ease;
+        transition-property: color;
+        will-change: color;
+      }
+
+      .onboarding {
+        align-items: center;
+        background-color: #fafafa;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        justify-content: center;
+      }
+
+      .error-modal {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        margin: 1em;
+        overflow: hidden;
+      }
+
+      .error-modal__sidebar {
+        align-items: center;
+        background-color: #206f84;
+        display: flex;
+        justify-content: center;
+        padding: 1em;
+      }
+
+      .error-modal__sidebar--400s {
+        background-color: #f97316;
+      }
+
+      .error-modal__sidebar--500s {
+        background-color: #f26a6a;
+      }
+
+      .error-modal__code {
+        color: #fff;
+        font-size: 7.4061564435em;
+        font-weight: 600;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .error-modal__body {
+        padding: 1em;
+        width: 100%;
+      }
+
+      .error-modal__title {
+        align-items: center;
+        display: flex;
+        gap: 0.25em;
+        margin-bottom: 0.25em;
+        margin-top: 0;
+      }
+
+      .error-modal__text {
+        font-weight: 300;
+        line-height: 1.375;
+      }
+
+      @media only screen and (min-width: 767px) {
+        .error-modal {
+          display: flex;
+          justify-content: center;
+          margin: 2.5em;
+          max-width: 54em;
+        }
+
+        .error-modal__sidebar {
+          display: flex;
+          padding: 2.5em;
+        }
+
+        .error-modal__body {
+          padding: 2.5em;
+        }
+      }
+
+      .button {
+        -webkit-font-smoothing: antialiased;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #33a6bd;
+        border: 1px solid #33a6bd;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Outfit", "Open Sans", "Roboto", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        flex: 0 0 auto;
+        letter-spacing: -0.025em;
+        line-height: 1;
+        margin: 0;
+        overflow: hidden;
+        padding: 0.6666em 1em;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        text-transform: none;
+        transition: 300ms ease;
+        transition-property: background, border-color, color;
+        user-select: none;
+        vertical-align: middle;
+        white-space: normal;
+        will-change: background, border-color, color;
+      }
+
+      .button--wide {
+        grid-column-end: -1;
+        width: 100%;
+      }
+
+      .mt--4 {
+        margin-top: 0.6666em;
+      }
+
+      .align-items--center {
+        align-items: center;
+      }
+
+      .justify-content--center {
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body class="onboarding">
+    <div class="error-modal">
+      <div class="error-modal__sidebar error-modal__sidebar--400s">
+        <h3 class="error-modal__code">400</h3>
+      </div>
+
+      <div class="error-modal__body">
+        <h1 class="error-modal__title">
+          <span>Bad Request</span>
+        </h1>
+
+        <p class="error-modal__text">Sorry, but we couldn't process your request. Something might be wrong with what you entered. Please check and try again.</p>
+
+        <!-- TODO swap href to App's full url i.e, https://bridge.lmarks.com/ -->
+        <a class="button button--wide mt--4" href="/">Go Home</a>
+      </div>
+    </div>
+  </body>
+</html>
