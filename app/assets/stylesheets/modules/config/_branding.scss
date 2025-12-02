@@ -1,9 +1,0 @@
-@each $key, $var in $brand-color-roles {
-  .color--#{$key} {
-    color: $var;
-  }
-
-  .bg--#{$key} {
-    background-color: $var;
-  }
-}
