@@ -1,0 +1,83 @@
+a,
+input.link,
+.link,
+a.link {
+  @include transition(color);
+
+  color: $primary-color;
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $primary-color-dark;
+  }
+}
+
+// prettier-ignore
+$link-colors:
+  // 'info' $information $information-dark,
+  'danger' $danger $danger-dark,
+  // 'success' $success $success-dark,
+  // 'purple' $purple-500 $purple-700,
+  // 'warning' $warning $warning-dark,
+  'warning-dark' $warning-dark $warning-darker,
+  'grey' $font-color-base $font-color-darkest;
+  // 'light' $font-color-light $font-color-dark,
+  // 'orange' $orange-400 $orange-500,
+  // 'brand' $primary-brand-color $primary-brand-color-dark;
+
+@each $modifier, $color, $change in $link-colors {
+  .link--#{$modifier},
+  input.link--#{$modifier},
+  a.link--#{$modifier} {
+    color: $color;
+
+    // &:active,
+    // &:focus,
+    // &:hover {
+    //   color: $change;
+    // }
+  }
+}
+
+// .link--disabled,
+// input.link--disabled,
+// a.link--disabled {
+//   color: $font-color-light;
+//   cursor: not-allowed;
+//   text-decoration: line-through;
+
+//   &:active,
+//   &:focus,
+//   &:hover {
+//     color: $font-color-light;
+//   }
+// }
+
+// .link--current,
+// input.link--current,
+// a.link--current {
+//   color: currentColor;
+// }
+
+// .link--bold:hover {
+//   font-weight: $fw-semibold;
+
+//   i {
+//     font-weight: 900;
+//   }
+// }
+
+// to be used when a link occupies a whole table cell (in conjunction with .cell--link on the td tag)
+.link--cell {
+  display: block;
+  padding: $spacing-5 $spacing-6;
+}
+
+// .link--icon:hover {
+//   .fal,
+//   .far {
+//     font-weight: 900; // Font Awesome solid icon
+//   }
+// }

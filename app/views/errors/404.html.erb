@@ -1,0 +1,8 @@
+<% provide(:title, '404') %>
+
+<%= render partial: 'errors/partials/error', locals: {
+  code: 404,
+  title: 'Page Not Found',
+  signed_in_message: "Sorry but it looks like the page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.",
+  signed_out_message: "Sorry but it looks like the page you were looking for doesn't exist. You may have mistyped the address or the page may have moved, or you may need to login to access the page.",
+} %>

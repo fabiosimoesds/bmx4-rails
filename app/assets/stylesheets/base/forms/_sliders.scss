@@ -1,0 +1,73 @@
+.slider_radios {
+  .input-field {
+    border: $form-border;
+    border-radius: $br-5px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+
+    .radio {
+      border-right: $border-light;
+      display: block;
+      flex: 1 0 0;
+
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+
+    label {
+      @include transition(background-color, color);
+
+      align-items: center;
+      background-color: $background-color-lightest;
+      color: $font-color-base;
+      cursor: pointer;
+      display: flex;
+      height: 100%;
+      margin: 0;
+      padding: $spacing-3 $spacing-5 + $spacing-2;
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+
+      &:hover {
+        background-color: $background-color-light;
+      }
+    }
+  }
+
+  input[type='radio'] {
+    display: none;
+
+    &:checked + label {
+      color: $font-color-lightest;
+      background-color: $form-active-color;
+    }
+  }
+
+  &.field--errors .input-field,
+  &.field--errors .input-field .radio {
+    border-color: $danger;
+  }
+
+  &.disabled .input-field .radio {
+    border-right-color: $form-disabled-active-color;
+
+    &:last-of-type {
+      border-right: none;
+    }
+  }
+
+  &.disabled input[type='radio'],
+  input[type='radio'][disabled] {
+    + label {
+      background-color: $form-disabled-color;
+    }
+
+    &:checked + label {
+      background-color: $form-disabled-active-color;
+    }
+  }
+}

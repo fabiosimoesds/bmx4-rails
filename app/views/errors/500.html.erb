@@ -1,0 +1,8 @@
+<% provide(:title, '500') %>
+
+<%= render partial: 'errors/partials/error', locals: {
+  code: 500,
+  title: 'Something Went Wrong',
+  signed_in_message: "Sorry but it looks like something went wrong with your last request. Please try again or contact support.",
+  signed_out_message: "Sorry but it looks like something went wrong with your last request. Please try again or contact support.",
+} %>

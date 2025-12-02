@@ -1,0 +1,72 @@
+// Background Sizes
+
+$bg-sizes: auto, cover, contain;
+
+// Background Colors
+
+$background-color-lightest: $white;
+$background-color-lighter: $grey-50;
+$background-color-light: $grey-200;
+$background-color-base: $grey-500;
+$background-color-dark: $grey-600;
+$background-color-darker: $grey-800;
+$background-color-darkest: $grey-900;
+
+$primary-background-color: $primary-brand-color;
+$primary-background-color-light: $primary-brand-color-light;
+$primary-background-color-lighter: $primary-brand-color-lighter;
+$primary-background-color-dark: $primary-brand-color-dark;
+$primary-background-color-darker: $primary-brand-color-darker;
+
+$secondary-background-color: $secondary-color;
+$secondary-background-color-light: $secondary-color-light;
+$secondary-background-color-lighter: $secondary-color-lighter;
+$secondary-background-color-dark: $secondary-color-dark;
+$secondary-background-color-darker: $secondary-color-darker;
+
+$translucent-background: rgba($background-color-darkest, 0.45);
+
+$bg-color-roles: (
+  lightest: $background-color-lightest,
+  lighter: $background-color-lighter,
+  light: $background-color-light,
+  base: $background-color-base,
+  dark: $background-color-dark,
+  darker: $background-color-darker,
+  darkest: $background-color-darkest,
+  primary: $primary-background-color,
+  primary-light: $primary-background-color-light,
+  primary-lighter: $primary-background-color-lighter,
+  primary-dark: $primary-background-color-dark,
+  primary-darker: $primary-background-color-darker,
+  secondary: $secondary-background-color,
+  secondary-light: $secondary-background-color-light,
+  secondary-lighter: $secondary-background-color-lighter,
+  secondary-dark: $secondary-background-color-dark,
+  secondary-darker: $secondary-background-color-darker,
+  translucent: $translucent-background,
+  success-lightest: $success-lightest,
+  success-lighter: $success-lighter,
+  success-light: $success-light,
+  success: $success,
+  success-dark: $success-dark,
+  success-darker: $success-darker,
+  information-lightest: $information-lightest,
+  information-lighter: $information-lighter,
+  information-light: $information-light,
+  information: $information,
+  information-dark: $information-dark,
+  information-darker: $information-darker,
+  warning-lightest: $warning-lightest,
+  warning-lighter: $warning-lighter,
+  warning-light: $warning-light,
+  warning: $warning,
+  warning-dark: $warning-dark,
+  warning-darker: $warning-darker,
+  danger-lightest: $danger-lightest,
+  danger-lighter: $danger-lighter,
+  danger-light: $danger-light,
+  danger: $danger,
+  danger-dark: $danger-dark,
+  danger-darker: $danger-darker,
+);

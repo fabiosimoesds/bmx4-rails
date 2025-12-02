@@ -1,0 +1,64 @@
+<% file = local_assigns[:file] || 'file.png' %>
+<% existing = local_assigns[:existing] %>
+
+<!-- TODO: swap presign-endpoint-value once we have a route -->
+<div
+  data-controller="single-upload"
+  data-single-upload-input-name-value="<%= id %>"
+  data-single-upload-presign-endpoint-value="/attachments/upload/presign"
+  data-single-upload-permitted-file-types-value="<%= [].as_json %>"
+  data-single-upload-button-hint-value="<%= local_assigns[:button_hint] %>"
+  data-single-upload-button-icon-value="<%= local_assigns[:button_icon] %>"
+  data-single-upload-max-file-size-value="<%= local_assigns[:max_file_size] %>"
+  class="file input form__input <%= local_assigns[:classes] %> <%= 'existing-file' if existing %> <%= 'field--errors' if local_assigns[:errors] %> <%= 'disabled' if local_assigns[:disabled] %>">
+
+  <label for="<%= id %>" class="<%= 'required' if local_assigns[:required] %>"><%= local_assigns[:label] %></label>
+  <input type="hidden" id="<%= id %>" name="<%= id %>[data_field_name]" value="" class="<%= 'cached-upload' if existing %>" data-single-upload-target="formInput">
+
+  <div data-single-upload-target="previewContainer" class="h--100pc max-h--6em mb--2 <%= 'display--none' unless existing %>">
+    <div class="display--flex align-items--center h--5em">
+      <% if file.split('.').last == 'png' %>
+        <div data-single-upload-target="preview" class="existing-file__preview max-h--5em" style="background-image: url(<%= asset_path 'logos/logo_icon.png' %>);"></div>
+      <% else %>
+        <div data-single-upload-target="preview" class="existing-file__preview max-h--5em">
+          <div class="existing-file-preview__icon"><%= upload_icon(nil) %></div>
+        </div>
+      <% end %>
+
+      <div class="existing-file__details">
+        <div data-single-upload-target="fileName" class="-font--size-1"><%= file %></div>
+
+        <div>
+          <span data-action="click->single-upload#replaceFile" class="existing-file__toggle">Replace</span>
+          <% if local_assigns[:downloadable] && existing %>
+            <span class="existing-file__divider">|</span>
+            <span><%= link_to 'Download', f.object.file_download_url, class: 'existing-file__download' %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <span data-single-upload-target="successHint" class="form__hint mt--4 display--none"><%= local_assigns[:label] %> successfully uploaded</span>
+  </div>
+
+  <div data-single-upload-target="inputContainer" class="existing-file__new <%= 'display--none' if existing %>">
+    <div data-single-upload-target="uppyInput"></div>
+
+    <div data-single-upload-target="progressContainer" class="mb--2 <%= 'display--none' unless local_assigns[:uploading] %>">
+      <div data-single-upload-target="fileName" class="-font--size-1 mt--2"><%= file %></div>
+      <div class="progress mt--2"><div data-single-upload-target="progressBar" class="progress-bar progress-bar--complete" style="width: 100%;"></div></div>
+    </div>
+
+    <div data-single-upload-target="errorContainer" class="<%= 'display--none' unless local_assigns[:errors] %>">
+      <% if local_assigns[:errors] %>
+        <span class="form__hint form__hint--error"><%= errors %></span>
+      <% end %>
+
+      <div data-single-upload-target="errorInformer" class="uppy-Informer-errors"></div>
+    </div>
+
+    <% if local_assigns[:hint] %>
+      <span class="form__hint"><%= hint %></span>
+    <% end %>
+  </div>
+</div>

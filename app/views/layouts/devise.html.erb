@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= "#{yield(:title)} | " if content_for?(:title) %>
+      <%= Rails.application.config.jumpstart['application_name'] %>
+    </title>
+
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag 'application', defer: true %>
+    <%= javascript_include_tag 'sentry', id: 'sentry-js', data: { 'sentry-dsn': Rails.application.credentials[Rails.env.to_sym][:sentry_dsn] }, defer: true if ['staging', 'production'].include?(Rails.env) %>
+
+    <%= stylesheet_link_tag 'https://pro.fontawesome.com/releases/v5.15.4/css/all.css', integrity: 'sha384-rqn26AG5Pj86AF4SO72RK5fyefcQ/x32DNQfChxWvbXIyXFePlEktwD18fEz+kQU', crossorigin: 'anonymous' %>
+    <%= stylesheet_link_tag 'application' %>
+
+    <%= render partial: 'partials/analytics' if Rails.env.production? %>
+
+    <%= render 'application/favicon' %>
+  </head>
+
+  <body class="onboarding">
+    <%= render partial: 'partials/toasts' %>
+
+    <div class="display--flex align-items--center flex-grow--1"> <!-- display--flex required for safari -->
+      <%= yield %>
+    </div>
+
+    <%= render partial: 'partials/footer' %>
+  </body>
+</html>

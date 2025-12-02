@@ -1,0 +1,32 @@
+// Symbol Inputs
+
+.input-field--symbol {
+  display: block;
+  position: relative;
+
+  &::before {
+    @include transition(color);
+
+    color: $font-color-base;
+    left: calc($bw-1px);
+    padding: $spacing-1 $spacing-3;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:hover::before,
+  &:active::before,
+  &:focus::before {
+    color: $font-color-darker;
+  }
+
+  input,
+  select {
+    padding-left: calc(#{$spacing-3} + 1ch + #{$spacing-3}); // spacing for: LHS of icon, width of icon, RHS of icon
+  }
+}
+
+.disabled .input-field--symbol::after {
+  background-color: $form-disabled-color;
+}

@@ -1,0 +1,106 @@
+@use 'sass:math';
+
+// functions
+@function _assign-inputs($inputs, $pseudo: null) {
+  $list: ();
+
+  @each $input in $inputs {
+    $input: unquote($input);
+    $input: if($pseudo, $input + ':' + $pseudo, $input);
+    $list: append($list, $input, comma);
+  }
+
+  @return $list;
+}
+
+@function _fetch-bourbon-setting($setting) {
+  @return map-get(map-merge($_bourbon-defaults, $bourbon), $setting);
+}
+
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@function modular-scale($increment, $value: _fetch-bourbon-setting('modular-scale-base'), $ratio: _fetch-bourbon-setting('modular-scale-ratio')) {
+  $v1: nth($value, 1);
+  $v2: nth($value, length($value));
+  $value: $v1;
+
+  // scale $v2 to just above $v1
+  @while $v2 > $v1 {
+    $v2: math.div($v2, $ratio); // will be off-by-1
+  }
+  @while $v2 < $v1 {
+    $v2: ($v2 * $ratio); // will fix off-by-1
+  }
+
+  // check AFTER scaling $v2 to prevent double-counting corner-case
+  $double-stranded: $v2 > $v1;
+
+  @if $increment > 0 {
+    @for $i from 1 through $increment {
+      @if $double-stranded and ($v1 * $ratio) > $v2 {
+        $value: $v2;
+        $v2: ($v2 * $ratio);
+      } @else {
+        $v1: ($v1 * $ratio);
+        $value: $v1;
+      }
+    }
+  }
+
+  @if $increment < 0 {
+    // adjust $v2 to just below $v1
+    @if $double-stranded {
+      $v2: ($v2 / $ratio);
+    }
+
+    @for $i from $increment through -1 {
+      @if $double-stranded and math.div($v1, $ratio) < $v2 {
+        $value: $v2;
+        $v2: math.div($v2, $ratio);
+      } @else {
+        $v1: math.div($v1, $ratio);
+        $value: $v1;
+      }
+    }
+  }
+
+  @return $value;
+}
+
+// general
+$_bourbon-defaults: (
+  'modular-scale-base': 1em,
+  'modular-scale-ratio': 1.125,
+  // major-second
+);
+
+$bourbon: () !default;
+
+// buttons
+$_buttons-list: ('button', "[type='button']", "[type='reset']", "[type='submit']");
+
+$all-buttons: _assign-inputs($_buttons-list);
+
+// text-inputs
+$_text-inputs-list: (
+  "[type='color']",
+  "[type='date']",
+  "[type='datetime']",
+  "[type='datetime-local']",
+  "[type='email']",
+  "[type='month']",
+  "[type='number']",
+  "[type='password']",
+  "[type='search']",
+  "[type='tel']",
+  "[type='text']",
+  "[type='time']",
+  "[type='url']",
+  "[type='week']",
+  'input:not([type])',
+  'textarea'
+);
+
+$all-text-inputs: _assign-inputs($_text-inputs-list);

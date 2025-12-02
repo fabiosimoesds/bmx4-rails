@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color-lighter;
+  color: $font-color-base;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family-base;
+  font-feature-settings: 'kern', 'liga', 'pnum';
+  font-size: $font-size-base;
+  line-height: $leading-normal;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+.site-wrapper {
+  flex: 1 0 auto;
+}
+
+.page-container {
+  @extend %contain;
+}

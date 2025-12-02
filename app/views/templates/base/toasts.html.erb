@@ -1,0 +1,75 @@
+<% provide(:title, 'Templates Toasts') %>
+
+<div class="toasts">
+  <div data-controller="toast" data-toast-timeout-value="0" class="toast toast--remove toast--success">
+    <div class="toast__message">
+      <i class="toast__icon mr--4 far fa-check-circle"></i>
+      <div>Successfully created/updated the client</div>
+    </div>
+
+    <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  </div>
+
+  <div data-controller="toast" data-toast-timeout-value="0" class="toast toast--remove toast--info">
+    <div class="toast__message">
+      <i class="toast__icon mr--4 far fa-info-circle"></i>
+      <div>Partial save complete</div>
+    </div>
+
+    <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  </div>
+
+  <div data-controller="toast" data-toast-timeout-value="0" class="toast toast--remove toast--warning">
+    <div class="toast__message">
+      <i class="toast__icon mr--4 far fa-exclamation-circle"></i>
+      <div>Unable to access the page</div>
+    </div>
+
+    <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  </div>
+
+  <div data-controller="toast" data-toast-timeout-value="0" class="toast toast--remove toast--danger">
+    <div class="toast__message">
+      <i class="toast__icon mr--4 far fa-times-circle"></i>
+      <div>Something went wrong when creating the client. Please try again.</div>
+    </div>
+
+    <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  </div>
+
+  <div class="toast">
+    <div>Devise</div>
+  </div>
+
+  <div data-controller="toast" data-toast-timeout-value="0" class="toast toast--remove toast--notice">
+    <div class="toast__message">
+      <i class="toast__icon mr--4 far fa-info-circle"></i>
+      <div>You need to sign in or sign up before continuing. Please do something about this. bit long</div>
+    </div>
+
+    <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  </div>
+
+  <div data-controller="toast" data-toast-timeout-value="0" class="toast toast--remove toast--alert">
+    <div class="toast__message">
+      <i class="toast__icon mr--4 far fa-times-circle"></i>
+      <div>Invalid Email or password.</div>
+    </div>
+
+    <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  </div>
+
+  <div data-controller="toast" data-toast-timeout-value="0" class="toast toast--remove toast--alert">
+    <div class="toast__message">
+      <i class="toast__icon mr--4 far fa-times-circle"></i>
+      <div>Something went wrong creating the account. Please review the problems below:
+        <ul class="my--0 ml--2 pl--6">
+          <li>Email can't be blank</li>
+          <li>Password can't be blank</li>
+        </ul>
+      </div>
+    </div>
+
+    <i class="toast__close far fa-times" data-action="click->toast#remove"></i>
+  </div>
+</div>

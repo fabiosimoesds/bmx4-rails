@@ -1,0 +1,22 @@
+<div class="page__header">
+  <div class="page__breadcrumbs">
+    <span>
+      <% if crumbs.first[1].present? %>
+        <a href="<%= crumbs.first[1] %>"><%= crumbs.first[0] %></a>
+      <% else %>
+        <%= crumbs.first[0] %>
+      <% end %>
+    </span>
+
+    <% crumbs[1..].each do |crumb_value, crumb_path| %>
+      /
+      <span>
+        <% if crumb_path.present? %>
+          <a href="<%= crumb_path %>"><%= crumb_value %></a>
+        <% else %>
+          <%= crumb_value %>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
+</div>

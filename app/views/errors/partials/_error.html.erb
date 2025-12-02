@@ -1,0 +1,27 @@
+<div class="error-modal-wrapper">
+  <div class="error-modal">
+    <div class="error-modal__sidebar error-modal__sidebar--<%= code.floor(-2) %>s">
+      <h3 class="error-modal__code"><%= code %></h3>
+    </div>
+
+    <div class="error-modal__body">
+      <h1 class="error-modal__title">
+        <span><%= title %></span>
+      </h1>
+
+      <% if current_account.present? %>
+        <p class="error-modal__text"><%= signed_in_message %></p>
+
+        <% if request.referrer.present? %>
+          <%= link_to 'Go Back', request.referrer, class: "button button--wide mt-4" %>
+        <% else %>
+          <%= link_to 'Go Home', root_path, class: "button button--wide mt-4" %>
+        <% end %>
+      <% else %>
+        <p class="error-modal__text"><%= signed_out_message %></p>
+
+        <%= link_to 'Login', root_path, class: "button button--wide mt-4" %>
+      <% end %>
+    </div>
+  </div>
+</div>

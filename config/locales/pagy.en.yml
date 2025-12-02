@@ -1,0 +1,10 @@
+en:
+  pagy:
+    aria_label:
+      nav:
+        other: "Pagination Links"
+      prev: "Previous"
+      next: "Next"
+    prev: "<i class='fas fa-chevron-left'></i>"
+    next: "<i class='fas fa-chevron-right'></i>"
+    gap: "…"

@@ -1,0 +1,34 @@
+<div class="onboarding__modal">
+  <div class="onboarding__image"></div>
+
+  <div class="onboarding__body">
+    <%= image_tag 'logos/logo_full', class: 'w--10em' %>
+
+    <h3 class="mt--4 mb--0">Sign Up to Athena</h3>
+    <p class="-font-size--1 font--light line-height--tight">Enter your details below to create your account and get started</p>
+
+    <%= simple_form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="form__inputs">
+        <%= f.error_notification %>
+        <%= f.hidden_field :invitation_token %>
+
+        <%= f.input :name, label: 'Full Name', wrapper_html: { class: 'form__input--s2-m4-l12' }, required: true %>
+        <%= f.input :email, label: 'Email Address', wrapper_html: { class: 'form__input--s2-m4-l12' }, required: true %>
+        <%= f.input :password, wrapper_html: { class: 'form__input--s2-m4-l12' }, required: true, hint: 'Your password must be at least 8 characters' %>
+        <%= f.input :password_confirmation, wrapper_html: { class: 'form__input--s2-m4-l12'} , required: true %>
+
+        <%= render partial: 'templates/base/partials/inputs/checkbox', locals: {
+                  classes: 'form__input--s2-m4-l12',
+                  id: 'terms_of_service',
+                  required: true,
+                  label: "<span class='mr--2'>I agree to the #{link_to 'Terms of Service', '#', class: 'link link--secondary'} and #{link_to 'Privacy Policy', '#', class: 'link link--secondary'}</span>".html_safe } %>
+      </div>
+
+      <div class="form__actions">
+        <%= f.submit 'Sign Up', class: 'button--wide button--primary' %>
+      </div>
+    <% end %>
+
+    <div class="mt--8 -font-size--1">Already have an account? <%= link_to 'Sign In', new_session_path(resource_name) %></div>
+  </div>
+</div>

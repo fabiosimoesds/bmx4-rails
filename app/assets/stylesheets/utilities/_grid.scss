@@ -1,0 +1,208 @@
+$grid-sections: (
+  col: column,
+  row: row,
+);
+
+@each $name, $prop in $grid-sections {
+  @for $i from 1 through 13 {
+    // Grid Template
+    // grid-col--2, grid-row--10
+
+    .grid-#{$name}--#{$i} {
+      grid-template-#{$prop}s: repeat($i, minmax(0, 1fr));
+    }
+
+    // Units breakpoints
+    // sm:grid-col--2, md:grid-col--4, lg:grid-col--6
+
+    @include breakpoint-all-sizes('grid-#{$name}--#{$i}') {
+      grid-template-#{$prop}s: repeat($i, minmax(0, 1fr));
+    }
+
+    // Grid Template Start / End
+    // col--4, row-start--8, col-end--5
+
+    .#{$name}--#{$i} {
+      grid-#{$prop}: span $i / span $i;
+    }
+
+    .#{$name}-start--#{$i} {
+      grid-#{$prop}-start: $i;
+    }
+
+    .#{$name}-end--#{$i} {
+      grid-#{$prop}-end: $i;
+    }
+
+    // Units breakpoints
+    // sm:col--4, md:row-start--8, lg:col-end--5
+
+    @include breakpoint-all-sizes('#{$name}--#{$i}') {
+      grid-#{$prop}: span $i / span $i;
+    }
+
+    @include breakpoint-all-sizes('#{$name}-start--#{$i}') {
+      grid-#{$prop}-start: $i / $i;
+    }
+
+    @include breakpoint-all-sizes('#{$name}-end--#{$i}') {
+      grid-#{$prop}-end: $i / $i;
+    }
+  }
+
+  // grid-row--none, grid-col--none
+
+  .grid-#{$name}--none {
+    grid-template-#{$prop}s: none;
+  }
+
+  // Units breakpoints
+  // sm:grid-row--none, md:grid-col--none
+
+  @include breakpoint-all-sizes('grid-#{$name}--none') {
+    grid-template-#{$prop}s: none;
+  }
+
+  // Start / End
+  // col--auto, row--full, col-start--auto, row-end--auto
+
+  .#{$name}--auto {
+    grid-#{$prop}: auto;
+  }
+
+  .#{$name}--full {
+    grid-#{$prop}: 1 / -1;
+  }
+
+  .#{$name}-start--auto {
+    grid-#{$prop}-start: auto;
+  }
+
+  .#{$name}-end--auto {
+    grid-#{$prop}-end: auto;
+  }
+
+  // Units breakpoints
+  // sm:col--auto, md:row--full, lg:col-start--auto
+
+  @include breakpoint-all-sizes('#{$name}--auto') {
+    grid-#{$prop}: auto;
+  }
+
+  @include breakpoint-all-sizes('#{$name}--full') {
+    grid-#{$prop}: 1 / -1;
+  }
+
+  @include breakpoint-all-sizes('#{$name}-start--auto') {
+    grid-#{$prop}-start: auto;
+  }
+
+  @include breakpoint-all-sizes('#{$name}-end--auto') {
+    grid-#{$prop}-end: auto;
+  }
+}
+
+// Gap
+// gap--8, gap-x--8, gap-y--8
+
+@each $key, $var in $spaces {
+  .gap--#{$key} {
+    gap: $var;
+    grid-gap: $var;
+  }
+
+  .gap-x--#{$key} {
+    column-gap: $var;
+    grid-column-gap: $var;
+  }
+
+  .gap-y--#{$key} {
+    row-gap: $var;
+    grid-row-gap: $var;
+  }
+
+  // Units breakpoints
+  // sm:gap--8, md:gap-x--8, lg:gap-y--8
+
+  @include breakpoint-all-sizes('gap--#{$key}') {
+    gap: $var;
+    grid-gap: $var;
+  }
+
+  @include breakpoint-all-sizes('gap-x--#{$key}') {
+    column-gap: $var;
+    grid-column-gap: $var;
+  }
+
+  @include breakpoint-all-sizes('gap-y--#{$key}') {
+    row-gap: $var;
+    grid-row-gap: $var;
+  }
+}
+
+// gap--1em, gap--3px, gap-x--5em, gap-x--7px, gap-y--9em, gap-y--10px
+
+@for $i from 1 through 10 {
+  .gap--#{$i}em {
+    gap: #{$i + 'em'};
+    grid-gap: #{$i + 'em'};
+  }
+
+  .gap--#{$i}px {
+    gap: #{$i + 'px'};
+    grid-gap: #{$i + 'px'};
+  }
+
+  .gap-x--#{$i}em {
+    column-gap: #{$i + 'em'};
+    grid-column-gap: #{$i + 'em'};
+  }
+
+  .gap-x--#{$i}px {
+    column-gap: #{$i + 'px'};
+    grid-column-gap: #{$i + 'px'};
+  }
+
+  .gap-y--#{$i}em {
+    row-gap: #{$i + 'em'};
+    grid-row-gap: #{$i + 'em'};
+  }
+
+  .gap-y--#{$i}px {
+    row-gap: #{$i + 'px'};
+    grid-row-gap: #{$i + 'px'};
+  }
+
+  // Units breakpoints
+  // sm:gap--1em, ms:gap--3px, lg:gap-y--9em
+
+  @include breakpoint-all-sizes('gap--#{$i}em') {
+    gap: #{$i + 'em'};
+    grid-gap: #{$i + 'em'};
+  }
+
+  @include breakpoint-all-sizes('gap--#{$i}px') {
+    gap: #{$i + 'px'};
+    grid-gap: #{$i + 'px'};
+  }
+
+  @include breakpoint-all-sizes('gap-x--#{$i}em') {
+    column-gap: #{$i + 'em'};
+    grid-column-gap: #{$i + 'em'};
+  }
+
+  @include breakpoint-all-sizes('gap-x--#{$i}px') {
+    column-gap: #{$i + 'px'};
+    grid-column-gap: #{$i + 'px'};
+  }
+
+  @include breakpoint-all-sizes('gap-y--#{$i}em') {
+    row-gap: #{$i + 'em'};
+    grid-row-gap: #{$i + 'em'};
+  }
+
+  @include breakpoint-all-sizes('gap-y--#{$i}px') {
+    row-gap: #{$i + 'em'};
+    grid-row-gap: #{$i + 'em'};
+  }
+}

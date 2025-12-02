@@ -1,0 +1,210 @@
+// Brand Font
+
+// Font Weight
+
+// $fw-thin: 100;
+// $fw-extralight: 200;
+$fw-light: 300;
+$fw-normal: 400;
+// $fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+// $fw-extrabold: 800;
+// $fw-heavy: 900;
+
+
+// Font Files
+
+// add files to public/webfonts folder
+// $font-family-name: 'Aeonik';
+
+// @font-face {
+//   font-family: $font-family-name;
+//   src: url('webfonts/Aeonik-Air.otf') format('opentype'), url('webfonts/Aeonik-AirItalic.otf') format('opentype');
+//   font-weight: $fw-thin;
+// }
+
+// @font-face {
+//   font-family: $font-family-name;
+//   src: url('webfonts/Aeonik-Thin.otf') format('opentype'), url('webfonts/Aeonik-ThinItalic.otf') format('opentype');
+//   font-weight: $fw-extralight;
+// }
+
+// @font-face {
+//   font-family: $font-family-name;
+//   src: url('webfonts/Aeonik-Light.otf') format('opentype'), url('webfonts/Aeonik-LightItalic.otf') format('opentype');
+//   font-weight: $fw-light;
+// }
+
+// @font-face {
+//   font-family: $font-family-name;
+//   src: url('webfonts/Aeonik-Regular.otf') format('opentype'), url('webfonts/Aeonik-RegularItalic.otf') format('opentype');
+//   font-weight: $fw-normal;
+// }
+
+// @font-face {
+//   font-family: $font-family-name;
+//   src: url('webfonts/Aeonik-Medium.otf') format('opentype'), url('webfonts/Aeonik-MediumItalic.otf') format('opentype');
+//   font-weight: $fw-medium;
+// }
+
+// @font-face {
+//   font-family: $font-family-name;
+//   src: url('webfonts/Aeonik-Bold.otf') format('opentype'), url('webfonts/Aeonik-BoldItalic.otf') format('opentype');
+//   font-weight: $fw-bold;
+// }
+
+// @font-face {
+//   font-family: $font-family-name;
+//   src: url('webfonts/Aeonik-Black.otf') format('opentype'), url('webfonts/Aeonik-BlackItalic.otf') format('opentype');
+//   font-weight: $fw-heavy;
+// }
+
+// $brand-font-heading: $font-family-name, 'Aerial', sans-serif;
+// $brand-font-text: $font-family-name, 'Aerial', 'Open Sans', 'Roboto', sans-serif;
+
+
+// Imported Fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+$brand-font-heading: 'Montserrat', 'Open Sans', 'Roboto', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+$brand-font-text: 'Outfit', 'Open Sans', 'Roboto', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;600;700&display=swap');
+$brand-font-other: 'Roboto Condensed', 'Open Sans', 'Roboto', sans-serif;
+
+
+// Brand Colors
+
+// Brand Primary Palette
+
+$blue-munsell: #008bae;
+$middle-blue: #87ccd3;
+$command-blue: #0074ac;
+$soft-black: #29353a;
+
+$primary-brand-color-50: #f1f7f8;
+$primary-brand-color-100: #d5f1f8;
+$primary-brand-color-200: #a4e4ef;
+$primary-brand-color-300: #6cc8da;
+$primary-brand-color-400: #33a6bd;
+$primary-brand-color-500: $blue-munsell;
+$primary-brand-color-600: #206f84;
+$primary-brand-color-700: #1c5467;
+$primary-brand-color-800: #15394a;
+$primary-brand-color-900: #0d2233;
+
+$secondary-brand-color-50: #f2f7f6;
+$secondary-brand-color-100: #d8eff5;
+$secondary-brand-color-200: #ade2ea;
+$secondary-brand-color-300: $middle-blue;
+$secondary-brand-color-400: #3ca4af;
+$secondary-brand-color-500: #2c868f;
+$secondary-brand-color-600: #266d74;
+$secondary-brand-color-700: #21535b;
+$secondary-brand-color-800: #183942;
+$secondary-brand-color-900: #10242e;
+
+$tertiary-brand-color-50: #f3f8f8;
+$tertiary-brand-color-100: #d7f1f9;
+$tertiary-brand-color-200: #aae3f2;
+$tertiary-brand-color-300: #74c5e0;
+$tertiary-brand-color-400: #3ba3c8;
+$tertiary-brand-color-500: #2b83ae;
+$tertiary-brand-color-600: $command-blue;
+$tertiary-brand-color-700: #204f74;
+$tertiary-brand-color-800: #173553;
+$tertiary-brand-color-900: #0e2037;
+
+$primary-brand-color: $primary-brand-color-400;
+$secondary-brand-color: $secondary-brand-color-400;
+$tertiary-brand-color: $tertiary-brand-color-400;
+
+$primary-brand-color-light: $primary-brand-color-200;
+$secondary-brand-color-light: $secondary-brand-color-200;
+$tertiary-brand-color-light: $tertiary-brand-color-200;
+
+$primary-brand-color-lighter: $primary-brand-color-100;
+$secondary-brand-color-lighter: $secondary-brand-color-100;
+$tertiary-brand-color-lighter: $tertiary-brand-color-100;
+
+$primary-brand-color-dark: $primary-brand-color-600;
+$secondary-brand-color-dark: $secondary-brand-color-600;
+$tertiary-brand-color-dark: $tertiary-brand-color-600;
+
+$primary-brand-color-darker: $primary-brand-color-800;
+$secondary-brand-color-darker: $secondary-brand-color-800;
+$tertiary-brand-color-darker: $tertiary-brand-color-800;
+
+// Brand Secondary Palette
+
+$cultured: #f2f1f1;
+$gold-crayon: #f7cb7f;
+$mandarin: #ee794e;
+$fire-opal: #eb5d55;
+$prussian-blue: #11375a;
+$dark-slate-blue: #484491;
+$medium-sea-green: #4bac78;
+$bottle-green: #2a6653;
+
+$brand-color-roles: (
+  primary-brand-50: $primary-brand-color-50,
+  primary-brand-100: $primary-brand-color-100,
+  primary-brand-200: $primary-brand-color-200,
+  primary-brand-300: $primary-brand-color-300,
+  primary-brand-400: $primary-brand-color-400,
+  primary-brand-500: $primary-brand-color-500,
+  primary-brand-600: $primary-brand-color-600,
+  primary-brand-700: $primary-brand-color-700,
+  primary-brand-800: $primary-brand-color-800,
+  primary-brand-900: $primary-brand-color-900,
+  secondary-brand-50: $secondary-brand-color-50,
+  secondary-brand-100: $secondary-brand-color-100,
+  secondary-brand-200: $secondary-brand-color-200,
+  secondary-brand-300: $secondary-brand-color-300,
+  secondary-brand-400: $secondary-brand-color-400,
+  secondary-brand-500: $secondary-brand-color-500,
+  secondary-brand-600: $secondary-brand-color-600,
+  secondary-brand-700: $secondary-brand-color-700,
+  secondary-brand-800: $secondary-brand-color-800,
+  secondary-brand-900: $secondary-brand-color-900,
+  tertiary-brand-50: $tertiary-brand-color-50,
+  tertiary-brand-100: $tertiary-brand-color-100,
+  tertiary-brand-200: $tertiary-brand-color-200,
+  tertiary-brand-300: $tertiary-brand-color-300,
+  tertiary-brand-400: $tertiary-brand-color-400,
+  tertiary-brand-500: $tertiary-brand-color-500,
+  tertiary-brand-600: $tertiary-brand-color-600,
+  tertiary-brand-700: $tertiary-brand-color-700,
+  tertiary-brand-800: $tertiary-brand-color-800,
+  tertiary-brand-900: $tertiary-brand-color-900,
+  primary-brand: $primary-brand-color,
+  secondary-brand: $secondary-brand-color,
+  tertiary-brand: $tertiary-brand-color,
+  primary-brand-light: $primary-brand-color-light,
+  secondary-brand-light: $secondary-brand-color-light,
+  tertiary-brand-light: $tertiary-brand-color-light,
+  primary-brand-lighter: $primary-brand-color-lighter,
+  secondary-brand-lighter: $secondary-brand-color-lighter,
+  tertiary-brand-lighter: $tertiary-brand-color-lighter,
+  primary-brand-dark: $primary-brand-color-dark,
+  secondary-brand-dark: $secondary-brand-color-dark,
+  tertiary-brand-dark: $tertiary-brand-color-dark,
+  primary-brand-darker: $primary-brand-color-darker,
+  secondary-brand-darker: $secondary-brand-color-darker,
+  tertiary-brand-darker: $tertiary-brand-color-darker,
+  blue-munsell: $blue-munsell,
+  middle-blue: $middle-blue,
+  command-blue: $command-blue,
+  soft-black: $soft-black,
+  cultured: $cultured,
+  gold-crayon: $gold-crayon,
+  mandarin: $mandarin,
+  fire-opal: $fire-opal,
+  prussian-blue: $prussian-blue,
+  dark-slate-blue: $dark-slate-blue,
+  medium-sea-green: $medium-sea-green,
+  bottle-green: $bottle-green,
+);

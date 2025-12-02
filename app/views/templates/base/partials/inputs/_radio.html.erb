@@ -1,0 +1,21 @@
+<div class="control control--radio form__input <%= local_assigns[:wrapper_classes] %> <%= 'field--errors' if local_assigns[:errors] %> <%= 'disabled' if local_assigns[:disabled] %>" <%= tag.attributes(local_assigns[:wrapper_extra_attributes]) %>>
+  <div class="checkbox">
+    <label class="control-label radio_buttons <%= 'required' if local_assigns[:required] %> <%= local_assigns[:label_classes] %>"><%= local_assigns[:label] %></label>
+    <input type="hidden" name="<%= id %>" value="">
+
+    <% options.each do |option_value, option_label| %>
+      <span class="radio">
+        <label for="<%= id %>_<%= option_value %>">
+          <input class="radio_buttons <%= local_assigns[:input_classes] %>" type="radio" value="<%= option_value %>" name="<%= id %>" id="<%= id %>_<%= option_value %>" <%= :disabled if local_assigns[:disabled] %> <%= tag.attributes(local_assigns[:input_extra_attributes]) %>>
+          <%= option_label %>
+        </label>
+      </span>
+    <% end %>
+  </div>
+
+  <% if local_assigns[:errors] %>
+    <span class="form__hint form__hint--error"><%= errors %></span>
+  <% elsif local_assigns[:hint] %>
+    <span class="form__hint"><%= hint %></span>
+  <% end %>
+</div>

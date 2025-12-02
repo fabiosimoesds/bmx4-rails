@@ -1,0 +1,188 @@
+$indicator-size: 20px; // done in pixels to avoid rounding errors
+
+.control {
+  font-size: $font-size-base;
+  font-weight: $fw-normal;
+  line-height: $indicator-size;
+
+  label,
+  span {
+    line-height: $leading-tight;
+  }
+
+  .form__hint {
+    @extend .form__hint;
+  }
+
+  .form__hint--error {
+    @extend .form__hint--error;
+  }
+}
+
+// to align toggles with regular inputs on the same row
+.control--inline {
+  label,
+  span {
+    @include breakpoint-up($large-screen) {
+      margin: $spacing-8 0 0;
+    }
+  }
+}
+
+.control--solo {
+  label,
+  span {
+    margin: 0;
+  }
+}
+
+.control input {
+  opacity: 0;
+  position: absolute;
+  z-index: $z-index-0;
+}
+
+.control input + label {
+  align-items: center;
+  display: flex;
+  user-select: none;
+
+  &:hover::before {
+    border-color: $form-hover-color;
+  }
+}
+
+.control input + label::before,
+.control .radio label::before {
+  @include transition(border-color);
+
+  background: $background-color-lightest;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: $form-border;
+  border-radius: $br-3px;
+  content: '';
+  font-family: 'Font Awesome 5 Pro';
+  font-weight: 900; // Font Awesome solid icon
+  display: inline-block;
+  flex: 0 0 auto;
+  height: $indicator-size;
+  margin: 0 $spacing-3 0 0;
+  position: relative;
+  width: $indicator-size;
+}
+
+.control input[aria-invalid='true'] + label::before,
+.control.field--errors .radio label::before {
+  background-color: $background-color-lightest;
+  border-color: $danger;
+  content: '';
+}
+
+.control input:checked + label::before,
+.control .radio label input:checked::before {
+  content: '\f00c';
+  background-color: $form-active-color;
+  border-color: $form-active-color-dark;
+  color: $font-color-lightest;
+  line-height: $indicator-size;
+  text-align: center;
+}
+
+.control input:disabled + label::before,
+.control .radio label input:disabled::before {
+  background-color: $form-disabled-color;
+  border-color: $form-disabled-color;
+  box-shadow: none;
+  color: $font-color-lightest;
+  pointer-events: none;
+}
+
+.control input:checked[disabled] + label::before,
+.control .radio label input:checked[disabled]::before {
+  background-color: $form-disabled-active-color;
+}
+
+.control .form__hint:first-of-type {
+  margin-top: $spacing-4;
+}
+
+// Radio Controls
+
+.control--radio {
+  .radio {
+    display: block;
+    margin-bottom: $spacing-2;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .control-label {
+    margin: 0 0 $spacing-1 0;
+  }
+
+  .radio label {
+    margin: $spacing-2 0;
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
+
+  span {
+    margin: 0;
+  }
+
+  input {
+    margin: 0;
+    opacity: 1;
+    left: -$indicator-size;
+    z-index: $z-index-1;
+  }
+}
+
+.control--radio .radio label::before {
+  border: none; // prevents double stacking the borders
+}
+
+.control--radio .radio label input {
+  &::before {
+    @include transition(border-color);
+
+    border: $form-border;
+    border-radius: $br-half;
+    content: '';
+    cursor: pointer;
+    display: inline-block;
+    height: $indicator-size;
+    left: $indicator-size;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    width: $indicator-size;
+  }
+
+  &:hover::before {
+    border-color: $form-hover-color;
+  }
+
+  &:checked::before {
+    background: radial-gradient(circle, $white 25%, $form-active-color 25%);
+    border-color: $form-active-color-dark;
+    content: '';
+  }
+
+  &:disabled::before {
+    border-color: $form-disabled-color;
+    content: '';
+  }
+
+  &:disabled:checked::before {
+    background: radial-gradient(circle, $white 25%, $form-disabled-active-color 25%);
+    background-color: $form-disabled-active-color;
+  }
+}
+
+.control--radio.field--errors .radio label input::before {
+  border-color: $danger;
+}

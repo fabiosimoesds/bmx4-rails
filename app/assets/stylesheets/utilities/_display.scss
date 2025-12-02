@@ -1,0 +1,144 @@
+$displays: block, flex, inline, inline-block, inline-flex, grid, table, table-cell, list-item, none;
+
+// use when a different display state won't display--none
+.hidden {
+  display: none;
+}
+
+@each $key in $displays {
+  // Displays
+  // display--block, display--inline-flex
+
+  .display--#{$key} {
+    display: $key;
+  }
+
+  // Displays breakpoints
+  // md:display--block, sm:display--none, xl:display--table-cell
+
+  @include breakpoint-all-sizes("display--#{$key}") {
+    display: $key;
+  }
+}
+
+$floats: left, right, none;
+
+@each $key in $floats {
+  // Floats
+  // float--left, float--none
+
+  .float--#{$key} {
+    float: $key;
+  }
+
+  // Floats breakpoints
+  // xl:float--left, md:float--none, lg:float--right
+
+  @include breakpoint-all-sizes("float--#{$key}") {
+    float: $key;
+  }
+}
+
+$clears: left, right, both, none;
+
+// Clear
+
+@each $key in $clears {
+  // clear--right, clear--both
+
+  .clear--#{$key} {
+    clear: $key;
+  }
+
+  // Clear breakpoints
+  // lg:clear--right, sm:clear-left, md:clear--both
+
+  @include breakpoint-all-sizes("clear--#{$key}") {
+    clear: $key;
+  }
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+// Clear breakpoints
+// lg:clearfix, sm:clearfix, md:clearfix
+
+@include breakpoint-all-sizes("clearfix") {
+  // @extend cannot be used here
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+// Order
+
+@for $i from 0 through 12 {
+  // order--1, -order--1
+  // order--10, -order--10
+
+  .order--#{$i} {
+    order: $i;
+  }
+
+  .-order--#{$i} {
+    order: -$i;
+  }
+
+  // Order breakpoints
+  // md:order--1, lg:-order--12, xl:order--6
+
+  @include breakpoint-all-sizes("order--#{$i}") {
+    order: $i;
+  }
+
+  @include breakpoint-all-sizes("-order--#{$i}") {
+    order: -$i;
+  }
+}
+
+.order--first {
+  order: -9999;
+}
+
+.order--last {
+  order: 9999;
+}
+
+// Order first breakpoints
+// md:order--first, lg:order--first
+
+@include breakpoint-all-sizes('order--first') {
+  order: -9999;
+}
+
+// Order last breakpoints
+// xl:order--last, sm:order--last
+
+@include breakpoint-all-sizes('order--last') {
+  order: 9999;
+}
+
+$visibilities: (
+  visible: visible,
+  invisible: hidden,
+);
+
+@each $key, $var in $visibilities {
+  // Visibility
+  // invisible, visible
+
+  .#{$key} {
+    visibility: $var;
+  }
+  
+  // Visibility
+  // lg:invisible, md:visible
+
+  @include breakpoint-all-sizes($key) {
+    visibility: $var;
+  }  
+}

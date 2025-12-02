@@ -1,0 +1,90 @@
+.modal-screen {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: $z-index-4;
+}
+
+.modal-bg {
+  background-color: $translucent-background;
+  display: block;
+  height: 100%;
+  overflow: auto;
+  width: 100%;
+}
+
+.modal {
+  background-color: $background-color-lightest;
+  border-radius: $br-5px;
+  border-top: $border-primary-5px;
+  box-shadow: $shadow-2;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  max-height: calc(100vh - #{$spacing-8} - #{$spacing-8});
+  max-width: 60em;
+  min-height: 15em;
+  min-width: 17em;
+  overflow: hidden;
+  position: relative;
+  top: -50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - #{$spacing-4 * 2});
+}
+
+// to reduce the width use either
+// .max-w--30em
+// .max-w--40em
+// .max-w--50em
+
+.modal__top {
+  align-items: center;
+  background-color: $background-color-lighter;
+  border-bottom: $border-primary-light;
+  color: $font-color-dark;
+  display: flex;
+  justify-content: space-between;
+  padding: $spacing-6;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $spacing-7;
+  }
+
+  .modal__title {
+    font-size: modular-scale(3);
+    font-weight: $fw-semibold;
+    margin: 0 $spacing-4 0 0;
+  }
+}
+
+.modal__middle {
+  background-color: $background-color-lightest;
+  color: $font-color-dark;
+  min-height: 10em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: $spacing-6;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $spacing-7;
+  }
+}
+
+.modal__bottom {
+  align-items: center;
+  background-color: $background-color-lightest;
+  border-top: $border-light;
+  display: flex;
+  flex: 1 0 auto;
+  float: right;
+  justify-content: flex-end;
+  min-height: $leading-none * modular-scale(-1) + strip-unit($spacing-2) * modular-scale(-1) * 2 + $spacing-5 * 2;
+  padding: $spacing-4 $spacing-6;
+  width: 100%;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $spacing-7;
+  }
+}

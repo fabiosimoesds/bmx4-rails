@@ -1,0 +1,76 @@
+$error-modal-breakpoint: $medium-screen;
+
+.error-modal {
+  background-color: $background-color-lightest;
+  border-radius: $br-5px;
+  box-shadow: $shadow-4;
+  margin: $spacing-6;
+  overflow: hidden;
+
+  @include breakpoint-up($error-modal-breakpoint) {
+    display: flex;
+    justify-content: center;
+    margin: $spacing-10;
+    max-width: 54em;
+  }
+}
+
+.error-modal__sidebar {
+  align-items: center;
+  background-color: $primary-background-color-dark;
+  display: flex;
+  justify-content: center;
+  padding: $spacing-6;
+
+  @include breakpoint-up($error-modal-breakpoint) {
+    display: flex;
+    padding: $spacing-10;
+  }
+}
+
+.error-modal__sidebar--400s {
+  background-color: $orange-500;
+}
+
+.error-modal__sidebar--500s {
+  background-color: $red-500;
+}
+
+.error-modal__code {
+  color: $font-color-lightest;
+  font-size: modular-scale(17);
+  font-weight: $fw-semibold;
+  line-height: $leading-none;
+  margin: 0;
+}
+
+.error-modal__body {
+  padding: $spacing-6;
+  width: 100%;
+
+  @include breakpoint-up($error-modal-breakpoint) {
+    padding: $spacing-10;
+  }
+}
+
+.error-modal__title {
+  align-items: center;
+  display: flex;
+  gap: $spacing-2;
+  margin-bottom: $spacing-2;
+  margin-top: 0;
+}
+
+.error-modal__icon {
+  color: $font-color-light;
+  display: none;
+  
+  @include breakpoint-up($error-modal-breakpoint) {
+    display: inline-block;
+  }
+}
+
+.error-modal__text {
+  font-weight: $fw-light;
+  line-height: $leading-tight;
+}

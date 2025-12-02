@@ -1,0 +1,121 @@
+.search-and-filter {
+  .search__input {
+    border-radius: $br-5px 0 0 $br-5px;
+    border-right: none;
+  }
+}
+
+.search__input {
+  margin: 0;
+
+  &:active,
+  &:focus {
+    box-shadow: none;
+  }
+
+  @include breakpoint-up($medium-screen) {
+    max-width: 25em;
+  }
+}
+
+.search__button {
+  border-radius: 0 $br-5px $br-5px 0;
+  padding: $spacing-3 $spacing-6;
+}
+
+.filters {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+
+  @include breakpoint-up($medium-screen) {
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+.filter,
+.filter__button {
+  font-size: modular-scale(-1);
+  position: relative;
+  margin: 0 0 $spacing-4;
+  width: 100%;
+
+  @include breakpoint-up($medium-screen) {
+    margin: 0 $spacing-4 0 0;
+    width: auto;
+  }
+}
+
+.filter__name {
+  @include transition(background-color, border-color, color);
+
+  align-items: center;
+  background-color: $background-color-lightest;
+  border: $border-light;
+  border-radius: $br-5px;
+  cursor: pointer;
+  display: flex;
+  padding: $spacing-2 $spacing-5;
+  text-align: center;
+
+  &:hover {
+    border-color: $bc-base;
+  }
+}
+
+.filter__name--active {
+  border-color: currentColor;
+  color: $primary-color;
+
+  &:hover {
+    border-color: currentColor;
+  }
+}
+
+.filter__form {
+  background-color: $background-color-lightest;
+  border: $border-light;
+  border-radius: $br-5px;
+  bottom: calc(-#{$spacing-4} - 1px);
+  display: none;
+  margin-bottom: $spacing-4;
+  max-height: 15em;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
+  z-index: $z-index-2;
+
+  @include breakpoint-up($medium-screen) {
+    box-shadow: $shadow-3;
+    margin-bottom: 0;
+    transform: translateY(100%);
+    position: absolute;
+    width: 15em;
+  }
+
+  label {
+    border-bottom: $border-light;
+    padding: $spacing-4;
+    margin: 0;
+    width: 100%;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}
+
+.filter__form--narrow {
+  @include breakpoint-up($medium-screen) {
+    width: 10em;
+  }
+}
+
+.filter__form--wide {
+  @include breakpoint-up($medium-screen) {
+    width: 25em;
+  }
+}

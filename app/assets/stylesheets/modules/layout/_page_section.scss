@@ -1,0 +1,139 @@
+// Page Layout
+
+$section-sm-padding: $spacing-4 $spacing-6;
+$section-md-padding: $spacing-6 $spacing-7;
+
+.page-sections {
+  @extend %contain;
+
+  margin: $spacing-7 auto;
+
+  @include breakpoint-up($large-screen) {
+    margin: $spacing-8 auto;
+  }
+
+  > * + * {
+    margin: $spacing-7 auto;
+
+    @include breakpoint-up($large-screen) {
+      margin: $spacing-8 auto;
+    }
+  }
+}
+
+.page-content {
+  background-color: $background-color-lightest;
+  border-radius: $br-5px;
+}
+
+.page-section {
+  @extend %grid--s2-m4-l12;
+
+  align-items: start;
+}
+
+// Page Section Sidebar
+
+.page-section__sidebar {
+  @extend %col-end--s2, %col-end--m4, %col-end--l3;
+}
+
+.page-sidebar__section {
+  @include transition(background-color, box-shadow);
+
+  background-color: $background-color-lightest;
+  border: $border-darker;
+  border-radius: $br-5px;
+  font-size: modular-scale(-1);
+  padding: $section-sm-padding;
+  position: relative;
+
+  &:not(:first-child) {
+    margin-top: $grid-gap;
+  }
+
+  @include breakpoint-up($medium-screen) {
+    padding: $section-md-padding;
+  }
+}
+
+.page-sidebar__title {
+  font-weight: $fw-semibold;
+  margin: 0 0 $spacing-1;
+
+  @include breakpoint-up($medium-screen) {
+    grid-column: span 4;
+  }
+
+  @include breakpoint-up($large-screen) {
+    margin-bottom: $spacing-2;
+  }
+}
+
+// Page Section Main Body
+
+.page-section__body {
+  @extend %col-end--s2, %col-end--m4, %col-end--l9;
+}
+
+.page-body__section {
+  background-color: $background-color-lightest;
+  border: $border-darker;
+  border-radius: $br-5px;
+  overflow: hidden;
+
+  &:not(:first-child) {
+    margin-top: $grid-gap;
+  }
+}
+
+.page-body__header {
+  align-items: center;
+  background-color: $background-color-lightest;
+  border-bottom: $border-light;
+  padding: $section-sm-padding;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $section-md-padding;
+  }
+}
+
+// the same as form__inputs and form__outputs but reduced padding
+.page__outputs {
+  @extend %grid--s2-m4-l12, %col-end--s2, %col-end--m4, %col-end--l8;
+
+  padding: $section-sm-padding;
+  position: relative;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $section-md-padding;
+  }
+}
+
+// Page Section Actions (separate action vs action contained within the body section)
+
+.page-section__actions {
+  align-items: center;
+  background-color: $background-color-lighter;
+  border: $border-darker;
+  border-radius: $br-5px;
+  display: grid;
+  justify-content: flex-end;
+  grid-column: 1 / span 2;
+  gap: $spacing-4;
+  grid-template-columns: 1fr 1fr;
+  padding: $spacing-4;
+
+  @include breakpoint-up($medium-screen) {
+    display: flex;
+    grid-column: 1 / span 4;
+
+    > * + * {
+      flex: 0 0 auto;
+    }
+  }
+
+  @include breakpoint-up($large-screen) {
+    grid-column: 4 / span 9;
+  }
+}

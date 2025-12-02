@@ -1,0 +1,83 @@
+$timeline-icon-width: $spacing-12 - $spacing-3;
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+
+  &::after {
+    border-left: $border-light;
+    border-width: $bw-1px;
+    content: '';
+    height: 100%;
+    left: calc(#{$timeline-icon-width * 0.5} - #{$bw-1px});
+    top: 0;
+    position: absolute;
+  }
+}
+
+.timeline__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+
+  &:not(:first-child) {
+    margin-top: $grid-gap;
+  }
+}
+
+.timeline-item__icon {
+  align-items: center;
+  background-color: $background-color-base;
+  color: $font-color-lightest;
+  border: solid $bw-5px $bc-lightest;
+  border-radius: $br-half;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  height: $timeline-icon-width;
+  margin-right: $spacing-3;
+  width: $timeline-icon-width;
+  z-index: $z-index-2;
+}
+
+$all-notification-colors: map-combine(
+
+);
+
+$all-notification-icons: map-combine(
+
+);
+
+// applies bg color timeline item icon dependant on the scene event type
+@each $key, $var in $all-notification-colors {
+  .timeline-item__icon--#{$key} {
+    background-color: $var;
+  }
+}
+
+// applies FA icons to the timeline item icon dependant on the scene event type
+@each $modifier, $icon in $all-notification-icons {
+  .timeline-item__icon.timeline-item__icon--#{$modifier}::after {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 900; // Font Awesome solid icon
+    content: $icon;
+    margin-bottom: -2px;
+  }
+}
+
+// covers up the remainder of the timeline line that appears below the icon
+.timeline__item:last-child::after {
+  border-left: $border-lightest;
+  border-width: $timeline-icon-width * 0.5;
+  content: '';
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  left: #{$timeline-icon-width * 0.25};
+  top: 0;
+  z-index: 1;
+}

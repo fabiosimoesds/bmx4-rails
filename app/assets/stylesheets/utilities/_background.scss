@@ -1,0 +1,47 @@
+// Background Sizes
+// bg--auto, bg--auto-center
+// bg--cover, bg--cover-center
+
+@each $key in $bg-sizes {
+  .bg--#{$key} {
+    background-size: $key;
+  }
+
+  .bg--#{$key}-center {
+    @extend %bg-#{$key};
+  }
+}
+
+// Background Positions
+// bg--center, bg--bottom-right, bg--top-left
+
+@each $key, $var in $position-directions {
+  .bg--#{$key} {
+    background-position: $var;
+  }
+}
+
+// Background Repeat
+// bg--repeat, bg--repeat-x
+
+$bg-repeats: repeat, no-repeat, repeat-x, repeat-y;
+
+@each $key in $bg-repeats {
+  .bg--#{$key} {
+    background-repeat: $key;
+  }
+}
+
+// Background Color
+// bg--red-50, bg--white, bg--success
+
+$all-bg-colors: map-combine(
+  $color-shades,
+  $bg-color-roles,
+  );
+
+@each $key, $var in $all-bg-colors {
+  .bg--#{$key} {
+    background-color: $var;
+  }
+}

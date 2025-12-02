@@ -1,0 +1,26 @@
+default: &default
+  application_name: Athena
+  business_name: mmtm ltd
+  short_name: mmtm
+  domain: https://www.mmtm.io/
+  support_email: hello@mmtm.io
+  default_from_email: mmtm ltd <app@mmtm>
+  business_address: |-
+    Unit H The Courtyard,
+    Tewkesbury Business Park,
+    Tewkesbury,
+    GL20 8GD
+  background_job_processor: sidekiq
+  email_provider: postmark
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+
+staging:
+  <<: *default

@@ -1,0 +1,110 @@
+// Used in Rails UJS Confirm Modal
+
+.alert-screen {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: $z-index-5;
+}
+
+.alert-bg {
+  background-color: $translucent-background;
+  display: block;
+  height: 100%;
+  overflow: auto;
+  width: 100%;
+}
+
+.alert-modal {
+  background-color: $background-color-lightest;
+  border-radius: $br-5px;
+  box-shadow: $shadow-2;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  max-height: calc(100vh - #{$spacing-8} - #{$spacing-8});
+  max-width: 30em;
+  min-width: 17em;
+  overflow: hidden;
+  position: relative;
+  top: -50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - #{$spacing-4 * 2});
+}
+
+.alert__main {
+  color: $font-color-dark;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: $spacing-6 $spacing-6 0 $spacing-6;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $spacing-7 $spacing-7 0 $spacing-7;
+  }
+}
+
+.alert__close {
+  @include transition(color);
+
+  color: $font-color-light;
+  cursor: pointer;
+  float: right;
+  position: absolute;
+  right: $spacing-7;
+  top: $spacing-7 - $spacing-2;
+
+  &:hover {
+    color: $font-color-base;
+  }
+}
+
+.alert__icon {
+  background-color: $background-color-lighter;
+  border-radius: $br-half;
+}
+
+.alert__icon--danger {
+  background-color: $danger-lighter;
+}
+
+.alert__icon--success {
+  background-color: $success-lighter;
+}
+
+.alert__actions {
+  align-items: center;
+  display: flex;
+  gap: $spacing-4;
+  flex-direction: column;
+  margin-top: $spacing-4;
+  min-height: $leading-none * modular-scale(-1) + strip-unit($spacing-2) * modular-scale(-1) * 2 + $spacing-5 * 2;
+  padding: $spacing-4 $spacing-6;
+  width: 100%;
+  
+  button {
+    width: 100%;
+  }
+
+  @include breakpoint-up($medium-screen) {
+    flex-direction: row;
+    gap: $spacing-6;
+    margin-top: 0;
+    padding: $spacing-7;
+
+    button {
+    flex: 1 1 0;
+  }
+
+    button + button {
+      margin-top: 0;
+    }
+  }
+}
+
+// Hide the default dialog background
+dialog:-internal-dialog-in-top-layer {
+  background: none;
+  border: none;
+}

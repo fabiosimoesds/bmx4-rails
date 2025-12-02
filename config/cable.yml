@@ -1,0 +1,11 @@
+development:
+  adapter: redis
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  # TODO: change athena to the actual app name
+  channel_prefix: athena_rails_production

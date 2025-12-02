@@ -1,0 +1,82 @@
+@each $prop in $norm-min-max {
+  @each $key, $var in $spaces {
+    // Spacings
+    // min-w--1, max-w--2, w--7
+  
+    .#{$prop}w--#{$key} {
+      #{$prop}width: $var;
+    }
+
+    // Spacings breakpoints
+    // sm:min-w--1, md:max-w--2, lg:w--7
+
+    @include breakpoint-all-sizes("#{$prop}w--#{$key}") {
+      #{$prop}width: $var;
+    }
+  }
+
+  @for $i from 1 through 100 {
+    // Units
+    // w--10pc, min-w--4em, max-w--5px
+  
+    .#{$prop}w--#{$i}em {
+      #{$prop}width: #{$i + 'em'};
+    }
+
+    .#{$prop}w--#{$i}px {
+      #{$prop}width: #{$i + 'px'};
+    }
+
+    .#{$prop}w--#{$i}pc {
+      #{$prop}width: round(percentage($i * 0.01));
+    }
+
+    // Units breakpoints
+    // sm:w--10pc, xl:min-w--4em, md:max-w--5px
+
+    @include breakpoint-all-sizes("#{$prop}w--#{$i}em") {
+      #{$prop}width: #{$i + 'em'};
+    }
+
+    @include breakpoint-all-sizes("#{$prop}w--#{$i}px") {
+      #{$prop}width: #{$i + 'px'};
+    }
+
+    @include breakpoint-all-sizes("#{$prop}w--#{$i}pc") {
+      #{$prop}width: round(percentage($i * 0.01));
+    }
+  }
+}
+
+.w--auto {
+  width: auto;
+}
+
+.min-w--none {
+  min-width: 0;
+}
+
+.max-w--none {
+  max-width: none;
+}
+
+// Width auto breakpoints
+// xl:w--auto, md:w--auto
+
+@include breakpoint-all-sizes("w--auto") {
+  width: auto;
+}
+
+// Min width none breakbpoints
+// sm:min-w--none, lg:min-w--none
+
+@include breakpoint-all-sizes("min-w--none") {
+  min-width: 0;
+}
+
+// Max width none breakpoints
+// xl:max-w--none, sm:max-w--none
+
+@include breakpoint-all-sizes("max-w--none") {
+  max-width: none;
+}

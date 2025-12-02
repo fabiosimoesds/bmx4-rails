@@ -1,0 +1,45 @@
+<% provide(:title, 'Templates Tables') %>
+
+<div class="page-container mt--10">
+  <table>
+    <thead>
+      <tr>
+        <th class="w--7em text--center">Narrow</th>
+        <th>
+          <a href="#">Standard<i class="ml--4 fad fa-sort-up"></i></a>
+        </th>
+        <th class="hidden--md-down">
+          <a href="#">Standard<i class="ml--4 fad fa-sort-down"></i></a>
+        </th>
+        <th class="hidden--md-down">
+          <div>Nested</div>
+          <div class="-font-size--1 mt--2 font--normal color--light">Nested</div>
+        </th>
+        <th class="text--center w--7em">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% 5.times.each do %>
+        <tr>
+          <td class="w--7em text--center"><i class="fas fa-medal"></i></td>
+          <td class="color--darker">Standard</td>
+          <td class="hidden--md-down">Standard</td>
+          <td class="hidden--md-down">
+            <div>Nested</div>
+            <div class="-font-size--1 font--light color--light">Nested</div>
+          </td>
+          <td class="text--center w--7em cell--link">
+            <a href="#" class="link link--cell link--primary">View</a>
+          </td>
+        </tr>
+      <% end %>
+      <%= render partial: 'partials/no_results', locals: {
+        breakpoints: [{ colspan: 3, class: 'hidden--md-up' }, { colspan: 5, class: 'hidden--md-down' }],
+        message: 'No Standard found. Try modifying your search.'
+      } %>
+    </tbody>
+  </table>
+
+  <%= render partial: 'templates/partials/pagination' %>
+</div>

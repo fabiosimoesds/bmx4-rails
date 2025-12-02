@@ -1,0 +1,45 @@
+%hyphenate {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+%truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%transition {
+  /* property name | duration | easing function */
+  transition: all $base-duration $base-timing;
+}
+
+@each $key in $bg-sizes {
+  %bg-#{$key} {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: $key;
+  }
+}
+
+%clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+%contain {
+  margin: 0 auto;
+  max-width: $x-large-screen;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+  width: 100%;
+
+  @include breakpoint-up($large-screen) {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
+  }
+}

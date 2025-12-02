@@ -1,0 +1,115 @@
+$br-1px: 1px;
+$br-2px: 2px;
+$br-3px: 3px;
+$br-5px: 5px;
+$br-10px: 10px;
+$br-1em: 1em;
+$br-half: 50%;
+
+$bw-1px: 1px;
+$bw-2px: 2px;
+$bw-3px: 3px;
+$bw-5px: 5px;
+$bw-10px: 10px;
+$bw-1em: 1em;
+
+$bc-lightest: $white;
+$bc-lighter: $grey-100;
+$bc-light: $grey-200;
+$bc-base: $grey-300;
+$bc-dark: $grey-500;
+$bc-darker: $grey-700;
+$bc-darkest: $grey-900;
+
+$bc-primary: $primary-color;
+$bc-primary-light: $primary-color-light;
+$bc-primary-dark: $primary-color-dark;
+
+$bc-primary-background: $primary-background-color;
+
+$bc-secondary: $secondary-color;
+$bc-secondary-light: $secondary-color-light;
+$bc-secondary-dark: $secondary-color-dark;
+
+$bc-secondary-background: $secondary-background-color;
+
+$default-bw: $bw-1px;
+
+$border-lightest: $default-bw solid $bc-lightest;
+$border-lighter: $default-bw solid $bc-lighter;
+$border-light: $default-bw solid $bc-light;
+$border-base: $default-bw solid $bc-base;
+$border-dark: $default-bw solid $bc-dark;
+$border-darker: $default-bw solid $bc-darker;
+$border-darkest: $default-bw solid $bc-darkest;
+
+$border-primary: $default-bw solid $bc-primary;
+$border-primary-light: $default-bw solid $bc-primary-light;
+$border-primary-dark: $default-bw solid $bc-primary-dark;
+
+$border-primary-5px: $bw-5px solid $bc-primary;
+
+$border-primary-background: $default-bw solid $bc-primary-background;
+
+$border-secondary: $default-bw solid $bc-secondary;
+$border-secondary-light: $default-bw solid $bc-secondary-light;
+$border-secondary-dark: $default-bw solid $bc-secondary-dark;
+
+$border-secondary-background: $default-bw solid $bc-secondary-background;
+
+$border-success: $default-bw solid $success;
+$border-danger: $default-bw solid $danger;
+$border-warning: $default-bw solid $warning;
+$border-information: $default-bw solid $information;
+
+$bc-roles: (
+  lightest: $bc-lightest,
+  lighter: $bc-lighter,
+  light: $bc-light,
+  base: $bc-base,
+  dark: $bc-dark,
+  darker: $bc-darker,
+  darkest: $bc-darkest,
+  primary: $bc-primary,
+  primary-light: $bc-primary-light,
+  primary-dark: $bc-primary-dark,
+  primary-background: $bc-primary-background,
+  secondary: $bc-secondary,
+  secondary-light: $bc-secondary-light,
+  secondary-dark: $bc-secondary-dark,
+  secondary-background: $bc-secondary-background,
+  success: $success,
+  danger: $danger,
+  warning: $warning,
+  information: $information,
+  success-light: $success-light,
+  danger-light: $danger-light,
+  warning-light: $warning-light,
+  information-light: $information-light,
+  success-dark: $success-dark,
+  danger-dark: $danger-dark,
+  warning-dark: $warning-dark,
+  information-dark: $information-dark,
+);
+
+$borders: (
+  lightest: $border-lightest,
+  lighter: $border-lighter,
+  light: $border-light,
+  base: $border-base,
+  dark: $border-dark,
+  darker: $border-darker,
+  darkest: $border-darkest,
+  primary: $border-primary,
+  primary-light: $border-primary-light,
+  primary-dark: $border-primary-dark,
+  primary-background: $border-primary-background,
+  secondary: $border-secondary,
+  secondary-light: $border-secondary-light,
+  secondary-dark: $border-secondary-dark,
+  secondary-background: $border-secondary-background,
+  success: $border-success,
+  danger: $border-danger,
+  warning: $border-warning,
+  information: $border-information,
+);

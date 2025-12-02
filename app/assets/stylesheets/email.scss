@@ -1,0 +1,127 @@
+@import 'variables/variables';
+// Email fonts needs needs to be set on the last table element of the heirarchy tree, otherwise Outlook overwrites the font with 'Times New Roman'
+$email-font-family: 'Outfit', 'Open Sans', 'Roboto', sans-serif;
+
+@import 'base/mixins';
+@import 'base/functions';
+@import 'base/extends';
+@import 'base/bourbon-needed';
+@import 'emails/components/components';
+
+// Main CSS
+
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+.email-wrapper {
+  background-color: $background-color-lightest;
+  border-top: $border-primary-5px;
+  box-shadow: $shadow-3;
+  margin: 0 auto;
+  max-width: $large-screen;
+  width: calc(100% - 1em);
+}
+
+.email-content {
+  padding: 0 $spacing-7;
+}
+
+.email-body {
+  color: $font-color-darkest;
+}
+
+.email-table {
+  border: none;
+  font-family: $email-font-family;
+  width: 100%;
+}
+
+.content-cell {
+  padding: $spacing-6 0;
+}
+
+p {
+  margin: $spacing-4 0;
+}
+
+blockquote {
+  border-left: $bw-5px solid $primary-color;
+  color: $font-color-dark;
+  font-style: italic;
+  margin-left: 0;
+  padding: $spacing-1 $spacing-4;
+
+  cite {
+    display: block;
+    font-size: modular-scale(-1);
+    margin-top: $spacing-4;
+  }
+}
+
+// Header & Footer
+
+.email-header,
+.email-footer {
+  color: $font-color-lightest;
+  font-family: $email-font-family;
+  padding: $spacing-7 0;
+}
+
+.email-header__logo {
+  display: block;
+  height: 4em;
+  margin: auto;
+}
+
+.email-footer {
+  color: $font-color-base;
+  font-size: modular-scale(-2);
+  text-align: center;
+}
+
+// Typography
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: $spacing-6 0 $spacing-3;
+}
+
+h4 {
+  font-size: modular-scale(1);
+}
+
+h3 {
+  font-size: modular-scale(2);
+}
+
+h2 {
+  font-size: modular-scale(3);
+}
+
+h1 {
+  font-size: modular-scale(4);
+}
+
+// Client-specific Styles
+
+// Force Outlook to provide a "view in browser" button
+#outlook a {
+  padding: 0;
+}
+
+// Prevent Webkit platforms from changing default text sizes
+body {
+  -webkit-text-size-adjust: none;
+}
+
+// Utilities
+
+@import 'emails/utilities/utilities';
+

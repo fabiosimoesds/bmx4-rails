@@ -1,0 +1,304 @@
+// simple_form input for rich_text_area height
+trix-editor.form-control {
+  height: auto;
+}
+
+.trix-button--icon-code,
+.trix-button--icon-decrease-nesting-level,
+.trix-button--icon-increase-nesting-level,
+.trix-button--icon-quote,
+.trix-button--icon-strike,
+.trix-button--icon-attach {
+  display: none;
+}
+
+// Trix Toolbar
+
+trix-toolbar {
+  $trix-button-background-color: $form-bg;
+  @include transition(background-color, border, box-shadow, color);
+
+  .trix-button-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .trix-button-group-spacer {
+      flex-grow: 1;
+    }
+  }
+
+  .trix-button-group {
+    border: none;
+    flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+
+  .trix-button-group:not(:first-child) {
+    margin-left: $spacing-2;
+  }
+
+  .trix-button-group--block-tools {
+    align-self: flex-start;
+  }
+
+  .trix-button {
+    background-color: $trix-button-background-color;
+    border: none;
+    color: $font-color-base;
+    padding: 0;
+    height: 32px;
+    max-width: none;
+    width: 32px;
+
+    &.trix-button--dialog {
+      background-color: $form-active-color;
+      border: none;
+      color: $font-color-lightest;
+      height: auto;
+      padding: $spacing-4 $spacing-6;
+      width: auto;
+
+      + .trix-button--dialog {
+        margin-left: $spacing-2;
+      }
+
+      &:hover {
+        background-color: $primary-color-dark;
+        border: none;
+        color: $font-color-lightest;
+      }
+    }
+
+    &:hover {
+      background-color: $trix-button-background-color;
+      border: none;
+      color: $font-color-darker;
+
+      &:disabled {
+        background-color: $trix-button-background-color;
+        color: $font-color-lighter;
+      }
+    }
+
+    &:disabled {
+      background-color: $trix-button-background-color;
+      color: $font-color-lighter;
+    }
+  }
+
+  .trix-button--icon {
+    text-indent: -9999px;
+    position: relative;
+
+    &.trix-active {
+      background-color: $background-color-light;
+      color: $font-color-base;
+    }
+
+    &::after {
+      text-indent: 0px;
+      position: absolute;
+      font-family: 'Font Awesome 5 Pro';
+      font-weight: 900; // Font Awesome solid icon
+    }
+  }
+
+  // prettier-ignore
+  $trix-icons:
+    'bold' '\f032' 30%,
+    'italic' '\f033' 35%,
+    'underline' '\f034' 25%,
+    'link' '\f0c1' 25%,
+    'heading-1' '\f313' 20%,
+    'heading-2' '\f314' 25%,
+    'color' '\f53f' 25%,
+    'bullet-list' '\f0ca' 25%,
+    'number-list' '\f0cb' 25%,
+    'undo' '\f2ea' 25%,
+    'redo' '\f01e' 25%,
+    'code' '\f121' 25%,
+    'decrease-nesting-level' '\f03b' 25%,
+    'increase-nesting-level' '\f03c' 25%,
+    'quote' '\f10e' 25%,
+    'strike' '\f0cc' 25%,
+    'attach' '\f0c6' 25%;
+
+  @each $modifier, $icon, $right in $trix-icons {
+    .trix-button--icon-#{$modifier}::after {
+      content: $icon;
+      right: $right;
+    }
+  }
+
+  .trix-button:not(:first-child) {
+    border-left: none;
+    margin-left: $spacing-2;
+  }
+
+  // prettier-ignore
+  $trix-dialog-colors:
+    'red' $red-500 $red-700 $red-400,
+    'orange' $orange-500 $orange-700 $orange-400,
+    'yellow' $yellow-500 $yellow-700 $yellow-400,
+    'green' $green-500 $green-700 $green-400,
+    'blue' $blue-600 $blue-700 $blue-400,
+    'purple' $purple-500 $purple-700 $purple-400,
+    'grey' $grey-500 $grey-700 $grey-400;
+
+  .trix-dialog {
+    border-radius: 0;
+    border-top: 0;
+    max-width: 100%;
+    width: 100%;
+
+    &.trix-dialog--color {
+      width: max-content;
+
+      @each $modifier, $color, $hover, $active in $trix-dialog-colors {
+        .trix-button--dialog.trix-button--#{$modifier} {
+          background-color: $color;
+
+          &:hover {
+            background-color: $hover;
+          }
+
+          &.trix-active {
+            background-color: $active;
+          }
+        }
+      }
+
+      .trix-button--dialog.trix-active {
+        &:hover {
+          background-color: $font-color-base;
+        }
+      }
+
+      .trix-link {
+        background-color: unset;
+        border: none;
+        border-radius: unset;
+        color: $font-color-base;
+        font-weight: 400;
+        margin-left: $spacing-2;
+
+        &:active,
+        &:focus,
+        &:hover {
+          color: $form-active-color;
+        }
+      }
+    }
+
+    &.trix-dialog--link .trix-dialog__link-fields {
+      align-items: center;
+      display: flex;
+      margin-top: $spacing-2;
+
+      & .trix-input {
+        flex: 1 1;
+      }
+
+      & .trix-input--dialog {
+        box-shadow: none;
+      }
+
+      & .trix-button-group {
+        flex: 0 0 content;
+
+        & .trix-button {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.trix-toolbar .trix-button:not(:first-child),
+trix-toolbar,
+trix-toolbar .trix-button,
+trix-toolbar .trix-button-group {
+  border: none;
+  border-left: none;
+}
+
+// Trix Editor
+
+trix-editor {
+  @extend %input;
+  @extend %textarea;
+  margin-top: $spacing-2;
+
+  h1 {
+    font-size: modular-scale(2);
+  }
+
+  h2 {
+    font-size: modular-scale(1);
+  }
+
+  ol {
+    list-style-position: inside;
+    margin: $spacing-3 0;
+  }
+
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+    margin: $spacing-3 0;
+  }
+}
+
+.rich_text_area.disabled {
+  trix-toolbar .trix-button,
+  trix-toolbar .trix-button:disabled {
+    color: $form-disabled-color;
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  trix-editor {
+    background-color: $form-disabled-color;
+    border-color: $form-disabled-color;
+    color: $font-color-light;
+    -webkit-text-fill-color: rgba($font-color-light, 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.trix-output {
+  h1:first-child,
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: modular-scale(3);
+    hyphens: none;
+    margin-bottom: $spacing-1;
+  }
+
+  h2 {
+    font-size: modular-scale(1);
+    hyphens: none;
+    margin-bottom: $spacing-1;
+  }
+
+  ul,
+  ol {
+    margin-top: $spacing-2;
+  }
+}
+
+.field--errors trix-editor {
+  border: $bw-1px solid $danger;
+
+  &:active,
+  &:focus,
+  &:hover {
+    border-color: $danger;
+  }
+}

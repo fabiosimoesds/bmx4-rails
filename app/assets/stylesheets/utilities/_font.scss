@@ -1,0 +1,59 @@
+// Font Family
+// font-family--heading, font-other
+
+@each $key, $var in $font-families {
+  .font-family--#{$key} {
+    font-family: $var;
+  }
+}
+
+// Font Size
+// font-size--1, -font-size--1
+
+@for $i from 0 through 10 {
+  .font-size--#{$i} {
+    font-size: modular-scale($i);
+  }
+
+  .-font-size--#{$i} {
+    font-size: modular-scale(-$i);
+  }
+}
+
+// Font Weight
+// font--normal, font--semibold
+
+@each $key, $var in $font-weights {
+  .font--#{$key} {
+    font-weight: $var;
+  }
+}
+
+// Font Numeric Variants
+// font-nums--normal, font-nums--proportional-nums
+
+$font-numerics: normal, ordinal, slashed-zero, lining-nums, oldstyle-nums, proportional-nums, tabular-nums, diagonal-fractions, stacked-fractions;
+
+@each $key in $font-numerics {
+  .font-nums--#{$key} {
+    font-variant-numeric: $key;
+  }
+}
+
+// Line Height
+// line-height--tighter, line-height--loose
+
+@each $key, $var in $line-heights {
+  .line-height--#{$key} {
+    line-height: $var;
+  }
+}
+
+// Letter Spacing
+// letter-spacing--tight, letter-spacing--loosest
+
+@each $key, $var in $letter-spacings {
+  .letter-spacing--#{$key} {
+    letter-spacing: $var;
+  }
+}

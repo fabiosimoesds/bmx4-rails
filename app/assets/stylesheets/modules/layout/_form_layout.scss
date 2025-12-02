@@ -1,0 +1,279 @@
+// General Layout
+
+// Page Section Form Specific
+
+// Used for form sections, not form inputs
+$form-paddings-sm: $spacing-4 $spacing-5;
+$form-paddings-md: $spacing-7 $spacing-10;
+
+$connector-length-sm: $spacing-4;
+$connector-length-lg: $spacing-6;
+
+.form-sidebar {
+  @extend %col-end--s2, %col-end--m4, %col-end--l4;
+}
+
+.form-sidebar--connected .form-sidebar__section {
+  display: flex;
+  gap: $connector-length-lg;
+
+  &:not(:first-child)::before {
+    border-left: $border-base;
+    content: '';
+    display: inline-block;
+    height: $connector-length-sm;
+    position: absolute;
+    left: 50%;
+    top: -$connector-length-sm;
+    z-index: $z-index-0;
+
+    @include breakpoint-up($large-screen) {
+      height: $connector-length-lg;
+      top: calc(-#{$connector-length-lg} - #{$bw-1px});
+    }
+  }
+}
+
+.form-sidebar__section {
+  @include transition(border-color);
+
+  background-color: $form-bg;
+  border: $form-border;
+  border-radius: $br-5px;
+  font-size: modular-scale(-1);
+  padding: $form-paddings-sm;
+  position: relative;
+
+  &:not(:first-child) {
+    margin-top: $connector-length-sm;
+  }
+
+  @include breakpoint-up($large-screen) {
+    padding: $connector-length-lg;
+
+    &:not(:first-child) {
+      margin-top: $connector-length-lg;
+    }
+  }
+
+  p {
+    @include transition(color);
+    color: $font-color-light;
+  }
+}
+
+.form-sidebar__section--link {
+  &:hover {
+    border-color: $bc-darker;
+
+    p {
+      color: $font-color-base;
+    }
+  }
+}
+
+.form-sidebar__section--active {
+  border-color: $bc-secondary-light;
+
+  &:hover {
+    border-color: $bc-secondary;
+  }
+}
+
+.form-sidebar__section--disabled {
+  background-color: $background-color-lighter;
+  cursor: not-allowed;
+  pointer-events: none;
+
+  h4 {
+    color: $font-color-light;
+  }
+}
+
+.form-main {
+  @extend %col--s2, %col--m4, %col--l8;
+}
+
+.form-main__section {
+  background-color: $form-bg;
+  border: $form-border;
+  border-radius: $br-5px;
+  border-top: $bw-5px solid $bc-secondary;
+  overflow: hidden;
+}
+
+.form__header {
+  background-color: $form-bg;
+  border-bottom: $border-light;
+  padding: $form-paddings-sm;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $form-paddings-md;
+  }
+}
+
+.form__heading {
+  display: flex;
+  flex-direction: column;
+  grid-gap: $spacing-6;
+
+  @include breakpoint-up($medium-screen) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+// for elements on the LHS of the heading, not to move it to the left
+.form-heading__side--left {
+  align-items: center;
+  display: flex;
+  gap: $spacing-6;
+}
+
+.form-heading__title {
+  margin: 0;
+  font-weight: $fw-semibold;
+}
+
+.form__subheading {
+  color: $font-color-light;
+  margin-top: $spacing-3;
+}
+
+// Form Inputs
+
+.form__section-title {
+  margin: 0 0 $spacing-4;
+}
+
+.form__section-text {
+  font-size: modular-scale(-1);
+  margin-bottom: $spacing-5;
+}
+
+.form__body {
+  background-color: $form-bg;
+  padding: $form-paddings-sm;
+
+  @include breakpoint-up($medium-screen) {
+    padding: $form-paddings-md;
+  }
+}
+
+.form__inputs,
+.form__outputs {
+  @extend %grid--s2-m4-l12, %col--s2, %col--m4, %col--l8;
+}
+
+.form__input,
+.form__output {
+  @extend %col--s2, %col--m4;
+
+  &.form__input--s2-m2-l3,
+  &.form__output--s2-m2-l3 {
+    @extend %col--s2, %col--m2, %col--l3;
+  }
+
+  &.form__input--s2-m2-l6,
+  &.form__output--s2-m2-l6 {
+    @extend %col--s2, %col--m2, %col--l6;
+  }
+
+  &.form__input--s2-m4-l3,
+  &.form__output--s2-m4-l3 {
+    @extend %col--s2, %col--m4, %col--l3;
+  }
+
+  &.form__input--s2-m4-l4,
+  &.form__output--s2-m4-l4 {
+    @extend %col--s2, %col--m4, %col--l4;
+  }
+
+  &.form__input--s2-m4-l6,
+  &.form__output--s2-m4-l6 {
+    @extend %col--s2, %col--m4, %col--l6;
+  }
+
+  &.form__input--s2-m4-l8,
+  &.form__output--s2-m4-l8 {
+    @extend %col--s2, %col--m4, %col--l8;
+  }
+
+  &.form__input--s2-m4-l12,
+  &.form__output--s2-m4-l12 {
+    @extend %col--s2, %col--m4, %col--l12;
+  }
+
+  &.form__input--new-line,
+  &.form__output--new-line {
+    grid-column-start: 1;
+  }
+
+  .button,
+  [type='submit'] {
+    width: 100%;
+
+    @include breakpoint-up($large-screen) {
+      width: inherit;
+    }
+  }
+
+  .button--wide,
+  [type='submit'].button--wide {
+    grid-column: span 2;
+    width: 100%;
+  }
+}
+
+.form__outputs label {
+  color: $font-color-darker;
+  margin-bottom: $spacing-2;
+}
+
+.form__divider {
+  margin: $spacing-4 0;
+
+  @include breakpoint-up($medium-screen) {
+    margin: $spacing-7 0;
+  }
+}
+
+// Form Actions
+
+// Actions contained within the form section
+
+.form__actions {
+  align-items: stretch;
+  background-color: $form-bg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  margin-top: $spacing-4;
+
+  @include breakpoint-up($medium-screen) {
+    flex-direction: row;
+    margin-top: $grid-gap;
+  }
+}
+
+// Actions outside of the form section
+
+.form__actions--section {
+  border: $border-base;
+  border-radius: $br-5px;
+
+  @include breakpoint-up($medium-screen) {
+    display: flex;
+    grid-column: 1 / span 4;
+    padding: $form-paddings-sm;
+
+    > * + * {
+      flex: 0 0 auto;
+    }
+  }
+
+  @include breakpoint-up($large-screen) {
+    grid-column: 5 / span 8;
+  }
+}

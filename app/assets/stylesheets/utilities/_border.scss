@@ -1,0 +1,67 @@
+// Complete Borders
+// border--lightest, border--primary-background
+
+@each $key, $var in $borders {
+  .border--#{$key} {
+    border: $var;
+  }
+}
+
+// Border Radius & Width
+// br--2px, br--2em, bw--2px, bw--2
+
+@for $i from 0 through 10 {
+
+  .br--#{$i}px {
+    border-radius: #{$i + 'px'};
+  }
+
+  .br--#{$i}em {
+    border-radius: #{$i + 'em'};
+  }
+
+  .bw--#{$i}px {
+    border-width: #{$i + 'px'};
+  }
+
+  .bw--#{$i}em {
+    border-width: #{$i + 'em'};
+  }
+}
+
+.br--half {
+  border-radius: $br-half;
+}
+
+// Border Style
+// bs--solid, bs--top
+
+$border-styles: solid, dotted, dashed, double, none;
+$tbrl: top, bottom, right, left;
+
+@each $key in $border-styles {
+  .bs--#{$key} {
+    border-style: $key;
+  }
+}
+
+// Specific Border Sides
+// bs-right--solid, bs-right--dotted, bs-right--dashed, bs-right--double, bs-right--none
+// bs-top--solid, bs-top--dotted, bs-top--dashed, bs-top--double, bs-top--none
+
+@each $prop in $tbrl {
+  @each $key in $border-styles {
+    .bs-#{$prop}--#{$key} {
+      border-#{$prop}-style: $key;
+    }
+  }
+}
+
+// Border Color
+// bc--warning, bc--danger-dark
+
+@each $key, $var in $bc-roles {
+  .bc--#{$key} {
+    border-color: $var;
+  }
+}

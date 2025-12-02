@@ -1,0 +1,19 @@
+// Object Fit
+// object--contain, object--fill
+
+$object-fits: contain, cover, fill, none, scale-down;
+
+@each $key in $object-fits {
+  .object--#{$key} {
+    object-fit: $key;
+  }
+}
+
+// Object Positons
+// object--bottom-right, object--top
+
+@each $key in $position-directions {
+  .object--#{$key} {
+    object-position: $key;
+  }
+}

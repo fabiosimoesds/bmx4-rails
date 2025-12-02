@@ -1,0 +1,19 @@
+// Breakpoint
+// hidden--sm-up, hidden--md-down, hidden--lg-up, hidden--xl-down
+
+// up hides everything above the min screen width, so does NOT include the screen width in the class name
+// down hides everything below the max screen width, so DOES include the screen width in the class name
+
+@each $key, $var in $screen-sizes {
+  .hidden--#{$key}-up {
+    @include breakpoint-up($var) {
+      display: none !important;
+    }
+  }
+
+  .hidden--#{$key}-down {
+    @include breakpoint-down($var) {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<div class="form-sidebar">
+  <div class="form-sidebar__section">
+    <h4 class="page-sidebar__title">8. Datepickers</h4>
+    <p>Contains datepickers.</p>
+  </div>
+</div>
+
+<form action="#" class="form-main">
+  <div class="form-main__section">
+    <div class="form__header">
+      <h3 class="form-heading__title">8. Datepickers</h3>
+      <div class="form__subheading">Contains datepickers.</div>
+    </div>
+
+    <div class="form__body">
+      <h5 class="form__section-title">Date</h5>
+
+      <div class="form__inputs" data-controller="datepicker">
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'date', id: 'date_pickers', label: 'Date Picker', hint: 'pick a date' } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'date', id: 'date_pickers_error', label: 'Date Picker Errored', required: true, errors: "can't be blank" } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'date', id: 'date_pickers_disabled', label: 'Date Picker Disabled', disabled: true } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">DateTime</h5>
+
+      <div class="form__inputs" data-controller="datepicker">
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'datetime', id: 'datetime_pickers', label: 'Datetime Picker', hint: 'pick a date' } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'datetime', id: 'datetime_pickers_error', label: 'Datetime Picker Errored', required: true, errors: "can't be blank" } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'datetime', id: 'datetime_pickers_disabled', label: 'Datetime Picker Disabled', disabled: true } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">Date Pair</h5>
+
+      <div class="form__inputs" data-controller="datepicker">
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l6', target: 'datetimeLinked1', id: 'date_pickers_1s', label: 'Date Picker Start', hint: 'pick a date', input_extra_attributes: { data: { pair: 1, duration: 72 } } } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l6', target: 'datetimeLinked2', id: 'date_pickers_1e', label: 'Date Picker End', hint: 'pick a date', input_extra_attributes: { data: { pair: 1 } } } %>
+
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l6', target: 'datetimeLinked1', id: 'date_pickers_start_error', label: 'Date Picker Start Errored', required: true, errors: "can't be blank", input_extra_attributes: { data: { pair: 2, duration: 24 } } } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l6', target: 'datetimeLinked2', id: 'date_pickers_end_error', label: 'Date Picker End Errored', required: true, errors: "can't be blank", input_extra_attributes: { data: { pair: 2 } } } %>
+
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l6', target: 'datetimeLinked1', id: 'date_pickers_start_disabled', label: 'Date Picker Start Disabled', disabled: true, input_extra_attributes: { data: { pair: 3 } } } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l6', target: 'datetimeLinked2', id: 'date_pickers_end_disabled', label: 'Date Picker End Disabled', disabled: true, input_extra_attributes: { data: { pair: 3 } } } %>
+
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'datetimeLinked1', id: 'date_pickers_2s', label: 'Date Picker Multi Start', hint: 'pick the start date', input_extra_attributes: { data: { pair: 4, duration: 24, second_duration: 48 } } } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'datetimeLinked2', id: 'date_pickers_2e_a', label: 'Date Picker Multi Mid', hint: 'pick the mid date', input_extra_attributes: { data: { pair: 4 } } } %>
+        <%= render partial: 'templates/base/partials/inputs/datepicker', locals: { wrapper_classes:'form__input--s2-m4-l4', target: 'datetimeLinked2', id: 'date_pickers_2e_b', label: 'Date Picker Multi End', hint: 'pick the end date', input_extra_attributes: { data: { pair: 4, duration_field: 'second-duration' } } } %>
+      </div>
+    </div>
+  </div>
+</form>

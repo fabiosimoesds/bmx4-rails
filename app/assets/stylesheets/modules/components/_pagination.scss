@@ -1,0 +1,66 @@
+.pagy.nav{
+  align-items: center;
+  display: flex;
+  font-size: modular-scale(-1);
+  font-variant-numeric: tabular-nums;
+  justify-content: center;
+
+  a {
+    @include transition(color, background-color, box-shadow);
+    $size: 33px;
+
+    border-radius: $size;
+    box-shadow: none;
+    color: $font-color-base;
+    display: inline-block;
+    line-height: $leading-none;
+    margin: $spacing-2;
+    min-width: $size;
+    text-align: center;
+    padding: $spacing-4;
+
+    &:not([aria-disabled]):hover {
+      background-color: $background-color-dark;
+      box-shadow: $shadow-1;
+      color: $font-color-lightest;
+    }
+
+    &.gap {
+      color: $font-color-light;
+    }
+
+    &.current {
+      background-color: $secondary-background-color;
+      box-shadow: $shadow-1;
+      color: $font-color-lightest;
+      display: inline-block;
+    }
+  }
+
+  a:first-child,
+  a:last-child {
+    align-items: center;
+    border-radius: $br-half;
+    display: flex;
+    font-size: modular-scale(1);
+    justify-content: center;
+    width: $spacing-8;
+
+    &[href] {
+      background-color: $background-color-lightest;
+      box-shadow: $shadow-1;
+
+      &:hover {
+        background-color: $background-color-dark;
+      }
+    }
+
+    .fa-chevron-left {
+      margin-left: -2px;
+    }
+
+    .fa-chevron-right {
+      margin-right: -2px;
+    }
+  }
+}

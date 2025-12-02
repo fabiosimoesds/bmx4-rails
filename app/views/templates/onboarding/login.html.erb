@@ -1,0 +1,34 @@
+<% provide(:title, 'Login') %>
+<% provide(:layout_override, 'devise') %>
+
+<div class="onboarding__modal">
+  <div class="onboarding__image"></div>
+
+  <div class="onboarding__body">
+    <%= image_tag 'logos/logo_full', class: 'w--10em' %>
+
+    <h3 class="mt--4 mb--0">Log in to your account <span class="emoji emoji-lock-and-key"></span></h3>
+    <p class="-font-size--1 font--light line-height--tight">Enter your email address and password below to sign in</p>
+
+    <form action="#" class="form__inputs px--0 py--4">
+      <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input form__input--s2-m4-l12', id: 'email', label: 'Email Address' } %>
+
+      <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input form__input--s2-m4-l12', id: 'password', label: 'Password', type: 'password' } %>
+
+      <%= render partial: 'templates/base/partials/inputs/checkbox', locals: { wrapper_classes:'form__input form__input--s2-m4-l6', id: 'remember_me', label: 'Remember Me' } %>
+
+      <div class="form__input form__input--s2-m4-l6 onboarding__forgot-password">
+        <a href="#" class="-font-size--1">Forgot your password?</a>
+      </div>
+
+      <%= render partial: 'templates/base/partials/inputs/button', locals: { wrapper_classes:'form__input form__input--s2-m4-l12 button--primary p--5', id: 'access', label: 'Log In' } %>
+    </form>
+
+    <div class="position--relative">
+      <div class="my--6 w--100pc h--1px bg--base"></div>
+      <div class="position--absolute top--50pc left--50pc transform -translate-x--50pc -translate-y--50pc px--6 font--bold bg--lightest">Or</div>
+    </div>
+
+    <a href="#" class="mt--4 button button--stroke button--grey button--wide p--5">Email me a login link</a>
+  </div>
+</div>
