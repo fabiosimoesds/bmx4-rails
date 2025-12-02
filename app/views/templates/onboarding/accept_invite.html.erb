@@ -1,0 +1,37 @@
+<% provide(:title, 'Accept Invitation') %>
+<% provide(:layout_override, 'devise') %>
+
+<div class="onboarding__modal">
+  <div class="onboarding__image"></div>
+
+  <div class="onboarding__body">
+    <%= image_tag 'logos/logo_full', class: 'w--10em' %>
+
+    <h3 class="mt--4 mb--0">Sign Up to Athena</h3>
+    <p class="-font-size--1 font--light line-height--tight">Enter your details below to create your account and get started</p>
+
+    <form action="#">
+      <div class="form__inputs">
+        <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'name', label: 'Full Name', required: true } %>
+
+        <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'email', label: 'Email Address', required: true } %>
+
+        <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'password', label: 'Password', type: 'password', required: true, hint: 'Your password must be at least 8 characters' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/string', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'password_confirmation', label: 'Password Confirmation', type: 'password', required: true } %>
+
+        <%= render partial: 'templates/base/partials/inputs/checkbox', locals: {
+                  wrapper_classes:'form__input--s2-m4-l12',
+                  id: 'terms_of_service',
+                  required: true,
+                  label: "<span class='mr--2'>I agree to the #{link_to 'Terms of Service', '#', class: 'link link--secondary'} and #{link_to 'Privacy Policy', '#', class: 'link link--secondary'}</span>".html_safe } %>
+      </div>
+
+      <div class="form__actions">
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { classes:'button--wide button--primary', id: 'signup', label: 'Sign Up' } %>
+      </div>
+    </form>
+
+    <div class="mt--8 -font-size--1">Already have an account? <a href="#">Sign in</a></div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div data-controller="toast" data-toast-timeout-value="<%= timeout %>" class="toast toast--remove toast--<%= key %>">
+  <div class="toast__message">
+    <%= value %>
+  </div>
+
+  <i class="toast__close fa-regular fa-times" data-action="click->toast#remove"></i>
+</div>

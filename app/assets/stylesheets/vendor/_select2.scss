@@ -1,0 +1,227 @@
+@use "sass:math";
+
+$br-select2: $bw-5px;
+
+// colours used to distinguish select2 options
+$select2-results-highlighted-bg: $green-50;
+$select2-results-highlighted-col: $green-500;
+$select2-results-selected-bg: $green-200;
+$select2-results-selected-col: $green-700;
+
+.input-field--select2 {
+  &::after {
+    content: none;
+  }
+}
+
+// custom style that hides disabled options when we want to dynamically adjust the list
+.select2--dynamic {
+  .select2-results__option--disabled {
+    display: none;
+  }
+}
+
+// display select2-container as block so the dropdown is positioned correctly
+.select2-container {
+  display: block;
+  z-index: $z-index-4;
+}
+
+// hide the original input (select2 input is displayed instead)
+select.select2-hidden-accessible {
+  display: none;
+}
+
+// dropdown styles
+.select2-dropdown {
+  display: block;
+}
+
+.select2-results__options {
+  background-color: $background-color-lightest;
+  border: $border-light;
+  border-radius: $br-select2;
+  box-shadow: $shadow-3;
+  list-style: none;
+  max-height: 20em;
+  overflow-y: scroll;
+  padding: $spacing-3 0;
+  margin: $spacing-2 0;
+}
+
+.select2-results__option {
+  @include transition(background-color);
+
+  cursor: pointer;
+  padding: $spacing-3 $spacing-4;
+}
+
+// [aria-selected='true'] is added with the 'highlighted' modifier by the js when you hover over an option and on the last selected option
+.select2-results__option--highlighted,
+.select2-results__option[aria-selected='true'] {
+  background-color: $select2-results-highlighted-bg;
+  color: $select2-results-highlighted-col;
+}
+
+.select2-results__option--selected,
+.select2-results__option--selected[aria-selected='true'] {
+  background-color: $select2-results-selected-bg;
+  color: $select2-results-selected-col;
+}
+
+.select2-results__option--disabled {
+  color: $font-color-light;
+}
+
+.select2-results__message {
+  cursor: default;
+}
+
+.select2-search__field {
+  @extend %input;
+
+  margin-top: $spacing-2;
+}
+
+// select2 multiple styles
+.select2-container--flat .select2-selection--multiple {
+  // selected option style
+  .select2-selection__choice {
+    align-items: center;
+    background-color: $success-dark;
+    border-radius: $br-select2;
+    color: $font-color-lightest;
+    display: flex;
+    padding-right: $spacing-3;
+  }
+
+  // input styles
+  .select2-search--inline {
+    @extend .input-field--select;
+
+    textarea {
+      height: calc(#{$spacing-3 * 2} + #{$bw-1px * 2} + #{math.ceil($leading-tighter * $font-size-base)});
+      margin: 0;
+      min-height: 0;
+      min-width: 100%;
+      padding: $spacing-3;
+      resize: none;
+      -webkit-appearance: textfield;
+    }
+
+    &::after {
+      right: $spacing-2;
+    }
+  }
+
+  // selected option styles
+  .select2-selection__rendered {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    margin: 0 0 $spacing-3 0;
+    padding-left: 0;
+
+    &:empty {
+      margin: 0;
+    }
+  }
+
+  .select2-selection__choice__remove {
+    align-self: stretch;
+    background-color: $success-dark;
+    border-color: $success-dark;
+    border-radius: $br-select2 0 0 $br-select2;
+    color: transparent;
+    font-size: modular-scale(0);
+    margin: 0 $spacing-2 0 0;
+    padding: $spacing-3 $spacing-4;
+    position: relative;
+    width: $br-select2 * 2;
+
+    &:hover {
+      background-color: $green-800;
+      border-color: $green-800;
+    }
+
+    span::after {
+      color: $font-color-lightest;
+      content: '\f00d';
+      font-family: 'Font Awesome 6 Pro';
+      font-size: modular-scale(-1);
+      font-weight: 900; // Font Awesome solid icon
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -45%);
+    }
+  }
+
+  // align selected options text
+  .select2-selection__choice__display {
+    vertical-align: middle;
+  }
+}
+
+// select2 single styles
+.select2-container--flat .select2-selection--single {
+  display: block;
+  outline: none;
+  position: relative;
+
+  // input styles
+  .select2-selection__rendered {
+    @extend %input;
+
+    display: block;
+    height: calc(#{$spacing-3 * 2} + #{$bw-1px * 2} + #{math.ceil($leading-tighter * $font-size-base)});
+  }
+
+  .select2-selection__placeholder {
+    color: $font-color-light;
+  }
+
+  // selected option style
+  .select2-selection {
+    background-color: $success-dark;
+    border-radius: $br-select2;
+    color: $font-color-lightest;
+    display: inline-block;
+    margin-bottom: $spacing-2;
+    padding-right: $spacing-3;
+  }
+
+  .select2-selection__clear {
+    background: none;
+    border: none;
+    color: $font-color-light;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.field--errors {
+  .select2-selection--single .select2-selection__rendered,
+  .select2-selection--multiple .select2-search__field {
+    border-color: $danger;
+  }
+}
+
+.disabled .select2-selection--single {
+  .select2-selection__rendered {
+    background-color: $form-disabled-color;
+    border-color: $form-disabled-color;
+    pointer-events: none;
+  }
+
+  .select2-selection__clear {
+    pointer-events: none;
+  }
+}
+
+.disabled .select2-selection--multiple .select2-search__field {
+  overflow: hidden;
+}

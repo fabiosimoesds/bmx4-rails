@@ -1,0 +1,121 @@
+$toggle-width: 52px;
+$toggle-height: 28px;
+
+.control--toggle:not(.control--inline) label {
+  margin: calc(($toggle-height - $font-size-base) * 0.5) 0;
+}
+
+// Base Toggle
+
+.control--toggle [type='checkbox'] + label {
+  display: block;
+  position: relative;
+  padding: 0 0 0 calc($toggle-width + $spacing-4);
+
+  &::before,
+  &::after {
+    @include transition(background-color, border, border-color, color, transform, left, top);
+  
+    background-color: $background-color-lightest;
+    border: $form-border;
+    content: '';
+    position: absolute;
+    height: $toggle-height;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    border-radius: $toggle-height;
+    width: $toggle-width;
+  }
+
+  &::after {
+    border-radius: $br-half;
+    width: $toggle-height;
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      border-color: $form-hover-color;
+    }
+  }
+}
+
+.control--toggle [type='checkbox'] + label:empty {
+  display: unset;
+  padding: 0 0 0 $toggle-width;
+}
+
+// Checked Toggle
+
+.control--toggle [type='checkbox']:checked + label {
+  &::before {
+    background: $form-active-color;
+    border-color: $form-active-color-dark;
+    color: $form-active-color;
+    content: '';
+  }
+
+  &::after {
+    border-color: $form-active-color-dark;
+    color: $form-active-color;
+    left: $toggle-width - $toggle-height;
+  }
+}
+
+// Errored Toggle
+
+.control--toggle [type='checkbox'][aria-invalid='true'] {
+  & + label::before,
+  & + label::after,
+  &:checked + label::after {
+    border-color: $danger;
+  }
+}
+
+// Disabled Toggle
+
+.control--toggle [type='checkbox'][disabled] + label {
+  &::before {
+    background: $form-disabled-color;
+    border-color: $form-disabled-color;
+  }
+
+  &::after {
+    border-color: $form-disabled-color;
+  }
+}
+
+.control--toggle [type='checkbox'][disabled]:hover + label::before {
+  box-shadow: none;
+}
+
+// Checked & Disabled Toggle
+
+.control--toggle [type='checkbox']:checked[disabled] + label::before {
+  background: $form-disabled-active-color;
+  border-color: $form-disabled-color;
+}
+
+.control--reverse {
+  .control--toggle [type='checkbox'] + label {
+    padding: $spacing-4 calc($toggle-width + $spacing-6) $spacing-4 0;
+
+    &::before {
+      left: auto;
+      right: 0;
+    }
+  
+    &::after {
+      left: auto;
+      right: $toggle-width - $toggle-height;
+    }
+  }
+
+  .control--toggle [type='checkbox']:checked + label::after {
+    right: 0;
+  }
+}

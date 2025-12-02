@@ -1,0 +1,213 @@
+@use "sass:math";
+
+fieldset {
+  border: $border-light;
+  border-radius: $br-5px;
+  margin: 0;
+  padding: $spacing-4;
+}
+
+input,
+label,
+select,
+textarea {
+  color: $font-color-base;
+  font-family: $font-family-base;
+}
+
+::placeholder {
+  color: $font-color-light;
+}
+
+label {
+  @include transition(background, color);
+
+  display: inline-block;
+  font-size: modular-scale(0);
+  font-weight: $fw-semibold;
+  margin-bottom: $spacing-1;
+
+  @include breakpoint-up($large-screen) {
+    font-size: modular-scale(-1);
+  }
+
+  &.required,
+  &[required='required'] {
+    &::after {
+      color: $danger;
+      content: ' *';
+      display: contents;
+    }
+
+    // used on radio buttons, checkboxes and toggles to use spans inside of the labels to position the astriks (*) correctly
+    &.required--inline {
+      &::after {
+        content: none;
+      }
+
+      & span::after {
+        color: $danger;
+        content: ' *';
+        display: contents;
+      }
+    }
+  }
+
+  &[for] {
+    cursor: pointer;
+  }
+
+  abbr {
+    display: none;
+  }
+}
+
+#{$all-text-inputs},
+select,
+select[multiple='multiple'],
+%input {
+  @include transition(background, border, box-shadow, color);
+
+  background-color: $background-color-lightest;
+  border: $form-border;
+  border-radius: $br-5px;
+  box-sizing: border-box;
+  font-size: $font-size-base * strip-unit(modular-scale(1));
+  line-height: math.ceil($leading-tighter * $font-size-base);
+  padding: $spacing-3 $spacing-4;
+  width: 100%;
+
+  @include breakpoint-up($large-screen) {
+    font-size: $font-size-base;
+  }
+
+  &:hover {
+    border-color: $form-hover-color;
+    outline: none;
+  }
+
+  &:active,
+  &:focus {
+    border-color: $form-focus-color;
+    box-shadow: $shadow-outline;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: $form-disabled-color;
+    border-color: $form-disabled-color;
+    box-shadow: none;
+    color: $font-color-light;
+    -webkit-text-fill-color: rgba($grey-700, 0.5);
+    cursor: not-allowed;
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+input[type='search'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea,
+%textarea {
+  display: block;
+  min-height: $leading-normal * 5em;
+  resize: vertical;
+}
+
+.no-spinners {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  display: inline;
+  margin-right: $spacing-2;
+
+  + label {
+    display: inline-block;
+  }
+}
+
+input[type='file'] {
+  width: 100%;
+}
+
+// Button Inputs
+
+.input-field--button,
+.input-field--symbol.input-field--button {
+  display: flex;
+
+  #{$all-text-inputs},
+  select,
+  select[multiple='multiple'] {
+    border-radius: $br-5px 0 0 $br-5px;
+  }
+}
+
+.input-button {
+  border-radius: 0 $br-5px $br-5px 0;
+}
+
+// Hints & Errors
+
+.form__hint {
+  color: $font-color-light;
+  display: block;
+  font-size: modular-scale(-2);
+  font-style: italic;
+  line-height: $leading-tighter;
+  margin-top: $spacing-3;
+}
+
+.form__hint--error {
+  color: $danger;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+input[aria-invalid='true'],
+textarea[aria-invalid='true'],
+select[aria-invalid='true'] {
+  border-color: $danger;
+
+  &.file {
+    border: none;
+  }
+
+  &:hover {
+    border-color: $danger;
+  }
+}
+
+.field--errors {
+  .input-field--select::after {
+    color: $danger;
+  }
+
+  label {
+    color: $danger;
+  }
+}
+
+// Group Errors
+
+.form-errors {
+  background-color: $danger-light;
+  border-top: $bw-5px solid $danger;
+  color: $danger-dark;
+  padding: $spacing-3;
+  margin: $spacing-4 0;
+}

@@ -1,0 +1,68 @@
+// Typography
+
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+$font-family-base: $brand-font-text;
+
+$font-families: (
+  heading: $brand-font-heading,
+  text: $brand-font-text,
+  other: $brand-font-other,
+);
+
+// Font Sizes
+
+$font-size-base: 14px;
+
+// Font Weight
+
+// defined in brands.scss variable file
+
+$font-weights: (
+  // thin: 100,
+  // extralight: 200,
+  light: $fw-light,
+  normal: $fw-normal,
+  // medium: 500,
+  semibold: $fw-semibold,
+  bold: $fw-bold,
+  // extrabold: 800,
+  // heavy: 900,
+);
+
+// Line Height
+
+$leading-none: 1;
+$leading-tightest: 1.15;
+$leading-tighter: 1.25;
+$leading-tight: 1.375;
+$leading-normal: 1.5;
+$leading-loose: 1.625;
+$leading-looser: 2;
+
+// Letter Spacing
+
+$tracking-tighter: -0.05em;
+$tracking-tight: -0.025em;
+$tracking-normal: 0;
+$tracking-loose: 0.025em;
+$tracking-looser: 0.05em;
+$tracking-loosest: 0.1em;
+
+$line-heights: (
+  none: $leading-none,
+  tightest: $leading-tightest,
+  tighter: $leading-tighter,
+  tight: $leading-tight,
+  normal: $leading-normal,
+  loose: $leading-loose,
+  looser: $leading-looser,
+);
+
+$letter-spacings: (
+  tighter: $tracking-tighter,
+  tight: $tracking-tight,
+  normal: $tracking-normal,
+  loose: $tracking-loose,
+  looser: $tracking-looser,
+  loosest: $tracking-loosest,
+);

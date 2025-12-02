@@ -1,0 +1,13 @@
+<div class="boolean form__input <%= local_assigns[:wrapper_classes] %> <%= 'field--errors' if local_assigns[:errors] %>" <%= tag.attributes(local_assigns[:wrapper_extra_attributes]) %>>
+  <div class="control control--toggle <%= 'control--inline' if local_assigns[:inline] %>">
+    <input name="<%= id %>" type="hidden" value="0">
+    <input class="boolean <%= local_assigns[:input_classes] %>" type="checkbox" value="1" name="<%= id %>" id="<%= id %>" aria-invalid="<%= local_assigns[:errors] %>" <%= :checked if local_assigns[:checked] %> <%= :disabled if local_assigns[:disabled] %> <%= tag.attributes(local_assigns[:input_extra_attributes]) %>>
+    <label class="boolean <%= local_assigns[:label_classes] %> <%= 'required' if local_assigns[:required] %>" for="<%= id %>"><%= local_assigns[:label] %></label>
+  </div>
+
+  <% if local_assigns[:errors] %>
+    <span class="form__hint form__hint--error"><%= errors %></span>
+  <% elsif local_assigns[:hint] %>
+    <span class="form__hint"><%= hint %></span>
+  <% end %>
+</div>

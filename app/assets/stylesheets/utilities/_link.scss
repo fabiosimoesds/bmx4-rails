@@ -1,0 +1,60 @@
+a,
+.link,
+input.link {
+  @include transition(color);
+
+  color: $primary-color;
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $primary-color-dark;
+  }
+}
+
+// prettier-ignore
+$basic-link-colors:
+  'success' $success $success-dark,
+  'warning' $warning $warning-dark,
+  'info' $information $information-dark,
+  'danger' $danger $danger-dark,
+  'primary' $primary-color $primary-color-dark,
+  'brand' $primary-brand-color $primary-brand-color-dark,
+  'base' $font-color-base $font-color-darker,
+  'light' $font-color-light $font-color-dark,
+  'dark' $font-color-darkest $font-color-dark;
+
+// link--danger, input.link--danger
+// link--success, input.link--success
+
+@each $modifier, $color, $change in $basic-link-colors {
+  .link--#{$modifier},
+  input.link--#{$modifier} {
+    color: $color;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $change;
+    }
+  }
+}
+
+.link--current,
+input.link--current {
+  color: currentColor;
+}
+
+.link--bold:hover {
+  font-weight: $fw-semibold;
+
+  i {
+    font-weight: 900; // Font Awesome solid icon
+  }
+}
+
+.link--cell {
+  display: block;
+  padding: $spacing-4 $spacing-6;
+}

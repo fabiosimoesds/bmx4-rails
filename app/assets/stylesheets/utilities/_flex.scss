@@ -1,0 +1,104 @@
+@use "sass:math";
+
+$flex-directions: row, row-reverse, column, column-reverse;
+
+@each $key in $flex-directions {
+  // Flex Direction
+  // flex--row, flex--column-reverse
+  
+  .flex--#{$key} {
+    flex-direction: $key;
+  }
+
+  // Flex Direction breakpoints
+  // sm:flex--row, md:flex--column-reverse, lg:flex--column
+
+  @include breakpoint-all-sizes("flex--#{$key}") {
+    flex-direction: $key;
+  }
+}
+
+$flex-wraps: wrap, wrap-reverse, nowrap;
+
+@each $key in $flex-wraps {
+  // Flex Wrap
+  // flex--wrap, flex-wrap-reverse
+  
+  .flex--#{$key} {
+    flex-wrap: $key;
+  }
+
+  // Flex Wrap breakpoints
+  // lg:flex--wrap, sm:flex-wrap-reverse, md:flex-nowrap
+
+  @include breakpoint-all-sizes("flex--#{$key}") {
+    flex-wrap: $key;
+  }
+}
+
+@for $i from 0 through 2 {
+  // Flex Size
+  // flex-basis--2, flex-grow--1, flex-shrink--0
+
+  .flex-basis--#{$i} {
+    flex-basis: $i;
+  }
+  
+  .flex-grow--#{$i} {
+    flex-grow: $i;
+  }
+
+  .flex-shrink--#{$i} {
+    flex-shrink: $i;
+  }
+
+  // Flex Size breakpoints
+  // xl:flex-grow--1, sm:flex-shrink--2
+
+  @include breakpoint-all-sizes("flex-basis--#{$i}") {
+    flex-basis: $i;
+  }
+
+  @include breakpoint-all-sizes("flex-grow--#{$i}") {
+    flex-grow: $i;
+  }
+
+  @include breakpoint-all-sizes("flex-shrink--#{$i}") {
+    flex-shrink: $i;
+  }
+}
+
+@for $i from 1 through 100 {
+  // Flex Basis
+  // flex-basis--2pc, flex-basis--20em
+  
+  .flex-basis--#{$i}pc {
+    flex-basis: math.round(math.percentage($i * 0.01));
+  }
+
+  .flex-basis--#{$i}em {
+    flex-basis: #{$i + 'em'};
+  }
+
+  // Flex Basis breakpoints
+  // lg:flex-basis--100pc, md:flex-basis--1em
+
+  @include breakpoint-all-sizes("flex-basis--#{$i}pc") {
+    flex-basis: math.round(math.percentage($i * 0.01));
+  }
+
+  @include breakpoint-all-sizes("flex-basis--#{$i}em") {
+    flex-basis: #{$i + 'em'};
+  }
+}
+
+.flex-basis--auto {
+  flex-basis: auto;
+}
+
+// Flex Basis Auto breakpoints
+// lg:flex-basis--auto, md:flex-basis--auto
+
+@include breakpoint-all-sizes("flex-basis--auto") {
+  flex-basis: auto;
+}

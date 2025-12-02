@@ -1,0 +1,13 @@
+.banner {
+  background-color: $bc-primary-light;
+  border-radius: $br-5px;
+  display: flex; 
+  color: $primary-color-dark;
+  padding: $spacing-6;
+  margin: $spacing-6 0;
+}
+
+.banner--warning {
+  background-color: $warning-lighter;
+  color: $warning-dark;
+}

@@ -1,0 +1,64 @@
+<% provide(:title, 'User Management') %>
+
+<div class="page__header">
+  <div class="page__heading page__heading--actions">
+    <div class="heading__main">
+      <h2 class="heading__title">User Management</h2>
+    </div>
+  </div>
+</div>
+
+<div class="page-container mt--7">
+  <%= render partial: 'templates/admin/accounts/partials/index/search_and_filter' %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <a href="#" class="sort_link ">Name<i class="fa-duotone fa-sort ml--4"></i></a>
+          <div class="cell--stacked">Email</div>
+        </th>
+
+        <th>Type</th>
+
+        <th class="hidden--md-down">
+          <a href="#" class="sort_link ">Updated At<i class="fa-duotone fa-sort ml--4" style='--fa-primary-opacity: 0.40'></i></a>
+        </th>
+
+        <th class="text--center w--7em">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% 5.times.each do |i| %>
+        <% first_name = Faker::Name.first_name %>
+        <% last_name = Faker::Name.last_name %>
+        <% type = ['admin', 'other'].sample %>
+
+        <tr>
+          <td class="font--semibold">
+            <div><%= i == 2 ? '-' : "#{first_name} #{last_name}" %></div>
+            <div class="cell--stacked"><%= "#{first_name}.#{last_name}@example.com" %></div>
+          </td>
+
+          <td>
+            <div class="display--flex">
+              <div class="pill pill--<%= type %> pill--bordered -pill-size--1 text--truncate"><%= type.titleize %></div>
+            </div>
+          </td>
+
+          <td class="hidden--md-down"><%= l(Faker::Time.between(from: 2.months.ago, to: Time.current), format: :short).html_safe %></td>
+          <td class="text--center cell--link">
+            <a href="#" class="link link--cell link--primary">Edit</a>
+          </td>
+        </tr>
+      <% end %>
+      <%= render partial: 'partials/no_results', locals: {
+        breakpoints: [{ colspan: 3, class: 'hidden--md-up' }, { colspan: 4, class: 'hidden--md-down' }],
+        message: 'No Account found. Try modifying your search.'
+      } %>
+    </tbody>
+  </table>
+
+  <%= render partial: 'templates/partials/pagination' %>
+</div>

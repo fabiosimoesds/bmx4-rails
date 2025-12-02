@@ -1,0 +1,375 @@
+#{$all-buttons},
+.button {
+  @include transition(background, border-color, color);
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: $primary-color;
+  border: $border-primary;
+  border-radius: $br-5px;
+  color: $font-color-lightest;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $font-family-base;
+  font-size: $font-size-base * strip-unit(modular-scale(1)); // button has a line height issue that comes from using the module-scale directly.
+  font-weight: $fw-bold;
+  flex: 0 0 auto;
+  letter-spacing: $tracking-tight;
+  line-height: $leading-none;
+  margin: 0;
+  overflow: hidden;
+  padding: $spacing-5 $spacing-6;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: normal;
+
+  @include breakpoint-up($large-screen) {
+    font-size: $font-size-base;
+    padding: $spacing-4 $spacing-6;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $primary-color-dark;
+    border-color: $primary-color-dark;
+    color: $font-color-lightest;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: $form-disabled-color;
+    border-color: $form-disabled-color;
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $form-disabled-color;
+      border-color: $form-disabled-color;
+    }
+  }
+}
+
+.button--link {
+  background-color: unset;
+  border: none;
+  border-radius: 0;
+  color: $primary-color;
+  cursor: pointer;
+  flex: unset;
+  -webkit-font-smoothing: auto;
+  font-weight: $fw-normal;
+  letter-spacing: $tracking-normal;
+  line-height: $leading-none;
+  overflow: unset;
+  padding: 0;
+  text-align: left;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: unset;
+    color: $primary-color-dark;
+  }
+}
+
+//File upload button
+::-webkit-file-upload-button {
+  @extend .button;
+
+  background-color: $information;
+  color: $white;
+  font-size: modular-scale(-1);
+  margin: 0;
+  overflow: hidden;
+  text-transform: uppercase;
+
+  &:focus,
+  &:hover {
+    background-color: $information-dark;
+    border-color: $information-dark;
+    color: $white;
+  }
+
+  &:disabled,
+  &[disabled] {
+    color: $font-color-lightest;
+  }
+}
+
+// Solid Buttons
+
+// 'class' $initial-bg-color $change-bg-color
+// .button--primary means the background changes from $primary-color to $primary-color-dark
+// prettier-ignore
+$button-colors:
+  'primary' $primary-color $primary-color-dark,
+  'secondary' $secondary-color-light $secondary-color,
+  'tertiary' $tertiary-color-light $tertiary-color,
+  'success' $success $success-dark,
+  'danger' $danger $danger-dark,
+  'warning' $warning $warning-dark,
+  'info' $information $information-dark,
+  'grey' $background-color-base $background-color-dark;
+
+@each $modifier, $bg, $change-bg in $button-colors {
+  .button--#{$modifier},
+  [type='submit'].button--#{$modifier} {
+    background-color: $bg;
+    border: solid $default-bw $bg;
+    color: $font-color-lightest;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $change-bg;
+      border-color: $change-bg;
+      color: $font-color-lightest;
+    }
+
+    &:disabled,
+    &[disabled] {
+      border-color: $form-disabled-color;
+      background-color: $form-disabled-color;
+      color: $font-color-lightest;
+    }
+  }
+}
+
+.button--disabled-active,
+[type='submit'].button--disabled-active {
+  &:active,
+  &:focus,
+  &:hover,
+  &:disabled,
+  &[disabled] {
+    background-color: $form-disabled-active-color;
+    border-color: $form-disabled-active-color;
+    color: $font-color-lightest;
+  }
+}
+
+// Stroke Buttons
+
+// 'class' $initial-bg-color $initial-font-color $change-bg-color $change-font-color
+// .button--primary means the background changes from transparent to $primary-color-dark
+// .button--primary means the border changes from $primary-color to $primary-color-dark
+// .button--primary means the font-color changes from $primary-color to $font-color-lightest
+// prettier-ignore
+$stroke-button-colors:
+  'primary' $primary-color $primary-color $primary-color-dark $font-color-lightest,
+  'secondary' $secondary-color-light $secondary-color-light $secondary-color $font-color-lightest,
+  'tertiary' $tertiary-color-light $tertiary-color-light $tertiary-color $font-color-lightest,
+  'success' $success $success $success-dark $font-color-lightest,
+  'danger' $danger $danger $danger-dark $font-color-lightest,
+  'warning' $warning $warning $warning-dark $font-color-lightest,
+  'info' $information $information $information-dark $font-color-lightest,
+  'grey' $background-color-dark $font-color-base $background-color-dark $font-color-lightest;
+
+.button--stroke,
+[type='submit'].button--stroke {
+  background-color: transparent;
+  border: $border-primary;
+  color: $primary-color;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $primary-color-dark;
+    border-color: $primary-color-dark;
+    color: $font-color-lightest;
+  }
+
+  &:disabled {
+    background-color: $form-disabled-color;
+    border-color: $form-disabled-color;
+    color: $font-color-lightest;
+  }
+
+  @each $modifier, $bg, $color, $change-bg, $change-color in $stroke-button-colors {
+    &.button--#{$modifier},
+    [type='submit'].button--#{$modifier},
+    &.button--#{$modifier}.button--white,
+    [type='submit'].button--#{$modifier}.button--white {
+      border-color: $bg;
+      color: $color;
+
+      &:hover {
+        background-color: $bg;
+        border-color: $bg;
+        color: $change-color;
+      }
+
+      &:active,
+      &:focus {
+        background-color: $change-bg;
+        border-color: $change-bg;
+        color: $change-color;
+      }
+    }
+  }
+}
+
+// White Buttons with Coloured Text
+
+// 'class' $initial-font-color $change-font-color
+// .button--primary means the font-color changes from $primary-color to $primary-color-dark
+// prettier-ignore
+$white-button-colors:
+  'primary' $primary-color $primary-color-dark $primary-color-lighter,
+  'secondary' $secondary-color $secondary-color-dark $secondary-color-lighter,
+  'tertiary' $tertiary-color $tertiary-color-dark $tertiary-color-lighter,
+  'success' $success $success-dark $success-lightest,
+  'danger' $danger $danger-dark $danger-lightest,
+  'warning' $warning $warning-dark $warning-lightest,
+  'info' $information $information-dark $information-lightest;
+
+.button--white,
+[type='submit'].button--white {
+  background-color: $background-color-lightest;
+  border-color: $bc-base;
+  color: $font-color-base;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $background-color-light;
+    border-color: $bc-dark;
+    color: $font-color-dark;
+  }
+
+  &:disabled {
+    border-color: $form-disabled-color;
+    background-color: $form-disabled-color;
+    color: $font-color-lightest;
+  }
+
+  @each $modifier, $color, $change-color, $fill-color in $white-button-colors {
+    &.button--#{$modifier},
+    [type='submit'].button--#{$modifier} {
+      border-color: $bc-lightest;
+      color: $color;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: $fill-color;
+        border-color: $fill-color;
+        color: $change-color;
+      }
+    }
+  }
+}
+
+.button--wide,
+[type='submit'].button--wide {
+  grid-column-end: -1;
+  width: 100%;
+}
+
+.button--large,
+[type='submit'].button--large {
+  font-size: modular-scale(1);
+  padding: $spacing-4 $spacing-7;
+}
+
+.button--small,
+[type='submit'].button--small {
+  font-size: modular-scale(-1);
+}
+
+.button--smaller,
+[type='submit'].button--smaller {
+  font-size: modular-scale(-2);
+  padding: $spacing-4 $spacing-5;
+}
+
+.button--smallest,
+[type='submit'].button--smallest {
+  font-size: modular-scale(-2);
+  padding: $spacing-3 $spacing-5;
+}
+
+.button--broad,
+[type='submit'].button--broad {
+  padding-left: $spacing-10;
+  padding-right: $spacing-10;
+}
+
+.button__actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: $spacing-6;
+  justify-content: flex-start;
+
+  // breakpoint-down so styles are applied in a downwards direction and not carried to larger screens where other classes would try to set their sizes
+  @include breakpoint-down($medium-screen) {
+    .button,
+    .button--link,
+    .action-menu,
+    .actions__menu {
+      width: 100%;
+    }
+
+    .button--link {
+      border: $border-secondary-light;
+      border-radius: $br-5px;
+      font-size: modular-scale(1);
+      font-weight: $fw-bold;
+      letter-spacing: $tracking-tight;
+      padding: $spacing-5 $spacing-6;
+      text-align: center;
+
+      i {
+        display: inline;
+      }
+
+      @each $modifier, $bg, $color, $change-bg, $change-color in $stroke-button-colors {
+        &.link--#{$modifier} {
+          border-color: $bg;
+          color: $color;
+
+          &:hover {
+            background-color: $bg;
+            border-color: $bg;
+            color: $change-color;
+          }
+
+          &:active,
+          &:focus {
+            background-color: $change-bg;
+            border-color: $change-bg;
+            color: $change-color;
+          }
+        }
+      }
+
+      &.link--disabled {
+        background-color: $form-disabled-color;
+        border-color: $form-disabled-color;
+        color: $font-color-lightest;
+
+        &:hover {
+          background-color: $form-disabled-color;
+          border-color: $form-disabled-color;
+          color: $font-color-lightest;
+        }
+      }
+    }
+  }
+
+  @include breakpoint-up($medium-screen) {
+    align-items: center;
+    flex-direction: row;
+    font-size: modular-scale(0);
+    font-weight: $fw-normal;
+    letter-spacing: $tracking-normal;
+    justify-content: flex-end;
+  }
+}

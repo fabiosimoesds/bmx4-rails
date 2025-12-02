@@ -1,0 +1,8 @@
+<% provide(:title, '422') %>
+
+<%= render partial: 'errors/partials/error', locals: {
+  code: 422,
+  title: 'Change Rejected',
+  signed_in_message: "The change you wanted was rejected. Maybe you tried to change something you didn't have access to.",
+  signed_out_message: "The change you wanted was rejected. Maybe you tried to change something you didn't have access to.",
+} %>

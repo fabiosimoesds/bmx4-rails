@@ -1,0 +1,31 @@
+@mixin breakpoint-up($size) {
+  @media only screen and (min-width: #{$size + 1}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media only screen and (max-width: #{$size}) {
+    @content;
+  }
+}
+
+// Adds the screen size initials to the class,
+// which changes the html block's css depending on the screen size
+
+@mixin breakpoint-all-sizes($class) {
+  @each $initial, $screen-size in $screen-sizes {
+    .#{$initial}\:#{$class} {
+      @include breakpoint-up($screen-size) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin transition($props...) {
+  /* property name | duration | easing function */
+  transition: $base-duration $base-timing;
+  transition-property: $props;
+  will-change: $props;
+}

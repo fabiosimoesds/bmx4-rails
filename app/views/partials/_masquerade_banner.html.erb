@@ -1,0 +1,7 @@
+<div id="masquerade-banner" class="bg--danger-dark color--red-50 p--4">
+  <div class="page-container display--flex justify-content--center align-items--center">
+    <div class="mr--6">Logged in as <%= current_account.name %></div>
+
+    <%= link_to 'Logout', back_masquerade_path(current_account), class: 'button button--white button--danger' %>
+  </div>
+</div>

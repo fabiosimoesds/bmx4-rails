@@ -1,0 +1,105 @@
+// Coloured background slightly rounded elements
+$perfect-border: calc(#{$leading-tightest * modular-scale(0)} + #{$default-bw * 2} + #{$spacing-2 * 2});
+
+.pill {
+  background-color: $background-color-lightest;
+  border: $border-lightest;
+  border-radius: $perfect-border;
+  color: $font-color-light;
+  display: inline-block;
+  letter-spacing: $tracking-tight;
+  line-height: $leading-tightest;
+  margin: 0;
+  padding: $spacing-2 $spacing-5;
+  text-align: center;
+
+  &.pill--squared {
+    border-radius: $br-3px;
+  }
+}
+
+a.pill:hover {
+  background-color: $primary-color-light;
+  border-color: $primary-color-light;
+  color: $primary-color-dark;
+}
+
+.pill--dot::before {
+  background-color: currentColor;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: $spacing-3;
+  margin-right: $spacing-1;
+  vertical-align: 8%;
+  width: $spacing-3;
+}
+
+.pill--icon {
+  align-items: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  height: $perfect-border;
+  width: $perfect-border;
+  z-index: $z-index-2;
+}
+
+$basic-pill-colors: (
+  'primary-brand' $primary-brand-color-50 $primary-brand-color-400,
+  'secondary-brand' $secondary-brand-color-50 $secondary-brand-color-400,
+  'red' $red-50 $red-500,
+  'orange' $orange-50 $orange-400,
+  'yellow' $yellow-50 $yellow-500,
+  'green' $green-50 $green-500,
+  'blue' $blue-50 $blue-400,
+  'purple' $purple-50 $purple-400,
+  'grey' $grey-50 $grey-400,
+  'light' $background-color-light $background-color-dark
+);
+
+$all-pill-colors: list-combine($basic-pill-colors, $account-type-colors);
+
+@each $modifier, $bg, $color in $all-pill-colors {
+  .pill--#{$modifier} {
+    background-color: $bg;
+    border-color: $bg;
+    color: $color;
+  }
+
+  .pill--#{$modifier}-invert {
+    background-color: $color;
+    border-color: $color;
+    color: $bg;
+  }
+}
+
+.pill--bordered {
+  border-color: currentColor;
+}
+
+// pills are -pill-size--1 by default
+
+@for $i from 0 through 5 {
+  .pill-size--#{$i} {
+    $perfect-border: calc(#{$leading-tightest * modular-scale($i)} + #{$default-bw * 2} + #{$spacing-2 * 2});
+    border-radius: $perfect-border;
+    font-size: modular-scale($i);
+
+    &.pill--icon {
+      height: $perfect-border;
+      width: $perfect-border;
+    }
+  }
+
+  .-pill-size--#{$i} {
+    $perfect-border: calc(#{$leading-tightest * modular-scale(-$i)} + #{$default-bw * 2} + #{$spacing-2 * 2});
+    border-radius: $perfect-border;
+    font-size: modular-scale(-$i);
+
+    &.pill--icon {
+      height: $perfect-border;
+      width: $perfect-border;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= "#{yield(:title)} | " if content_for?(:title) %>
+      <%= Rails.application.config.jumpstart['application_name'] %>
+    </title>
+
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'templates/application', media: 'all' %>
+    <%= javascript_include_tag 'application', defer: true %>
+
+    <%= stylesheet_link_tag 'https://kit.fontawesome.com/f440a3ba4a.css', crossorigin: 'anonymous' %>
+    <%= stylesheet_link_tag 'application' %>
+
+    <%= render partial: 'application/favicon' %>
+  </head>
+
+  <body class="templates">
+    <div class="templates__header">
+      <div>
+        <h1><%= "#{yield(:title)} | " if content_for?(:title) %><%= Rails.application.config.jumpstart['application_name'] %></h1>
+        <%= link_to 'Go Back', templates_engine.root_path if params[:id].present? %>
+      </div>
+    </div>
+
+    <div class="templates__content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

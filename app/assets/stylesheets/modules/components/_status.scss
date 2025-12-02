@@ -1,0 +1,39 @@
+// White background rounded elements with coloured circles to identify a state/type
+
+.status {
+  background-color: $background-color-lightest;
+  border: $border-base;
+  border-radius: $br-5px;
+  font-size: modular-scale(-1);
+  line-height: $leading-normal;
+  padding: $spacing-2 $spacing-3;
+}
+
+$basic-status-colors: (
+  'blue': $blue-400,
+  'yellow': $yellow-300,
+  'green': $green-400,
+  'red': $red-500,
+  'orange': $orange-400,
+  'purple': $purple-400,
+);
+
+$all-status-colors: map-combine($basic-status-colors);
+
+@each $key, $var in $all-status-colors {
+  .status--#{$key} .fa-circle {
+    color: $var;
+  }
+}
+
+// statuses are -status-size--1 by default
+
+@for $i from 0 through 5 {
+  .status-size--#{$i} {
+    font-size: modular-scale($i);
+  }
+
+  .-status-size--#{$i} {
+    font-size: modular-scale(-$i);
+  }
+}

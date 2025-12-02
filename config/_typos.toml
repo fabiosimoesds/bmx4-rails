@@ -1,0 +1,18 @@
+[default.extend-words]
+rememberable = "rememberable"
+Rememberable = "Rememberable"
+multiplebgs = "multiplebgs"
+masqueradable = "masqueradable"
+ba = "ba"
+Claus = "Claus"
+haa = "haa"
+DEFAULT = "DEFAULT"
+DEFAUL = "DEFAUL"
+
+[default.extend-identifiers]
+ba = "ba"
+rememberable = "rememberable"
+Rememberable = "Rememberable"
+
+[files]
+extend-exclude = ["*.scss"]

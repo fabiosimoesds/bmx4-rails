@@ -1,0 +1,39 @@
+/** File containing scss specific to the project
+  For example:
+  $account-invited: $yellow-400;
+  $account-accepted-invitation: $green-400;
+  $account-partial-profile: $red-400;
+  $account-completed-profile: $blue-400;
+
+  $account-state-colors: (
+    invited: $account-invited,
+    accepted_invitation: $account-accepted-invitation,
+    partial_profile: $account-partial-profile,
+    completed_profile: $account-completed-profile,
+  );
+
+  $availability-booked: $yellow-100;
+  $availability-available: $green-200;
+  $availability-unavailable: $red-200;
+  $availability-standby: $blue-200;
+
+  $availability-type-colors: (
+    availability-booked: $availability-booked,
+    availability-available: $availability-available,
+    availability-unavailable: $availability-unavailable,
+    availability-standby: $availability-standby,
+  );
+
+  $scene-notification-icons: (
+    scene-notif-drafted: '\f5ae', // pencil-ruler
+    scene-notif-uploaded: '\f007', // user
+    scene-notif-registered: '\f2f7', // shield-check
+    scene-notif-syndicated: '\e047', // ufo
+    scene-notif-purchased: '\f38a', // credit-card-front
+  );
+*/
+
+$account-type-colors: (
+  'admin' $blue-50 $blue-500,
+  'other' $orange-50 $orange-500,
+);

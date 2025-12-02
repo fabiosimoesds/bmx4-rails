@@ -1,0 +1,357 @@
+// Menu General Styles
+
+.menu {
+  list-style: none;
+  margin: 0 0 $spacing-6;
+  padding: 0;
+}
+
+.menu-item {
+  @include transition(background);
+
+  align-items: center;
+  color: $font-color-darkest;
+  display: flex;
+  font-weight: $fw-normal;
+  line-height: $leading-none;
+  margin-bottom: $spacing-4;
+  position: relative;
+
+  @include breakpoint-up($large-screen) {
+    margin-bottom: 0;
+  }
+
+  a,
+  form,
+  .button--link {
+    color: $font-color-darkest;
+    cursor: pointer;
+    display: inline-block;
+    font-size: modular-scale(1);
+    padding: $spacing-3;
+    position: relative;
+    width: 100%;
+
+    @include breakpoint-up($large-screen) {
+      font-size: modular-scale(0);
+      padding: $spacing-3 $spacing-4;
+    }
+
+    &:hover {
+      color: $font-color-darkest;
+    }
+  }
+
+  .button--link {
+    font-size: modular-scale(0);
+    padding: 0;
+  }
+
+  &:hover {
+    background-color: $bc-lightest;
+  }
+}
+
+// Menu Item with Sub Menu
+
+.menu-item--sub {
+  cursor: pointer;
+}
+
+.menu-item__chevron {
+  @include transition(transform);
+
+  transform: rotate(0deg);
+
+  &.menu-item__chevron--open {
+    transform: rotate(90deg);
+  }
+}
+
+// Navigation Menu
+
+#primary-menu {
+  display: none;
+  width: 100%;
+
+  &.is-active {
+    display: block;
+
+    @include breakpoint-up($large-screen) {
+      display: flex;
+    }
+  }
+
+  @include breakpoint-up($large-screen) {
+    align-items: center;
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    margin-bottom: 0;
+    width: auto;
+  }
+
+  .menu-item {
+    &.menu-item--active,
+    &:has(.menu-item--active) {
+      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+
+      .primary-menu__link {
+        box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+        font-weight: $fw-semibold;
+      }
+    }
+
+    @include breakpoint-up($large-screen) {
+      height: 100%;
+
+      &.menu-item--active,
+      &:has(.menu-item--active) {
+        .primary-menu__link {
+          box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+        }
+      }
+    }
+  }
+
+  .menu--sub {
+    margin-top: $spacing-3;
+
+    .menu-item.menu-item--active {
+      box-shadow: none;
+    }
+
+    @include breakpoint-up($medium-screen) {
+      margin-top: $spacing-1;
+    }
+  }
+
+  .primary-menu__link,
+  form {
+    @include transition(box-shadow);
+
+    align-items: center;
+    background-color: $bc-lightest;
+    color: $font-color-darkest;
+    display: inline-flex;
+    height: 100%;
+
+    &:hover {
+      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary;
+    }
+
+    @include breakpoint-up($large-screen) {
+      font-size: modular-scale(0);
+
+      &:hover {
+        box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary;
+      }
+    }
+
+    a,
+    &.button--link {
+      border-bottom: none;
+      box-shadow: none;
+    }
+  }
+
+  .menu-item--sub {
+    display: block;
+    background-color: $bc-lightest;
+
+    @include breakpoint-up($large-screen) {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .primary-menu__link {
+      @include transition(background-color, color, box-shadow);
+
+      align-self: center;
+      font-size: modular-scale(1);
+      padding: $spacing-3;
+
+      @include breakpoint-up($large-screen) {
+        font-size: modular-scale(0);
+        padding: $spacing-3 $spacing-4;
+      }
+    }
+
+    .menu-item {
+      a,
+      .button--link {
+        color: $font-color-darkest;
+      }
+
+      @include breakpoint-up($large-screen) {
+        font-size: modular-scale(0);
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+// User Menu
+
+.user-menu {
+  display: none;
+  margin: 0 0 0 $spacing-6;
+
+  @include breakpoint-up($large-screen) {
+    align-items: stretch;
+    display: flex;
+  }
+
+  .menu-item {
+    align-items: stretch;
+    display: flex;
+
+    &:hover {
+      color: $font-color-darkest;
+      box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary;
+    }
+  }
+
+  .user__name {
+    align-items: center;
+    color: $font-color-darker;
+    display: flex;
+    padding: $spacing-3;
+  }
+}
+
+// Sub Menu
+
+.menu--sub {
+  display: none;
+  margin-top: $spacing-1;
+  margin-bottom: 0;
+  padding: 0;
+  top: 100%;
+  width: 100%;
+  z-index: $z-index-3;
+
+  @include breakpoint-up($large-screen) {
+    background-color: $background-color-lightest;
+    border: $border-base;
+    border-radius: $br-5px;
+    box-shadow: $shadow-2;
+    padding: $spacing-3 0;
+    position: absolute;
+    right: 0;
+    top: calc(100% + #{$spacing-1});
+    width: 13em;
+  }
+
+  .menu-item {
+    color: $font-color-darker;
+    margin-left: $spacing-4;
+
+    @include breakpoint-up($large-screen) {
+      margin-left: 0;
+    }
+
+    a,
+    form {
+      padding: $spacing-3;
+      width: 100%;
+
+      @include breakpoint-up($large-screen) {
+        padding: $spacing-3 $spacing-4;
+      }
+    }
+
+    &.menu-item--active,
+    &.menu-item--active a {
+      background-color: $background-color-lighter;
+      font-weight: $fw-semibold;
+    }
+
+    &:hover a,
+    &:hover form {
+      background-color: $background-color-lighter;
+      color: $font-color-darkest;
+    }
+  }
+
+  .menu-item + .menu-item.menu-item--divider {
+    border-top: $bw-2px solid $background-color-light;
+
+    @include breakpoint-up($large-screen) {
+      margin-top: calc(#{$spacing-2} + #{$bw-2px});
+    }
+
+    a,
+    .button--link {
+      margin-top: $spacing-3;
+
+      @include breakpoint-up($large-screen) {
+        margin-top: $spacing-2;
+      }
+    }
+  }
+
+  .menu-item:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+// Mobile Menu
+
+.menu-toggle {
+  align-self: center;
+
+  @include breakpoint-up($medium-screen) {
+    display: none;
+  }
+}
+
+// Actions Menu
+.action-menu {
+  display: inline-block;
+  position: relative;
+}
+
+.action-menu--show {
+  .actions__menu {
+    display: block;
+  }
+}
+
+.actions__menu {
+  background-color: $background-color-lightest;
+  border: $border-base;
+  border-radius: $br-5px;
+  margin-top: $spacing-3;
+  padding: $spacing-3 0;
+
+  @include breakpoint-up($large-screen) {
+    color: $font-color-darker;
+    margin-top: $spacing-1;
+    padding: $spacing-2 0;
+  }
+
+  .menu-item {
+    background-color: $background-color-lightest;
+    margin-left: 0;
+  }
+}
+
+// Always Popover Menu
+
+.menu--always-popover {
+  box-shadow: $shadow-2;
+  left: 0;
+  padding: $spacing-4 0;
+  position: absolute;
+  width: 13em;
+
+  @include breakpoint-up($medium-screen) {
+    left: auto;
+    right: 0;
+  }
+
+  @include breakpoint-up($large-screen) {
+    padding: $spacing-2 0;
+  }
+}

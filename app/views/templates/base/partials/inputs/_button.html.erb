@@ -1,0 +1,8 @@
+<button id="submit" class="button <%= local_assigns[:classes] %>" type="submit" <%= :disabled if local_assigns[:disabled] %>>
+  <%= local_assigns[:label] %>
+  <% if local_assigns[:icon_classes] %>
+    <i class="<%= icon_classes %>"></i>
+  <% end %>
+</button>
+<!-- or -->
+<!-- <input type="submit" value="<%#= label %>" class="button <%#= classes %>" <%#= :disabled if disabled %>> -->

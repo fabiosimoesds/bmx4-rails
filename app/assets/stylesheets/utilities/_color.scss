@@ -1,0 +1,18 @@
+// prettier-ignore
+$all-colors: map-combine(
+  $color-shades,
+  $color-roles,
+);
+
+// Color
+// color--information, color--blue-200
+
+@each $key, $var in $all-colors {
+  .color--#{$key} {
+    color: $var;
+  }
+}
+
+.color--current {
+  color: currentColor;
+}

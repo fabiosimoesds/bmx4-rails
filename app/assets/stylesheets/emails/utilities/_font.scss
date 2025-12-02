@@ -1,0 +1,54 @@
+// Font Family
+
+// @each $key, $var in $font-families {
+//   .font-family--#{$key} {
+//     font-family: $var;
+//   }
+// }
+
+// Font Size
+
+// @for $i from 0 through 12 {
+@for $i from 0 through 1 {
+  .font-size--#{$i} {
+    font-size: modular-scale($i);
+  }
+
+  .-font-size--#{$i} {
+    font-size: modular-scale(-$i);
+  }
+}
+
+// Font Weight
+
+@each $key, $var in $font-weights {
+  .font--#{$key} {
+    font-weight: $var;
+  }
+}
+
+// Font Numeric Variants
+
+// $font-numerics: normal, ordinal, slashed-zero, lining-nums, oldstyle-nums, proportional-nums, tabular-nums, diagonal-fractions, stacked-fractions;
+
+// @each $key in $font-numerics {
+//   .font-nums--#{$key} {
+//     font-variant-numeric: $key;
+//   }
+// }
+
+// Line Height
+
+// @each $key, $var in $line-heights {
+//   .line-height--#{$key} {
+//     line-height: $var;
+//   }
+// }
+
+// Letter Spacing
+
+// @each $key, $var in $letter-spacings {
+//   .letter-spacing--#{$key} {
+//     letter-spacing: $var;
+//   }
+// }

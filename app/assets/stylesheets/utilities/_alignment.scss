@@ -1,0 +1,88 @@
+// Align, Justify & Place
+
+$flex-alignments: align, justify, place;
+
+@each $prop in $flex-alignments {
+  $flex-aligns: normal, stretch, center, start, end, flex-start, flex-end, baseline;
+  
+  @each $key in $flex-aligns {
+    // Contents, Items & Self
+    // align-content--stretch, justify-items--flex-start, place-self--normal
+  
+    .#{$prop}-content--#{$key} {
+      #{$prop}-content: $key;
+    }
+
+    .#{$prop}-items--#{$key} {
+      #{$prop}-items: $key;
+    }
+
+    .#{$prop}-self--#{$key} {
+      #{$prop}-self: $key;
+    }
+
+    // Contents, Items & Self breakpoints
+    // md:align-content--stretch, lg:justify-items--flex-start, xl:place-self--normal
+  
+    @include breakpoint-all-sizes("#{$prop}-content--#{$key}") {
+      #{$prop}-content: $key;
+    }
+
+    @include breakpoint-all-sizes("#{$prop}-items--#{$key}") {
+      #{$prop}-items: $key;
+    }
+
+    @include breakpoint-all-sizes("#{$prop}-self--#{$key}") {
+      #{$prop}-self: $key;
+    }
+  }
+
+  $flex-spaces: space-between, space-around, space-evenly;
+  
+  @each $key in $flex-spaces {
+    // Content Spaces
+    // place-content--space-evenly, align-content--space-around
+  
+    .#{$prop}-content--#{$key} {
+      #{$prop}-content: $key;
+    }
+
+    // Content Spaces breakpoints
+    // sm:place-content--space-evenly, md:align-content--space-around
+  
+    @include breakpoint-all-sizes("#{$prop}-content--#{$key}") {
+      #{$prop}-content: $key;
+    }
+  }
+}
+
+$verticals: baseline, top, middle, bottom, text-top, text-bottom, super, sub;
+
+@each $key in $verticals {
+  // Vertical Alignment
+  // valign--baseline, valign--middle
+  
+  .valign--#{$key} {
+    vertical-align: $key;
+  }
+
+  // Vertical Alignment
+  // xl:valign--baseline, lg:valign--middle
+  
+  @include breakpoint-all-sizes("valign--#{$key}") {
+    vertical-align: $key;
+  }
+}
+
+// use position so that is doesn't disrupt the line height
+.superscript {
+  position: relative; 
+  top: -0.5em;
+  font-size: modular-scale(-3);
+}
+
+.subscript {
+  position: relative; 
+  bottom: -0.5em;
+  font-size: modular-scale(-3);
+}

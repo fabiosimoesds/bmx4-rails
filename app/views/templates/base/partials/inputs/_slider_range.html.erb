@@ -1,0 +1,34 @@
+<% from_value = local_assigns[:from_value].to_i %>
+<% to_value = local_assigns[:to_value].to_i %>
+<% min = local_assigns[:min] || 0 %>
+<% max = local_assigns[:max] || 100 %>
+<% step = local_assigns[:step] || 1 %>
+
+<div class="input string form__input <%= local_assigns[:wrapper_classes] %> <%= 'field--errors' if local_assigns[:errors] %>" <%= tag.attributes(local_assigns[:wrapper_extra_attributes]) %>>
+  <label class="string <%= 'required' if local_assigns[:required] %> <%= local_assigns[:label_classes] %>" for="<%= id %>"><%= local_assigns[:label] %></label>
+
+  <div class="input-field input-field--slider-range <%= 'disabled' if local_assigns[:disabled] %>" data-controller="slider-range" style="--min: <%= ((from_value - min) / (max - min)) * 100 %>%; --max: <%= ((to_value - min) / (max - min)) * 100 %>%;">
+    <output class="slider-range__value" for="<%= id %>[from]">
+      <span><%= local_assigns[:prefix] %></span>
+      <span data-slider-range-target="valueFrom"><%= from_value.to_fs(:delimited) %></span>
+      <span <%= tag.attributes(data: { slider_range_target: 'valueFromWord' }) if local_assigns[:pluralize] %>><%= local_assigns[:suffix] %></span>
+    </output>
+
+    <div class="slider-range__inputs">
+      <input type="range" name="<%= id %>[from]" data-slider-range-target="rangeMin" data-action="input->slider-range#updateFromValue" value="<%= from_value %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" <%= :disabled if local_assigns[:disabled] %> autocomplete="off">
+      <input type="range" name="<%= id %>[to]" data-slider-range-target="rangeMax" data-action="input->slider-range#updateToValue" value="<%= to_value %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" <%= :disabled if local_assigns[:disabled] %> autocomplete="off">
+    </div>
+
+    <output class="slider-range__value" for="<%= id %>[to]">
+      <span><%= local_assigns[:prefix] %></span>
+      <span data-slider-range-target="valueTo"><%= to_value.to_fs(:delimited) %></span>
+      <span <%= tag.attributes(data: { slider_range_target: 'valueToWord' }) if local_assigns[:pluralize] %>><%= local_assigns[:suffix] %></span>
+    </output>
+  </div>
+
+  <% if local_assigns[:errors] %>
+    <span class="form__hint form__hint--error"><%= errors %></span>
+  <% elsif local_assigns[:hint] %>
+    <span class="form__hint"><%= hint %></span>
+  <% end %>
+</div>

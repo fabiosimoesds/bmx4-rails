@@ -1,0 +1,111 @@
+@use "sass:math";
+
+$positions: static, relative, absolute, fixed, sticky, inherit, initial, unset;
+
+@each $key in $positions {
+  // Position
+  // position--static, position--inherit, position--fixed
+
+  .position--#{$key} {
+    position: $key;
+  }
+
+  // Position breakpoints
+  // sm:position--static, lg:position--inherit, md:position--fixed
+
+  @include breakpoint-all-sizes("position--#{$key}") {
+    position: $key;
+  }
+}
+
+$tbrl: top, bottom, right, left;
+
+@each $prop in $tbrl {
+  @each $key, $var in $spaces {
+    // Spacings
+    // top--0, right--8, bottom--20
+
+    .#{$prop}--#{$key} {
+      #{$prop}: $var;
+    }
+
+    .-#{$prop}--#{$key} {
+      #{$prop}: -$var;
+    }
+
+    // Spacings breakpoints
+    // xl:top--0, md:-right--8, lg:bottom--20
+
+    @include breakpoint-all-sizes("#{$prop}--#{$key}") {
+      #{$prop}: $var;
+    }
+
+    @include breakpoint-all-sizes("-#{$prop}--#{$key}") {
+      #{$prop}: -$var;
+    }
+  }
+
+  // Units
+
+  @for $i from 1 through 100 {
+    // Positive
+    // left--1em, right--100px, top--25pc
+
+    .#{$prop}--#{$i}em {
+      #{$prop}: #{$i + 'em'};
+    }
+
+    .#{$prop}--#{$i}px {
+      #{$prop}: #{$i + 'px'};
+    }
+
+    .#{$prop}--#{$i}pc {
+      #{$prop}: math.round(math.percentage($i * 0.01));
+    }
+
+    // Negative
+    // -bottom--70em, -top--50px, -left--11pc
+
+    .-#{$prop}--#{$i}em {
+      #{$prop}: #{-$i + 'em'};
+    }
+
+    .-#{$prop}--#{$i}px {
+      #{$prop}: #{-$i + 'px'};
+    }
+
+    .-#{$prop}--#{$i}pc {
+      #{$prop}: math.round(math.percentage(-$i * 0.01));
+    }
+
+    // Positive breakpoints
+    // md:left--1em, xl:right--100px, sm:top--25pc
+
+    @include breakpoint-all-sizes("#{$prop}--#{$i}em") {
+      #{$prop}: #{$i + 'em'};
+    }
+
+    @include breakpoint-all-sizes("#{$prop}--#{$i}px") {
+      #{$prop}: #{$i + 'px'};
+    }
+
+    @include breakpoint-all-sizes("#{$prop}--#{$i}pc") {
+      #{$prop}: math.round(math.percentage($i * 0.01));
+    }
+
+    // Negative breakpoints
+    // -sm:bottom--70em, -lg:top--50px, -md:left--11pc
+
+    @include breakpoint-all-sizes("#{$prop}--#{$i}em") {
+      #{$prop}: #{-$i + 'em'};
+    }
+
+    @include breakpoint-all-sizes("#{$prop}--#{$i}px") {
+      #{$prop}: #{-$i + 'px'};
+    }
+
+    @include breakpoint-all-sizes("#{$prop}--#{$i}pc") {
+      #{$prop}: math.round(math.percentage(-$i * 0.01));
+    }
+  }
+}

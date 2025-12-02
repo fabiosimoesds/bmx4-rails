@@ -1,0 +1,46 @@
+<% provide(:title, 'Example Email') %>
+<% provide(:layout_override, 'templates/mailer') %>
+
+<!-- replace all content with your email html to test out how it will look -->
+
+<p>Hi Emma,</p>
+<p>A quick note from us to say thank you for signing up to the Athena platform. We're excited to have you onboard!</p>
+<p>To get you started on the right foot, watch our short demo video introducing the platform and its key features - <a target="_blank" href="https://vimeo.com/731395066/ef98460e51">Click here to watch the video (6 mins)</a>.</p>
+<p>We hope you'll find the platform intuitive and useful. Click the button below to log in and get started.</p>
+
+<p class="font--light">This is the light font weight (300), <i>and this is the font weight italic</i></p>
+<p class="font--normal">This is the normal font weight (400), <i>and this is the font weight italic</i></p>
+<p class="font--semibold">This is the semibold font weight (600), <i>and this is the font weight italic</i></p>
+<p class="font--bold">This is the bold font weight (700), <i>and this is the font weight italic</i></p>
+
+<h3 class="mb--3 mt--7">Table Details</h3>
+
+<table class="email-table__table">
+  <tbody>
+    <tr>
+      <th>Row A</th>
+      <td>Value A</td>
+    </tr>
+    <tr>
+      <th>Row B</th>
+      <td>Value B</td>
+    </tr>
+    <tr>
+      <th>Row C</th>
+      <td>Value C</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mt--4">
+  <%= two_email_buttons(button_one={button_text: 'Log In', button_url: 'http://localhost:3000/', button_classes: ''}, button_two={button_text: 'Learn More', button_url: 'http://localhost:3000/', button_classes: 'button--stroke'}) %>
+</div>
+
+<p>If you have any questions, please reach out to <a href="mailto:info@athena">us</a>.</p>
+
+<div>
+  <p>
+    Kind regards,<br>
+    The Team
+  </p>
+</div>

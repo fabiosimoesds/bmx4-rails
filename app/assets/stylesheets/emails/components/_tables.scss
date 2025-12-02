@@ -1,0 +1,62 @@
+.email-table__table {
+  border-collapse: collapse;
+  border-radius: $br-5px;
+  border-spacing: 0;
+  box-sizing: border-box;
+  font-feature-settings: 'kern', 'liga', 'tnum';
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  width: 100%;
+
+  td,
+  th,
+  tr {
+    vertical-align: middle;
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  tr {
+    background-color: $background-color-lightest;
+    color: $font-color-darker;
+
+    &:nth-child(odd) {
+      background-color: $background-color-lighter;
+    }
+
+    & + tr {
+      border-top: $border-base;
+    }
+  }
+
+  th {
+    background-color: $background-color-light;
+    border-bottom: $border-base;
+    color: $font-color-base;
+    font-size: modular-scale(-1);
+    font-weight: $fw-semibold;
+    padding: ($spacing-6 - $spacing-1) $spacing-4 $spacing-5 $spacing-4;
+    text-align: left;
+    text-transform: uppercase;
+
+    a {
+      color: $font-color-darker;
+    }
+  }
+
+  td {
+    color: $font-color-base;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    padding: $spacing-4 $spacing-4;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .total-row {
+    background-color: $background-color-light;
+    font-weight: $fw-semibold;
+  }
+}

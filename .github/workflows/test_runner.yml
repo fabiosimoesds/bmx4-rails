@@ -1,0 +1,89 @@
+name: Test Runner
+on:
+  pull_request:
+    types: [labeled] # will run when a label is added to the branch PR
+jobs:
+  rspec:
+    # run rspec if the label that was added was 'run_tests'
+    # or if a push/merge was made to master
+    # or if a push/merge was made to a test-runner branch
+    if: ${{ github.event.label.name == 'run_tests' || (github.event_name == 'push' && (contains(github.ref, '/master') || contains(github.ref, 'test-runner'))) }}
+    name: RSpec
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      RACK_ENV: test
+      NODE_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: 'postgres'
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 'postgres'
+          # TODO: change athena to the actual app name
+          POSTGRES_DB: athena_rails_test
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10ms --health-timeout 500ms --health-retries 15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libc-dev libffi-dev tzdata postgresql-client libpq-dev imagemagick git
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        id: ruby
+        with:
+          ruby-version: 3.4.7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - name: Cache gems
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Install gems
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Cache yarn packages
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install yarn packages
+        run: |
+          yarn --pure-lockfile
+      - name: asset cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            public/assets
+            tmp/cache/assets/sprockets
+          key: asset-cache-${{ runner.os }}-${{ github.ref }}-${{ github.sha }}
+      - name: assets precompile
+        run: bundle exec rake assets:precompile --trace
+      - name: Setup DB
+        run: |
+          bundle exec rake db:create
+      - name: Run Migrations
+        run: |
+          bundle exec rake db:migrate
+      - name: Run rspec
+        continue-on-error: true
+        run: |
+          IGNORE_SLOW=true bundle exec rspec spec/ --tag ~@serial --tag ~@flaky --tag ~@js
+      - name: Re-run failed rspec
+        run: |
+          IGNORE_SLOW=true bundle exec rspec spec/ --only-failures --tag ~@serial --tag ~@flaky --tag ~@js

@@ -1,0 +1,38 @@
+.breadcrumbs {
+  background-color: $background-color-lightest;
+  border-bottom: $border-base;
+  color: $font-color-light;
+  padding: $spacing-4 0;
+
+  @include breakpoint-up($large-screen) {
+    padding: $spacing-3 0;
+  }
+
+  .breadcrumbs__container {
+    @extend %contain;
+
+    > * {
+      color: $font-color-base;
+      font-size: modular-scale(0);
+      margin-right: $spacing-2;
+
+      & + * {
+        margin: 0 $spacing-2;
+      }
+    }
+
+    a {
+      color: $font-color-dark;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    @include breakpoint-up($large-screen) {
+      > * {
+        font-size: modular-scale(-2);
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+@mixin track() {
+  width: 100%;
+  height: $spacing-7;
+  background: none; // get rid of Firefox track background
+}
+
+@mixin thumb() {
+  box-sizing: border-box; // different between Chrome & Firefox
+  border-radius: 50%;
+  background: $form-active-color;
+  width: $spacing-7;
+  height: $spacing-7;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.input-field--slider-range {
+  align-items: center;
+  display: flex;
+
+  &.disabled {
+    .slider-range__inputs {
+      &:after {
+        background-color: $form-disabled-active-color;
+      }
+    }
+
+    input[type='range'] {
+      // done separately and not with an extend to avoid sass combining them, as this appears to break the styles
+      &::-webkit-slider-thumb {
+        background: $form-disabled-active-color;
+      }
+
+      &::-moz-range-thumb {
+        background: $form-disabled-active-color;
+      }
+    }
+  }
+}
+
+.slider-range__inputs {
+  align-items: center;
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    background: $form-inactive-color;
+    border-radius: $br-5px;
+    content: '';
+    height: $spacing-2;
+    position: absolute;
+    width: 100%;
+  }
+
+  &::after {
+    background: $form-active-color;
+    left: var(--min);
+    width: calc(var(--max) - var(--min));
+    z-index: 1;
+  }
+}
+
+input[type='range'] {
+  background: none; // get rid of white Chrome background
+  bottom: 0;
+  cursor: grab;
+  left: 0;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+
+  &::-webkit-slider-runnable-track,
+  &::-webkit-slider-thumb, & {
+    -webkit-appearance: none;
+  }
+
+  // done separately and not with an extend to avoid sass combining them, as this appears to break the styles
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
+
+  &::-moz-range-track {
+    @include track;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &:focus {
+    outline: solid 0 transparent;
+  }
+}
+
+.slider-range__value {
+  color: $font-color-dark;
+  font-size: modular-scale(-2);
+  width: $spacing-20 + $spacing-6;
+
+  &:last-of-type {
+    right: 0;
+    text-align: right;
+  }
+}

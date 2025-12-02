@@ -1,0 +1,5 @@
+<div id="toasts" class="toasts">
+  <% flash.each do |key, value| %>
+    <%= render partial: 'partials/toast', locals: { key: key, value: value, timeout: 0 } if value.present? %>
+  <% end %>
+</div>

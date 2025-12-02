@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= "#{yield(:title)} | " if content_for?(:title) %>
+      <%= Rails.application.config.jumpstart['application_name'] %>
+    </title>
+
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag 'sentry', id: 'sentry-js', data: {
+        'sentry-dsn': Rails.application.credentials[Rails.env.to_sym][:sentry_dsn],
+        'traces-sample-rate': ENV.fetch('SENTRY_TRACES_SAMPLE_RATE', 0.05).to_f,
+        'current-account': current_account.sentry_account_hash,
+    }, defer: true if ['staging', 'production'].include?(Rails.env) %>
+
+    <%= javascript_include_tag 'application', defer: true, data: { turbo_track: Rails.env.production? ? 'reload' : '' } %>
+
+    <%= stylesheet_link_tag 'https://kit.fontawesome.com/f440a3ba4a.css', crossorigin: 'anonymous' %>
+    <%= stylesheet_link_tag 'application', data: { turbo_track: Rails.env.production? ? 'reload' : '' } %>
+    <%= stylesheet_link_tag 'emoji', data: { turbo_track: Rails.env.production? ? 'reload' : '' } %>
+    <%= render partial: 'partials/analytics' if Rails.env.production? %>
+
+    <%= render 'application/favicon' %>
+
+    <%= javascript_include_tag 'hotwire-livereload', defer: true if Rails.env.development? %>
+  </head>
+
+  <body>
+    <%= render partial: 'partials/toasts' %>
+    <%= render partial: 'partials/masquerade_banner' if account_masquerade? %>
+    <%= render partial: "partials/headers/#{current_account.account_type}" %>
+
+    <div class="site-wrapper">
+      <%= yield %>
+    </div>
+
+    <%= render partial: 'partials/footer' %>
+
+    <%= turbo_frame_tag :modals %>
+  </body>
+</html>

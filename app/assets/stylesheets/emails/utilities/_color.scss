@@ -1,0 +1,19 @@
+// prettier-ignore
+// $all-colors: map-combine(
+//   $color-shades,
+//   $color-roles,
+//   $participant-programme-state-colors,
+// );
+$all-colors: map-combine(
+  $color-roles,
+);
+
+@each $key, $var in $all-colors {
+  .color--#{$key} {
+    color: $var;
+  }
+}
+
+// .color--current {
+//   color: currentColor;
+// }

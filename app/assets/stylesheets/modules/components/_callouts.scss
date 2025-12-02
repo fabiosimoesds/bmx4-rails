@@ -1,0 +1,54 @@
+.callout {
+  align-items: center;
+  background-color: $background-color-lightest;
+  border-radius: $br-5px;
+  border: $border-base;
+  display: flex;
+  gap: $spacing-3;
+  padding: $spacing-6;
+}
+
+$basic-callout-colors: (
+  'primary-brand' $primary-brand-color-50 $primary-brand-color-400,
+  'secondary-brand' $secondary-brand-color-50 $secondary-brand-color-400,
+  'red' $red-50 $red-500,
+  'orange' $orange-50 $orange-400,
+  'yellow' $yellow-50 $yellow-500,
+  'green' $green-50 $green-500,
+  'blue' $blue-50 $blue-400,
+  'purple' $purple-50 $purple-400,
+  'grey' $grey-50 $grey-400,
+  'light' $background-color-light $background-color-dark,
+  'success' $green-50 $green-500,
+  'warning' $yellow-50 $yellow-500,
+  'danger' $red-50 $red-500,
+  'info' $blue-50 $blue-400
+);
+
+$all-callout-colors: list-combine($basic-callout-colors);
+
+@each $modifier, $bg, $color in $all-callout-colors {
+  .callout--#{$modifier} {
+    background-color: $bg;
+    border-color: $color;
+    color: $color;
+  }
+}
+
+.callout--action {
+  align-items: center;
+  flex-direction: column;
+
+  @include breakpoint-up($medium-screen) {
+    flex-direction: row;
+  }
+
+  .button {
+    width: 100%;
+
+    @include breakpoint-up($medium-screen) {
+      width: auto;
+      margin-left: auto;
+    }
+  }
+}

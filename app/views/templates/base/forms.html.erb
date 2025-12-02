@@ -1,0 +1,68 @@
+<% provide(:title, 'Templates Forms') %>
+<%= render partial: "templates/partials/breadcrumbs", locals: { crumbs: [['Templates', templates_engine_path], ['Base', ''], ['Forms', '']] } %>
+
+<div class="page__header">
+  <div class="page__heading page__heading--actions">
+    <div class="heading__main">
+      <h2 class="heading__title">Challenges</h2>
+      <div>List of all teams undertaking a challenge for St. Michael's Primary School</div>
+    </div>
+
+    <div class="heading__actions">
+      <div data-controller="menu" data-action="click@window->menu#closeOutside">
+        <div class="action-menu">
+          <div class="button button--success" data-action="click->menu#toggleActionMenu">
+            <div>Actions<i class="ml--3 fa-solid fa-chevron-down"></i></div>
+          </div>
+
+          <ul class="actions__menu menu menu--sub menu--always-popover">
+            <li class="menu-item">
+              <a href="#">Action 1</a>
+            </li>
+            <li class="menu-item">
+              <a href="#">Action 2</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-sections">
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/basic_form_inputs' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/large_text' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/buttons' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/select2s' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/uploaders' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/multi_uploader' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/stimulus' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/datepickers' %>
+  </div>
+
+  <div class="page-section">
+    <%= render partial: 'templates/base/partials/sections/stimulus_inputs' %>
+  </div>
+</div>

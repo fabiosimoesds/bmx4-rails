@@ -1,0 +1,80 @@
+.toasts {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: $spacing-3;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-index-5;
+
+  @include breakpoint-up($medium-screen) {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+}
+
+.toast {
+  background: $background-color-lightest;
+  box-shadow: $shadow-2;
+  border-left: $bw-3px solid $bc-base;
+  color: $font-color-darker;
+  display: flex;
+  margin: $spacing-6;
+  padding: $spacing-6;
+  width: 100%;
+
+  @include breakpoint-up($medium-screen) {
+    max-width: 25em;
+  }
+
+  & + .toast {
+    margin-top: $spacing-4;
+  }
+}
+
+// notice and alert are used by Devise
+$basic-toast-colors: (
+  'info': $information,
+  'notice': $information,
+  'success': $success,
+  'danger': $danger,
+  'alert': $danger,
+  'warning': $warning,
+);
+
+@each $key, $var in $basic-toast-colors {
+  .toast--#{$key} {
+    border-left-color: $var;
+
+    .toast__icon {
+      color: $var;
+    }
+  }
+}
+
+.toast__icon {
+  flex: 0 0 auto;
+  line-height: $leading-normal;
+}
+
+.toast__message {
+  align-items: baseline;
+  display: flex;
+  flex: 1 1 auto;
+  margin-right: $spacing-4;
+}
+
+.toast__close {
+  @include transition(color);
+
+  color: $font-color-light;
+  cursor: pointer;
+  margin-right: $spacing-2;
+  line-height: $leading-normal;
+
+  &:hover {
+    color: $font-color-base;
+  }
+}

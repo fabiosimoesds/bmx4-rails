@@ -1,0 +1,27 @@
+<div class="form-sidebar">
+  <div class="form-sidebar__section">
+    <h4 class="page-sidebar__title">2. Large Text Inputs</h4>
+    <p>Contains variations of our most larger text inputs.</p>
+  </div>
+</div>
+
+<form action="#" class="form-main">
+  <div class="form-main__section">
+    <div class="form__header">
+      <h3 class="form-heading__title">2. Large Text Inputs</h3>
+      <div class="form__subheading">Contains variations of our most larger text inputs.</div>
+    </div>
+
+    <div class="form__body">
+      <div class="form__inputs">
+        <%= render partial: 'templates/base/partials/inputs/text_area', locals: { wrapper_classes:'form__input--s2-m4-l4', id: 'text_area', label: 'Text Area', hint: 'type something long' } %>
+        <%= render partial: 'templates/base/partials/inputs/text_area', locals: { wrapper_classes:'form__input--s2-m4-l4', id: 'text_area_error', label: 'Text Area Errored', required: true, errors: "can't be blank" } %>
+        <%= render partial: 'templates/base/partials/inputs/text_area', locals: { wrapper_classes:'form__input--s2-m4-l4', id: 'text_area_disabled', label: 'Text Area Disabled', disabled: true } %>
+
+        <%= render partial: 'templates/base/partials/inputs/trix', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'trix', label: 'Trix', hint: 'type something formatted' } %>
+        <%= render partial: 'templates/base/partials/inputs/trix', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'trix_error', label: 'Trix Errored', required: true, errors: "can't be blank" } %>
+        <%= render partial: 'templates/base/partials/inputs/trix', locals: { wrapper_classes:'form__input--s2-m4-l12', id: 'trix_disabled', label: 'Trix Disabled', disabled: true } %>
+      </div>
+    </div>
+  </div>
+</form>

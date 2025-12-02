@@ -1,0 +1,149 @@
+$margin-props: (
+  m: margin,
+  mt: margin-top,
+  mb: margin-bottom,
+  mr: margin-right,
+  ml: margin-left,
+);
+
+@each $name, $prop in $margin-props {
+  // Auto
+  // m--auto, mt--auto
+
+  .#{$name}--auto {
+    #{$prop}: auto;
+  }
+
+  // Auto breakpoints
+  // sm:m--auto, xl:m--auto, md:m--auto
+
+  @include breakpoint-all-sizes("#{$name}--auto") {
+    #{$prop}: auto;
+  }
+
+  @each $key, $var in $spaces {
+    // Spacings
+    // m--2, -mb--10, ml--8
+
+    .#{$name}--#{$key} {
+      #{$prop}: $var;
+    }
+
+    .-#{$name}--#{$key} {
+      #{$prop}: -$var;
+    }
+
+    // Spacings breakpoints
+    // md:mt--20, sm:-m--10, xl:mb--4
+
+    @include breakpoint-all-sizes("#{$name}--#{$key}") {
+      #{$prop}: $var;
+    }
+
+    @include breakpoint-all-sizes("-#{$name}--#{$key}") {
+      #{$prop}: -$var;
+    }
+  }
+
+  @for $i from 1 through 10 {
+    // Units
+    // m--6px, -mt--8px, -mr--4px
+
+    .#{$name}--#{$i}px {
+      #{$prop}: #{$i + 'px'};
+    }
+
+    .-#{$name}--#{$i}px {
+      #{$prop}: #{-$i + 'px'};
+    }
+
+    // Units breakpoints
+    // md:m--1px, lg:-ml--8px, sm:-mr--10px
+
+    @include breakpoint-all-sizes("#{$name}--#{$i}px") {
+      #{$prop}: #{$i + 'px'};
+    }
+
+    @include breakpoint-all-sizes("-#{$name}--#{$i}px") {
+      #{$prop}: #{-$i + 'px'};
+    }
+  }
+}
+
+// Margin Pairs
+
+$margin-prop-pairs: my margin-top margin-bottom, mx margin-right margin-left;
+
+@each $name, $prop1, $prop2 in $margin-prop-pairs {
+  // Auto
+  // my--auto, mx--auto
+
+  .#{$name}--auto {
+    #{$prop1}: auto;
+    #{$prop2}: auto;
+  }
+
+  // Auto breakpoints
+  // sm:my--auto, lg:mx--auto, md:mx--auto
+
+  @include breakpoint-all-sizes("#{$name}--auto") {
+    #{$prop1}: auto;
+    #{$prop2}: auto;
+  }
+
+  @each $key, $var in $spaces {
+    // Spacings
+    // mx--2, -my--10
+
+    .#{$name}--#{$key} {
+      #{$prop1}: $var;
+      #{$prop2}: $var;
+    }
+
+    .-#{$name}--#{$key} {
+      #{$prop1}: -$var;
+      #{$prop2}: -$var;
+    }
+
+    // Spacings breakpoints
+    // md:mx--20, sm:-my--10, xl:mx--4
+
+    @include breakpoint-all-sizes("#{$name}--#{$key}") {
+      #{$prop1}: $var;
+      #{$prop2}: $var;
+    }
+
+    @include breakpoint-all-sizes("-#{$name}--#{$key}") {
+      #{$prop1}: -$var;
+      #{$prop2}: -$var;
+    }
+  }
+
+  @for $i from 1 through 10 {
+    // Units
+    // mx--3px, -my--9px
+
+    .#{$name}--#{$i}px {
+      #{$prop1}: #{$i + 'px'};
+      #{$prop2}: #{$i + 'px'};
+    }
+
+    .-#{$name}--#{$i}px {
+      #{$prop1}: #{-$i + 'px'};
+      #{$prop2}: #{-$i + 'px'};
+    }
+
+    // Units breakpoints
+    // lg:mx--10px, xl:-my--8px, sm:-my--1px
+
+    @include breakpoint-all-sizes("#{$name}--#{$i}px") {
+      #{$prop1}: #{$i + 'px'};
+      #{$prop2}: #{$i + 'px'};
+    }
+
+    @include breakpoint-all-sizes("-#{$name}--#{$i}px") {
+      #{$prop1}: #{-$i + 'px'};
+      #{$prop2}: #{-$i + 'px'};
+    }
+  }
+}

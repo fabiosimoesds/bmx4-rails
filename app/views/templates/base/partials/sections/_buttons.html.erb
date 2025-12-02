@@ -1,0 +1,159 @@
+<div class="form-sidebar">
+  <div class="form-sidebar__section">
+    <h4 class="page-sidebar__title">3. Buttons</h4>
+    <p>Contains variations of our buttons.</p>
+  </div>
+</div>
+
+<form action="#" class="form-main">
+  <div class="form-main__section">
+    <div class="form__header">
+      <h3 class="form-heading__title">3. Buttons</h3>
+      <div class="form__subheading">Contains variations of our buttons.</div>
+    </div>
+
+    <div class="form__body">
+      <h5 class="form__section-title">Sizings</h5>
+
+      <div class="form__inputs">
+        <div class="form__input form__input--s2-m4-l3">
+          <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'button--large', label: 'Large' } %>
+        </div>
+
+        <div class="form__input form__input--s2-m4-l3">
+          <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'', label: 'Normal' } %>
+        </div>
+
+        <div class="form__input form__input--s2-m4-l3">
+          <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'button--small', label: 'Small' } %>
+        </div>
+
+        <div class="form__input form__input--s2-m4-l3">
+          <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'button--smaller', label: 'Smaller' } %>
+        </div>
+
+        <div class="form__input form__input--s2-m4-l3">
+          <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'button--smallest', label: 'Smallest' } %>
+        </div>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'button--wide form__input form__input--new-line', label: 'Wide' } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">Branded</h5>
+
+      <div class="form__section-text">There may not always be a secondary or tertiary button class being created. This can vary from project to project and they examples should be added/removed accordingly. These buttons use form__input classes that are not required for actual implementation. They are just for arrangement.</div>
+
+      <div class="form__inputs">
+        <%# The form__input class is to arrange them nicely. This is not typically needed %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_base', classes:'form__input form__input--s2-m4-l3 form__input--new-line', label: 'Base' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_stroke', classes:'form__input form__input--s2-m4-l3 button--stroke', label: 'Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_white', classes:'form__input form__input--s2-m4-l3 button--white', label: 'White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_combo', classes:'form__input form__input--s2-m4-l3 button--stroke button--white', label: 'Stroke White' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_1_b', classes:'form__input form__input--s2-m4-l3 button--primary', label: 'Primary' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_1_s', classes:'form__input form__input--s2-m4-l3 button--primary button--stroke', label: 'Primary Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_1_w', classes:'form__input form__input--s2-m4-l3 button--primary button--white', label: 'Primary White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_1_c', classes:'form__input form__input--s2-m4-l3 button--primary button--stroke button--white', label: 'Primary Stroke White' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_b', classes:'form__input form__input--s2-m4-l3 button--secondary', label: 'Secondary' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_s', classes:'form__input form__input--s2-m4-l3 button--secondary button--stroke', label: 'Secondary Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_w', classes:'form__input form__input--s2-m4-l3 button--secondary button--white', label: 'Secondary White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_c', classes:'form__input form__input--s2-m4-l3 button--secondary button--stroke button--white', label: 'Secondary Stroke White' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_b', classes:'form__input form__input--s2-m4-l3 button--tertiary', label: 'Tertiary' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_s', classes:'form__input form__input--s2-m4-l3 button--tertiary button--stroke', label: 'Tertiary Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_w', classes:'form__input form__input--s2-m4-l3 button--tertiary button--white', label: 'Tertiary White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_2_c', classes:'form__input form__input--s2-m4-l3 button--tertiary button--stroke button--white', label: 'Tertiary Stroke White' } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">Colour Roles</h5>
+
+      <div class="form__inputs">
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_s_b', classes:'form__input form__input--s2-m4-l3 button--success', label: 'Success' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_s_s', classes:'form__input form__input--s2-m4-l3 button--success button--stroke', label: 'Success Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_s_w', classes:'form__input form__input--s2-m4-l3 button--success button--white', label: 'Success White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_s_c', classes:'form__input form__input--s2-m4-l3 button--success button--stroke button--white', label: 'Success Stroke White' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_d_b', classes:'form__input form__input--s2-m4-l3 button--danger', label: 'Danger' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_d_s', classes:'form__input form__input--s2-m4-l3 button--danger button--stroke', label: 'Danger Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_d_w', classes:'form__input form__input--s2-m4-l3 button--danger button--white', label: 'Danger White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_d_c', classes:'form__input form__input--s2-m4-l3 button--danger button--stroke button--white', label: 'Danger Stroke White' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_i_b', classes:'form__input form__input--s2-m4-l3 button--info', label: 'Info' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_i_s', classes:'form__input form__input--s2-m4-l3 button--info button--stroke', label: 'Info Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_i_w', classes:'form__input form__input--s2-m4-l3 button--info button--white', label: 'Info White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_i_c', classes:'form__input form__input--s2-m4-l3 button--info button--stroke button--white', label: 'Info Stroke White' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_w_b', classes:'form__input form__input--s2-m4-l3 button--warning', label: 'Warning' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_w_s', classes:'form__input form__input--s2-m4-l3 button--warning button--stroke', label: 'Warning Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_w_w', classes:'form__input form__input--s2-m4-l3 button--warning button--white', label: 'Warning White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_w_c', classes:'form__input form__input--s2-m4-l3 button--warning button--stroke button--white', label: 'Warning Stroke White' } %>
+
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_g_b', classes:'form__input form__input--s2-m4-l3 button--grey', label: 'Grey' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_g_s', classes:'form__input form__input--s2-m4-l3 button--grey button--stroke', label: 'Grey Stroke' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_g_w', classes:'form__input form__input--s2-m4-l3 button--grey button--white', label: 'Grey White' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_g_c', classes:'form__input form__input--s2-m4-l3 button--grey button--stroke button--white', label: 'Grey Stroke White' } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">Disabled</h5>
+
+      <div class="form__inputs">
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_disabled_b', classes:'form__input form__input--s2-m4-l3', label: 'Disabled', disabled: true } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_disabled_s', classes:'form__input form__input--s2-m4-l3 button--stroke', label: 'Disabled Stroke', disabled: true } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_disabled_w', classes:'form__input form__input--s2-m4-l3 button--white', label: 'Disabled White', disabled: true } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_disabled_c', classes:'form__input form__input--s2-m4-l3 button--stroke button--white', label: 'Disabled Stroke White', disabled: true } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">Spinner</h5>
+
+      <div class="form__inputs">
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_spinner', classes:'form__input form__input--s2-m4-l3', label: 'Spinner', icon_classes: 'fa-solid fa-spinner fa-spin ml--3' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_spinner_only', classes:'form__input form__input--s2-m4-l3', icon_classes: 'fa-solid fa-spinner fa-spin' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_spinner_d', classes:'form__input form__input--s2-m4-l3 button--disabled-active', label: 'Spinner', icon_classes: 'fa-solid fa-spinner fa-spin ml--3', disabled: true } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_spinnner_only_d', classes:'form__input form__input--s2-m4-l3 button--disabled-active', icon_classes: 'fa-solid fa-spinner fa-spin', disabled: true } %>
+      </div>
+
+      <div class="form__actions">
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_sp', classes:'button--success', label: 'Save & Proceed', icon_classes: 'fa-solid fa-arrow-right ml--3' } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">Button Links</h5>
+
+      <div class="form__inputs">
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'form__input form__input--s2-m4-l3 button--link link--success', label: 'Success' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'form__input form__input--s2-m4-l3 button--link link--info', label: 'Info' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'form__input form__input--s2-m4-l3 button--link link--danger', label: 'Danger' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'form__input form__input--s2-m4-l3 button--link link--warning', label: 'Warning' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'form__input form__input--s2-m4-l3 button--link link--light', label: 'Light' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button', classes:'form__input form__input--s2-m4-l3 button--link link--dark', label: 'Dark' } %>
+      </div>
+
+      <hr class="form__divider">
+
+      <h5 class="form__section-title">Button Actions</h5>
+
+      <div class="button__actions">
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_action_s', classes:'button--success', label: 'Save Changes' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_action_i', classes:'button--link link--info', label: 'Cancel' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_action_d', classes:'button--link link--danger', label: 'Delete' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_action_p', classes:'button--primary', label: 'Primary' } %>
+        <%= render partial: 'templates/base/partials/inputs/button', locals: { id: 'button_action_s', classes:'button--link link--dark', label: 'Secondary' } %>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<div class="form__actions form__actions--section">
+  <input type="submit" name="commit" value="Save Changes" class="button button--primary">
+</div>

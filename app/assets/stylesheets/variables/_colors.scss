@@ -1,0 +1,268 @@
+// Color Palettes
+
+// Red
+$red-50: #fdeded;
+$red-100: #fcdada;
+$red-200: #f9b5b5;
+$red-300: #f58f8f;
+$red-400: #f26a6a;
+$red-500: #ef4444;
+$red-600: #e71414;
+$red-700: #b30f0f;
+$red-800: #800b0b;
+$red-900: #4c0707;
+
+// Orange
+$orange-50: #fff7ed;
+$orange-100: #ffedd5;
+$orange-200: #fed7aa;
+$orange-300: #fdba74;
+$orange-400: #fb923c;
+$orange-500: #f97316;
+$orange-600: #ea580c;
+$orange-700: #c2410c;
+$orange-800: #9a3412;
+$orange-900: #7c2d12;
+
+// Yellow
+$yellow-50: #fefce8;
+$yellow-100: #fef9c3;
+$yellow-200: #fef08a;
+$yellow-300: #fde047;
+$yellow-400: #facc15;
+$yellow-500: #eab308;
+$yellow-600: #ca8a04;
+$yellow-700: #a16207;
+$yellow-800: #854d0e;
+$yellow-900: #713f12;
+
+// Green
+$green-50: #f0fdf4;
+$green-100: #dcfce7;
+$green-200: #bbf7d0;
+$green-300: #86efac;
+$green-400: #4ade80;
+$green-500: #22c55e;
+$green-600: #16a34a;
+$green-700: #15803d;
+$green-800: #166534;
+$green-900: #14532d;
+
+// Blue
+$blue-50: #f0f9ff;
+$blue-100: #e0f2fe;
+$blue-200: #bae6fd;
+$blue-300: #7dd3fc;
+$blue-400: #38bdf8;
+$blue-500: #0ea5e9;
+$blue-600: #0284c7;
+$blue-700: #0369a1;
+$blue-800: #075985;
+$blue-900: #0c4a6e;
+
+// Purple
+$purple-50: #faf5ff;
+$purple-100: #f3e8ff;
+$purple-200: #e9d5ff;
+$purple-300: #d8b4fe;
+$purple-400: #c084fc;
+$purple-500: #a855f7;
+$purple-600: #9333ea;
+$purple-700: #7e22ce;
+$purple-800: #6b21a8;
+$purple-900: #581c87;
+
+// Grey
+$grey-50:  #f8fafc;
+$grey-100: #f1f5f9;
+$grey-200: #e1e8f0;
+$grey-300: #cad5e3;
+$grey-400: #90a3b9;
+$grey-500: #62748e;
+$grey-600: #45556c;
+$grey-700: #324158;
+$grey-800: #1d293d;
+$grey-900: #0f172b;
+
+$white: #fff;
+$black: #000;
+
+// Color Roles
+
+$primary-color: $primary-brand-color;
+$primary-color-light: $primary-brand-color-light;
+$primary-color-lighter: $primary-brand-color-lighter;
+$primary-color-dark: $primary-brand-color-dark;
+$primary-color-darker: $primary-brand-color-darker;
+
+$secondary-color: $secondary-brand-color;
+$secondary-color-light: $secondary-brand-color-light;
+$secondary-color-lighter: $secondary-brand-color-lighter;
+$secondary-color-dark: $secondary-brand-color-dark;
+$secondary-color-darker: $secondary-brand-color-darker;
+
+$tertiary-color: $tertiary-brand-color;
+$tertiary-color-light: $tertiary-brand-color-light;
+$tertiary-color-lighter: $tertiary-brand-color-lighter;
+$tertiary-color-dark: $tertiary-brand-color-dark;
+$tertiary-color-darker: $tertiary-brand-color-darker;
+
+$font-color-lightest: $white;
+$font-color-lighter: $grey-200;
+$font-color-light: $grey-400;
+$font-color-base: $grey-600;
+$font-color-dark: $grey-700;
+$font-color-darker: $grey-900;
+$font-color-darkest: $black;
+
+$success-lightest: $green-50;
+$success-lighter: $green-100;
+$success-light: $green-200;
+$success: $green-400;
+$success-dark: $green-600;
+$success-darker: $green-800;
+
+$information-lightest: $blue-50;
+$information-lighter: $blue-200;
+$information-light: $blue-300;
+$information: $blue-500;
+$information-dark: $blue-600;
+$information-darker: $blue-800;
+
+$warning-lightest: $yellow-50;
+$warning-lighter: $yellow-100;
+$warning-light: $yellow-200;
+$warning:  $yellow-400;
+$warning-dark: $yellow-700;
+$warning-darker: $yellow-800;
+
+$danger-lightest: $red-50;
+$danger-lighter: $red-100;
+$danger-light: $red-200;
+$danger: $red-500;
+$danger-dark: $red-600;
+$danger-darker: $red-800;
+
+$color-roles: (
+  primary: $primary-color,
+  primary-light: $primary-color-light,
+  primary-lighter: $primary-color-lighter,
+  primary-dark: $primary-color-dark,
+  primary-darker: $primary-color-darker,
+  secondary: $secondary-color,
+  secondary-light: $secondary-color-light,
+  secondary-lighter: $secondary-color-lighter,
+  secondary-dark: $secondary-color-dark,
+  secondary-darker: $secondary-color-darker,
+  tertiary: $tertiary-color,
+  tertiary-light: $tertiary-color-light,
+  tertiary-lighter: $tertiary-color-lighter,
+  tertiary-dark: $tertiary-color-dark,
+  tertiary-darker: $tertiary-color-darker,
+  lightest: $font-color-lightest,
+  lighter: $font-color-lighter,
+  light: $font-color-light,
+  base: $font-color-base,
+  dark: $font-color-dark,
+  darker: $font-color-darker,
+  darkest: $font-color-darkest,
+  success-lightest: $success-lightest,
+  success-lighter: $success-lighter,
+  success-light: $success-light,
+  success: $success,
+  success-dark: $success-dark,
+  success-darker: $success-darker,
+  information-lightest: $information-lightest,
+  information-lighter: $information-lighter,
+  information-light: $information-light,
+  information: $information,
+  information-dark: $information-dark,
+  information-darker: $information-darker,
+  warning-lightest: $warning-lightest,
+  warning-lighter: $warning-lighter,
+  warning-light: $warning-light,
+  warning: $warning,
+  warning-dark: $warning-dark,
+  warning-darker: $warning-darker,
+  danger-lightest: $danger-lightest,
+  danger-lighter: $danger-lighter,
+  danger-light: $danger-light,
+  danger: $danger,
+  danger-dark: $danger-dark,
+  danger-darker: $danger-darker,
+);
+
+$color-shades: (
+  'white': $white,
+  'black': $black,
+  red-50: $red-50,
+  red-100: $red-100,
+  red-200: $red-200,
+  red-300: $red-300,
+  red-400: $red-400,
+  red-500: $red-500,
+  red-600: $red-600,
+  red-700: $red-700,
+  red-800: $red-800,
+  red-900: $red-900,
+  orange-50: $orange-50,
+  orange-100: $orange-100,
+  orange-200: $orange-200,
+  orange-300: $orange-300,
+  orange-400: $orange-400,
+  orange-500: $orange-500,
+  orange-600: $orange-600,
+  orange-700: $orange-700,
+  orange-800: $orange-800,
+  orange-900: $orange-900,
+  yellow-50: $yellow-50,
+  yellow-100: $yellow-100,
+  yellow-200: $yellow-200,
+  yellow-300: $yellow-300,
+  yellow-400: $yellow-400,
+  yellow-500: $yellow-500,
+  yellow-600: $yellow-600,
+  yellow-700: $yellow-700,
+  yellow-800: $yellow-800,
+  yellow-900: $yellow-900,
+  green-50: $green-50,
+  green-100: $green-100,
+  green-200: $green-200,
+  green-300: $green-300,
+  green-400: $green-400,
+  green-500: $green-500,
+  green-600: $green-600,
+  green-700: $green-700,
+  green-800: $green-800,
+  green-900: $green-900,
+  blue-50: $blue-50,
+  blue-100: $blue-100,
+  blue-200: $blue-200,
+  blue-300: $blue-300,
+  blue-400: $blue-400,
+  blue-500: $blue-500,
+  blue-600: $blue-600,
+  blue-700: $blue-700,
+  blue-800: $blue-800,
+  blue-900: $blue-900,
+  purple-50: $purple-50,
+  purple-100: $purple-100,
+  purple-200: $purple-200,
+  purple-300: $purple-300,
+  purple-400: $purple-400,
+  purple-500: $purple-500,
+  purple-600: $purple-600,
+  purple-700: $purple-700,
+  purple-800: $purple-800,
+  purple-900: $purple-900,
+  grey-50: $grey-50,
+  grey-100: $grey-100,
+  grey-200: $grey-200,
+  grey-300: $grey-300,
+  grey-400: $grey-400,
+  grey-500: $grey-500,
+  grey-600: $grey-600,
+  grey-700: $grey-700,
+  grey-800: $grey-800,
+  grey-900: $grey-900,
+);
