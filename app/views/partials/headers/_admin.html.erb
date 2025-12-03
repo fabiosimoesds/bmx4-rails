@@ -12,7 +12,6 @@
 
     <ul id="primary-menu" class="menu">
       <%= active_link_to 'Users', root_path, active: [['admin/accounts'], []], wrap_tag: :li, wrap_class: 'menu-item', class: 'primary-menu__link', class_active: 'menu-item--active' %>
-      <%= active_link_to 'My Profile', edit_registrations_path, active: :exact, wrap_tag: :li, wrap_class: 'menu-item hidden--lg-up', class: 'primary-menu__link', class_active: 'menu-item--active' %>
 
       <li class="menu-item hidden--lg-up">
         <%= button_to 'Logout', destroy_account_session_path, method: :delete, class: 'primary-menu__link button--link', form_class: 'w--100pc' %>
@@ -26,8 +25,6 @@
         </div>
 
         <ul class="menu menu--sub">
-          <%= active_link_to 'My Profile', edit_registrations_path, active: :exact, wrap_tag: :li, wrap_class: 'menu-item', class_active: 'menu-item--active' %>
-
           <li class="menu-item">
             <%= button_to 'Logout', destroy_account_session_path, method: :delete, class: 'button--link' %>
           </li>

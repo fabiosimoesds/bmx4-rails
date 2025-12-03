@@ -12,7 +12,6 @@
 
     <ul id="primary-menu" class="menu">
       <%= active_link_to 'Users', root_path, active: [['admin/accounts'], []], wrap_tag: :li, wrap_class: 'menu-item', class: 'primary-menu__link', class_active: 'menu-item--active' %>
-      <%= active_link_to 'My Profile', edit_registrations_path, active: :exact, wrap_tag: :li, wrap_class: 'menu-item hidden--lg-up', class: 'primary-menu__link', class_active: 'menu-item--active' %>
 
       <li class="menu-item hidden--lg-up">
         <%= render partial: 'partials/headers/masqueradable_logout', locals: { classes: 'primary-menu__link w--100pc', button_classes: 'button--link' } %>
@@ -26,8 +25,6 @@
         </div>
 
         <ul class="menu menu--sub">
-          <%= active_link_to 'My Profile', edit_registrations_path, active: :exact, wrap_tag: :li, wrap_class: 'menu-item', class_active: 'menu-item--active' %>
-
           <li class="menu-item">
             <%= render partial: 'partials/headers/masqueradable_logout', locals: { classes: 'button--link' } %>
           </li>

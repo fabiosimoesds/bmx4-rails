@@ -30,8 +30,8 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   # TODO: Replace below example.com with actual domain
   config.action_cable.mount_path = '/cable'
-  config.action_cable.url = 'wss://example.com/cable'
-  config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.url = 'wss://heroku-staging.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://heroku-staging.com', /http:\/\/example.*/ ]
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   config.assume_ssl = false
@@ -70,7 +70,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_mailer.default_url_options = { host: 'heroku-staging.com' }
 
   # Configure Postmark
   config.action_mailer.delivery_method = :postmark
@@ -112,3 +112,5 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
+
+Rails.application.routes.default_url_options = { host: 'heroku-staging.com', protocol: 'https' }
