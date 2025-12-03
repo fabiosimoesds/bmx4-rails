@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'sorts accounts' do
   before do
     account = FactoryBot.create(:account, first_name: 'Account', last_name: 'A', updated_at: 1.day.ago)
-    FactoryBot.create(:account, :other, first_name: 'Account', last_name: 'B', updated_at: 2.days.ago)
+    FactoryBot.create(:account, first_name: 'Account', last_name: 'B', updated_at: 2.days.ago)
 
     login_as(account)
     visit root_path

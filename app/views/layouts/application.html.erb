@@ -30,8 +30,7 @@
 
   <body>
     <%= render partial: 'partials/toasts' %>
-    <%= render partial: 'partials/masquerade_banner' if account_masquerade? %>
-    <%= render partial: "partials/headers/#{current_account.account_type}" %>
+    <%= render partial: "partials/headers/admin" %>
 
     <div class="site-wrapper">
       <%= yield %>

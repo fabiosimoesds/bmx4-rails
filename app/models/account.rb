@@ -34,26 +34,18 @@
 #  index_accounts_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class Account < ApplicationRecord
-  devise :database_authenticatable, :invitable,
-         :recoverable, :rememberable, :validatable, :masqueradable
+  devise :database_authenticatable, :rememberable, :validatable
 
   has_person_name
 
-  attribute :terms_of_service, :boolean, default: false
-
   # Email is validated in the devise validatable module if: :email_required? (which is true by default)
   validates_presence_of :time_zone, :account_type
-  validates_presence_of :accepted_terms_at, if: :invitation_accepted?
 
   validates :name, full_name: true
 
-  validates_acceptance_of :terms_of_service, allow_nil: false, acceptance: true, if: :invited_and_signing_up?
-
   validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone::MAPPING.values
 
-  after_invitation_accepted :set_accepted_terms_at
-
-  enum :account_type, { admin: 0, other: 1 }
+  enum :account_type, { admin: 0 }
 
   ransacker :full_name do |parent|
     Arel::Nodes::InfixOperation.new('||',
@@ -78,19 +70,5 @@ class Account < ApplicationRecord
       name: self.name,
       email: self.email,
     }
-  end
-
-  def masqueradable?(current_account)
-    self.id != current_account.id
-  end
-
-  private
-
-  def invited_and_signing_up?
-    self.invitation_accepted_at.present? && self.accepted_terms_at.blank?
-  end
-
-  def set_accepted_terms_at
-    self.update(accepted_terms_at: Time.zone.now)
   end
 end

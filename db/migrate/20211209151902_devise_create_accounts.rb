@@ -12,8 +12,8 @@ class DeviseCreateAccounts < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
-      t.string   :reset_password_token
-      t.datetime :reset_password_sent_at
+      # t.string   :reset_password_token
+      # t.datetime :reset_password_sent_at
 
       ## Rememberable
       t.datetime :remember_created_at
@@ -37,21 +37,21 @@ class DeviseCreateAccounts < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
       ## Invitable
-      t.string   :invitation_token
-      t.datetime :invitation_created_at
-      t.datetime :invitation_sent_at
-      t.datetime :invitation_accepted_at
-      t.integer  :invitation_limit
-      t.references :invited_by, polymorphic: true
-      t.integer  :invitations_count, default: 0
+      # t.string   :invitation_token
+      # t.datetime :invitation_created_at
+      # t.datetime :invitation_sent_at
+      # t.datetime :invitation_accepted_at
+      # t.integer  :invitation_limit
+      # t.references :invited_by, polymorphic: true
+      # t.integer  :invitations_count, default: 0
 
       t.timestamps null: false
     end
 
     add_index :accounts, :email,                unique: true
-    add_index :accounts, :reset_password_token, unique: true
-    add_index :accounts, :invitation_token,     unique: true
-    add_index :accounts, :invited_by_id
+    # add_index :accounts, :reset_password_token, unique: true
+    # add_index :accounts, :invitation_token,     unique: true
+    # add_index :accounts, :invited_by_id
     # add_index :accounts, :confirmation_token,   unique: true
     # add_index :accounts, :unlock_token,         unique: true
   end

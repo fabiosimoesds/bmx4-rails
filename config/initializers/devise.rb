@@ -151,7 +151,7 @@ Devise.setup do |config|
   # Ensure that invited record is valid.
   # The invitation won't be sent if this check fails.
   # Default: false
-  config.validate_on_invite = true
+  # config.validate_on_invite = true
 
   # Resend invitation if user with invited status is invited again
   # Default: true
@@ -266,11 +266,11 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  # config.reset_password_within = 6.hours
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.
-  config.sign_in_after_reset_password = false
+  # config.sign_in_after_reset_password = false
 
   # ==> Configuration for :encryptable
   # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
