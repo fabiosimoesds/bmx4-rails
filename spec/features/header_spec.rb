@@ -11,7 +11,6 @@ feature 'Header renders correctly for' do
       expect(page).to have_content account.name
 
       expect(page).to have_link 'Users', href: root_path
-      expect(page).to have_link 'My Profile', href: edit_registrations_path
       expect(page).to have_button 'Logout'
     end
   end

@@ -24,8 +24,6 @@
         <th class="hidden--md-down">
           <%= sort_link(@q, :updated_at, 'Updated At', default_order: :desc) %>
         </th>
-
-        <th class="text--center w--7em">Action</th>
       </tr>
     </thead>
 
@@ -34,7 +32,7 @@
         <%= render partial: 'admin/accounts/partials/index/row', collection: @accounts, as: :account %>
       <% else %>
         <%= render partial: 'partials/no_results', locals: {
-          breakpoints: [{ colspan: 3, class: 'hidden--md-up' }, { colspan: 4, class: 'hidden--md-down' }],
+          breakpoints: [{ colspan: 2, class: 'hidden--md-up' }, { colspan: 3, class: 'hidden--md-down' }],
           message: 'No Account found. Try modifying your search.'
         } %>
       <% end %>

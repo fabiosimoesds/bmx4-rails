@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user arrives at landing page' do
   before do
     @account = FactoryBot.create(:account)
-    visit root_path
+    visit new_account_session_path
   end
 
   it 'and percy checks the page', js: true, only_percy: true do

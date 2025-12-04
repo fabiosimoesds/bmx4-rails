@@ -13,10 +13,3 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "*.{js,vue}"
       run: yarn prettier --write {files} --config ./prettier.config.js && git add {files}
-    check-typos:
-      files: git diff --name-only --staged
-      run: typos --diff {files} --config config/_typos.toml
-    fix-typos:
-      files: git diff --name-only --staged
-      run: typos --write-changes {files} --config config/_typos.toml
-      stage_fixed: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_02_27_095310) do
+ActiveRecord::Schema[8.1].define(version: 2025_09_23_150308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,4 +42,39 @@ ActiveRecord::Schema[8.1].define(version: 2025_02_27_095310) do
     t.index ["invited_by_type", "invited_by_id"], name: "index_accounts_on_invited_by"
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
+
+  create_table "articles", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "posted_at", null: false
+    t.boolean "published", default: false, null: false
+    t.string "slug", null: false
+    t.string "summary", null: false
+    t.string "tags", default: [], null: false, array: true
+    t.string "thumbnail_image_url"
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_articles_on_author_id"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.string "profile_image_url"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "company"
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.text "message"
+    t.string "name"
+    t.string "phone"
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "articles", "authors"
 end

@@ -22,7 +22,6 @@ feature 'User Management Index' do
       expect(page).to have_content @account.email
       expect(page).to have_content 'Admin'
       expect(page).to have_content I18n.l(@account.updated_at, format: :short)
-      expect(page).to have_link 'Edit', href: edit_account_path(@account)
     end
   end
 end
