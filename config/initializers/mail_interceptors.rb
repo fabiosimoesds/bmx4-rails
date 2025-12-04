@@ -1,8 +1,8 @@
 # class SandboxEmailInterceptor
 #   def self.delivering_email(message)
-#     message.to = message.to.select { |email| email.include?('thresholds.co.uk') || email.include?('mmtm.io') || (ENV.fetch("SEND_ADDRESSES") { '' }).split(',').include?(email) }
+#     message.to = message.to.select { |email| email.include?('google.com') || email.include?('bmx4.com.br') || (ENV.fetch("SEND_ADDRESSES") { '' }).split(',').include?(email) }
 #
-#     message.to = 'office@thresholds.co.uk' if message.to.blank?
+#     message.to = 'office@bmx4.com.br' if message.to.blank?
 #   end
 # end
 #
@@ -10,14 +10,14 @@
 #   ActionMailer::Base.register_interceptor(SandboxEmailInterceptor)
 # end
 
-class MmtmTestingEmailInterceptor
+class Bmx4TestingEmailInterceptor
   def self.delivering_email(message)
-    message.to = 'developer.name@mmtm.io' # replace with the dev's email who is doing the testing
-    message.cc = 'dev@mmtm.io'
-    message.bcc = 'dev@mmtm.io'
+    message.to = 'developer.name@bmx4.com.br' # replace with the dev's email who is doing the testing
+    message.cc = 'dev@bmx4.com.br'
+    message.bcc = 'dev@bmx4.com.br'
   end
 end
 
 if Rails.env.development? && ActionMailer::Base.delivery_method == :postmark
-  ActionMailer::Base.register_interceptor(MmtmTestingEmailInterceptor)
+  ActionMailer::Base.register_interceptor(Bmx4TestingEmailInterceptor)
 end

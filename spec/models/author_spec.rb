@@ -33,8 +33,8 @@ RSpec.describe Author, type: :model do
 
       expect(author.profile_image).to eq('http://localhost:3000/images/fs.jpeg')
 
-      author.profile_image_url = 'https://mmtm.io/articles/authors/fs.jpeg'
-      expect(author.profile_image).to eq('https://mmtm.io/articles/authors/fs.jpeg')
+      author.profile_image_url = 'https://bmx4.com.br/articles/authors/fs.jpeg'
+      expect(author.profile_image).to eq('https://bmx4.com.br/articles/authors/fs.jpeg')
     end
   end
 end

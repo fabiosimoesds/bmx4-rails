@@ -1,16 +1,13 @@
 # TODO configure this
 default: &default
   application_name: BMX4
-  business_name: mmtm ltd
-  short_name: mmtm
-  domain: https://www.mmtm.io/
-  support_email: hello@mmtm.io
-  default_from_email: mmtm ltd <app@mmtm>
+  business_name: BMX4 Perfuraçõed
+  short_name: BMX4
+  domain: https://www.bmx4.com.br/
+  support_email: contato@bmx4.com.br
+  default_from_email: BMX4 <contato@bmx4.com.br>
   business_address: |-
-    Unit H The Courtyard,
-    Tewkesbury Business Park,
-    Tewkesbury,
-    GL20 8GD
+    Rua Luís Góis, 854 - Mirandópolis, São Paulo - SP, 04043-050
   background_job_processor: sidekiq
   email_provider: postmark
 
