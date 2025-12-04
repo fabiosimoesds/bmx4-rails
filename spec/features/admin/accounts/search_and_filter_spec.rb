@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'search and filter user index' do
   before do
     @account_1 = FactoryBot.create(:account)
-    @account_2 = FactoryBot.create(:account, :other)
+    @account_2 = FactoryBot.create(:account)
 
     login_as(@account_1)
     visit root_path
@@ -51,7 +51,7 @@ feature 'search and filter user index' do
 
     within('tbody') do
       expect(page).to have_content @account_1.name
-      expect(page).not_to have_content @account_2.name
+      expect(page).to have_content @account_2.name
     end
   end
 end

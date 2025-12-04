@@ -197,10 +197,3 @@ Use the [Toasts Doc](./docs/toasts.md) as a guide for mmtm's toast copy style.
 ## CHANGELOG
 
 Remember to document key updates after each sprint, dev days or major upgrade in the CHANGELOG to keep everyone up to speed.
-
-## Devise Masquerade
-
-When wanting to test the masquerade functionality locally, you will need to enable local caching through running `rails dev:cache`
-
-- This will enable localhost memory caching, which is used by the `devise_masquerade` gem
-- To turn this off, re-run the command

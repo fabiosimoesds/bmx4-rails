@@ -15,15 +15,12 @@ feature 'user arrives at landing page' do
     expect(page).to have_content 'Enter your email address and password below to sign in'
 
     expect(page).to have_content 'Remember me'
-    expect(page).to have_link 'Forgot your password?', href: new_account_password_path
-    expect(page).to have_link 'Sign Up', href: '#'
 
     fill_in 'Email Address', with: @account.email
     fill_in 'Password', with: @account.password
     click_button 'Log In'
 
     expect(page).to have_current_path admin_authenticated_root_path
-    expect(page).to have_content 'User Management'
   end
 
   it 'fails to log in' do

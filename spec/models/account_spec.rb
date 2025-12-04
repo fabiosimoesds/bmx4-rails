@@ -42,9 +42,6 @@ RSpec.describe Account, type: :model do
       is_expected.to validate_presence_of(:account_type)
       is_expected.to validate_presence_of(:time_zone)
 
-      is_expected.not_to validate_presence_of(:accepted_terms_at)
-      is_expected.not_to validate_acceptance_of(:terms_of_service)
-
       is_expected.to validate_inclusion_of(:time_zone).in_array(ActiveSupport::TimeZone::MAPPING.values)
     end
 
@@ -65,7 +62,7 @@ RSpec.describe Account, type: :model do
 
   context 'enums' do
     specify(:aggregate_failures) do
-      is_expected.to define_enum_for(:account_type).with_values({ admin: 0, other: 1 })
+      is_expected.to define_enum_for(:account_type).with_values({ admin: 0 })
     end
   end
 
@@ -78,14 +75,6 @@ RSpec.describe Account, type: :model do
         name: account.name,
         email: account.email,
       })
-    end
-
-    it 'returns true if current_account can masquerade as account' do
-      account = FactoryBot.build_stubbed(:account)
-      expect(account.masqueradable?(account)).to eq false
-
-      account_2 = FactoryBot.build_stubbed(:account)
-      expect(account.masqueradable?(account_2)).to eq true
     end
   end
 end

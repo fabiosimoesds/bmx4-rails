@@ -41,10 +41,6 @@ gem 'data_migrate'
 
 # Devise is a flexible authentication solution for Rails based on Warden [https://github.com/heartcombo/devise]
 gem 'devise'
-# It adds support to Devise for sending invitations by email [https://github.com/scambra/devise_invitable]
-gem 'devise_invitable'
-# A utility library for enabling functionality like loginning in for admins [https://github.com/oivoodoo/devise_masquerade]
-gem 'devise_masquerade'
 
 # The S3 storage handles uploads to AWS S3 service (or any s3-compatible service such as DigitalOcean Spaces or MinIO) [https://rubygems.org/gems/aws-sdk-s3]
 gem 'aws-sdk-s3'

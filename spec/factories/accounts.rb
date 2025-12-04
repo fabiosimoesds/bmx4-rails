@@ -39,8 +39,5 @@ FactoryBot.define do
     password                { 'Password12' }
     first_name              { 'Joe' }
     sequence(:last_name)    { |n| "Blogger#{n}" }
-    invitation_accepted_at  { 1.day.ago }
-    terms_of_service { true }
-    accepted_terms_at { 1.day.ago }
   end
 end
