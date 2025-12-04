@@ -5,7 +5,7 @@ let sentryScript = document.getElementById('sentry-js')
 if (sentryScript && sentryScript.hasAttribute('data-dsn')) {
   Sentry.init({
     dsn: sentryScript.attributes['data-dsn'].value,
-    release: 'athena@1.0.0', // 'release' is based on latest sprint or upgrade
+    release: 'bmx4@1.0.0', // 'release' is based on latest sprint or upgrade
     integrations: [Sentry.browserTracingIntegration()],
     tracesSampleRate: parseFloat(sentryScript.attributes['data-traces-sample-rate'].value),
   })

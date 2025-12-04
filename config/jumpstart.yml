@@ -1,6 +1,6 @@
 # TODO configure this
 default: &default
-  application_name: Athena
+  application_name: BMX4
   business_name: mmtm ltd
   short_name: mmtm
   domain: https://www.mmtm.io/

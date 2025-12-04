@@ -17,7 +17,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   # TODO: update below to the actual support email and app name
-  config.mailer_sender = 'Athena <support@athena.co.uk>'
+  config.mailer_sender = 'BMX4 <support@bmx4.co.uk>'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

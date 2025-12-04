@@ -70,3 +70,7 @@ spec/spec_results.txt
 .nova/
 
 /config/master.key
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
