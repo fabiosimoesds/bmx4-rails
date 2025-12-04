@@ -34,7 +34,7 @@ module BMX4Rails
 
     config.action_mailer.postmark_settings = {
       # TODO on creation of a new project comment this out to create the new master key and credentials
-      # api_token: Rails.application.credentials[Rails.env.to_sym][:postmark_api_key]
+      api_token: Rails.application.credentials[Rails.env.to_sym][:postmark_api_key]
     }
 
     config.action_mailer.deliver_later_queue_name = 'mailers'
