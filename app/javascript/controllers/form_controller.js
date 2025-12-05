@@ -62,7 +62,7 @@ export default class extends Controller {
           child.insertAdjacentElement('beforeend', option)
         } else {
           if (parent.selectedOptions[0].value !== this.parentInitialValues[parentId]) {
-            // Unset the selected option when we change parent. So any request are not automatically fired. [https://github.com/mmtmio/novonet-rails/pull/539]
+            // Unset the selected option when we change parent. So any request are not automatically fired.
             child.value = ''
           }
 

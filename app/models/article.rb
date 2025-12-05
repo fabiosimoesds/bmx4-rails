@@ -37,7 +37,7 @@ class Article < ApplicationRecord
   before_validation :set_slug
 
   def thumbnail_image
-    self.thumbnail_image_url || 'https://mmtm.io/articles/the-importance-of-a-cdn/hero.jpg'
+    self.thumbnail_image_url || 'https://minha-frota-production.s3.eu-north-1.amazonaws.com/public/perfuratriz.png'
   end
 
   def tags=(value)

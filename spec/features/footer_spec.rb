@@ -9,8 +9,8 @@ feature 'Footer renders correctly for' do
     expect(page).to have_link 'Cookies Policy', href: '#'
     expect(page).to have_link 'Privacy Policy', href: '#'
     expect(page).to have_link 'Terms of Service', href: '#'
-    expect(page).to have_link 'About Athena', href: '#'
-    expect(page).to have_link 'Contact Support', href: 'mailto:athena@example.com'
-    expect(page).to have_content "© #{Time.new.year} Athena Technologies Ltd. All Rights Reserved."
+    expect(page).to have_link 'About BMX4', href: '#'
+    expect(page).to have_link 'Contact Support', href: 'mailto:fabio@bmx4.com.br'
+    expect(page).to have_content "© #{Time.new.year} BMX4 Technologies Ltd. All Rights Reserved."
   end
 end

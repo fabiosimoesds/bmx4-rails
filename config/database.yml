@@ -23,14 +23,14 @@ default: &default
 
 development:
   <<: *default
-  # TODO: change athena to the actual app name
-  database: athena_rails_development
+  # TODO: change bmx4 to the actual app name
+  database: bmx4_rails_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: athena_rails
+  #username: bmx4_rails
 
   # The password associated with the postgres role (username).
   #password:
@@ -58,8 +58,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  # TODO: change athena to the actual app name
-  database: athena_rails_test
+  # TODO: change bmx4 to the actual app name
+  database: bmx4_rails_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,7 +83,7 @@ test:
 #
 production:
   <<: *default
-  # TODO: change athena to the actual app name
-  database: athena_rails_production
-  username: athena_rails
-  password: <%= ENV['ATHENA_RAILS_DATABASE_PASSWORD'] %>
+  # TODO: change bmx4 to the actual app name
+  database: bmx4_rails_production
+  username: bmx4_rails
+  password: <%= ENV['BMX4_RAILS_DATABASE_PASSWORD'] %>

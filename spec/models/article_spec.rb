@@ -57,10 +57,10 @@ RSpec.describe Article, type: :model do
     it 'profile_image' do
       article = FactoryBot.build_stubbed(:article)
 
-      expect(article.thumbnail_image).to eq('https://mmtm.io/articles/the-importance-of-a-cdn/hero.jpg')
+      expect(article.thumbnail_image).to eq('https://minha-frota-production.s3.eu-north-1.amazonaws.com/public/perfuratriz.png')
 
-      article.thumbnail_image_url = 'https://mmtm.io/articles/authors/fs.jpeg'
-      expect(article.thumbnail_image).to eq('https://mmtm.io/articles/authors/fs.jpeg')
+      article.thumbnail_image_url = 'https://bmx4.com.br/articles/authors/fs.jpeg'
+      expect(article.thumbnail_image).to eq('https://bmx4.com.br/articles/authors/fs.jpeg')
     end
   end
 

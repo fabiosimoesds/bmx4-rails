@@ -1,5 +1,5 @@
 namespace :emails do
-  desc 'displays all Athena emails'
+  desc 'displays all BMX4 emails'
   task create_screenshots: :environment do
     return unless Rails.env.development?
 

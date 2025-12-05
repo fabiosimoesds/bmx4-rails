@@ -1,4 +1,4 @@
-# athena-rails
+# bmx4-rails
 
 ## When Starting a New App
 
@@ -7,20 +7,6 @@ Copy the contents of the project to a new project folder, however do not copy;
 - .git
 - config/master.key
 - config/credentials.yml.enc
-
-Change the name Athena to the new app name (this is not the entire list);
-
-- .github/workflows/test_runner.yml
-- app/javascript/sentry.js
-- app/views/layouts/mailer.html.erb
-- config/application.rb
-- config/cable.yml
-- config/database.yml
-- config/environments/production.rb
-- config/environments/staging.rb
-- config/initializers/devise.rb
-- config/jumpstart.yml
-- package.json
 
 Check if the app will be using Heroku Key-Value Store or RedisCloud per Environment and make changes accordingly in;
 

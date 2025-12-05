@@ -6,8 +6,8 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# TODO: change athena to the actual app name
-module AthenaRails
+# TODO: change bmx4 to the actual app name
+module BMX4Rails
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
