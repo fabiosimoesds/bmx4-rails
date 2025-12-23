@@ -94,10 +94,10 @@
   .menu-item {
     &.menu-item--active,
     &:has(.menu-item--active) {
-      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary-dark; // 5px left border without moving any of the elements
 
       .primary-menu__link {
-        box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+        box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary-dark; // 5px left border without moving any of the elements
         font-weight: $fw-semibold;
       }
     }
@@ -108,7 +108,7 @@
       &.menu-item--active,
       &:has(.menu-item--active) {
         .primary-menu__link {
-          box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary; // 5px left border without moving any of the elements
+          box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary-dark; // 5px left border without moving any of the elements
         }
       }
     }
@@ -137,14 +137,14 @@
     height: 100%;
 
     &:hover {
-      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary;
+      box-shadow: inset #{$bw-3px * 2} 0px 0px (-$bw-3px) $bc-primary-dark;
     }
 
     @include breakpoint-up($large-screen) {
       font-size: modular-scale(0);
 
       &:hover {
-        box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary;
+        box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary-dark;
       }
     }
 
@@ -208,7 +208,7 @@
 
     &:hover {
       color: $font-color-darkest;
-      box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary;
+      box-shadow: inset 0px -#{$bw-3px * 2} 0px (-$bw-3px) $bc-primary-dark;
     }
   }
 
