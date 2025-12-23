@@ -1,4 +1,4 @@
-$header-image-size: 4rem;
+$header-image-size: 3.5rem;
 
 .header {
   background-color: $background-color-lightest;
@@ -11,6 +11,16 @@ $header-image-size: 4rem;
   @include breakpoint-up($medium-screen) {
     position: static;
   }
+}
+
+.header__contact-info {
+  @extend %contain;
+
+  text-align: right;
+  background-color: $primary-background-color-dark;
+  color: $font-color-lightest;
+  padding-top: $spacing-3;
+  padding-bottom: $spacing-3;
 }
 
 .header__heading {
@@ -45,7 +55,7 @@ $header-image-size: 4rem;
   background-size: contain;
   color: transparent;
   cursor: pointer;
-  margin: 0 0 0 -1rem; // margin-left can vary depending on logos internal padding
+  margin: 0; // margin-left can vary depending on logos internal padding
   overflow: hidden;
   text-indent: -101%;
   white-space: nowrap;

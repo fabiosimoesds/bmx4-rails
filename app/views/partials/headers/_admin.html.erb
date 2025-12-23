@@ -1,4 +1,8 @@
 <header class="header">
+  <div class="header__contact-info">
+    <i class="fa-solid fa-phone color--secondary mr--2"></i> (11) 5555-5555<span class="mx--4">|</span><i class="fa-solid fa-envelope color--secondary mr--2"></i> info@bmx4.com.br <span class="mx--4">|</span> <i class="fa-solid fa-clock color--secondary mr--2"></i> Seg-Sex: 08h - 18h
+  </div>
+
   <nav id="site-navigation" class="main-navigation" role="navigation" data-controller="menu" data-action="click@window->menu#closeOutside">
     <%= link_to root_path, class: 'header__site-link' do %>
       <h1 class="header__site-title">BMX4</h1>
@@ -11,25 +15,13 @@
     </button>
 
     <ul id="primary-menu" class="menu">
-      <%= active_link_to 'Users', root_path, active: [['admin/accounts'], []], wrap_tag: :li, wrap_class: 'menu-item', class: 'primary-menu__link', class_active: 'menu-item--active' %>
+      <%= active_link_to 'A Empresa', root_path, active: [['pages', 'home'], []], wrap_tag: :li, wrap_class: 'menu-item', class: 'primary-menu__link', class_active: 'menu-item--active' %>
 
-      <li class="menu-item hidden--lg-up">
-        <%= button_to 'Logout', destroy_account_session_path, method: :delete, class: 'primary-menu__link button--link', form_class: 'w--100pc' %>
-      </li>
-    </ul>
-
-    <ul class="menu user-menu">
-      <li class="menu-item menu-item--sub">
-        <div class="user__name" data-action="click->menu#toggleSubMenu">
-          <%= current_account.name %><i class="menu-item__chevron ml--2 fa-solid fa-chevron-down"></i>
-        </div>
-
-        <ul class="menu menu--sub">
-          <li class="menu-item">
-            <%= button_to 'Logout', destroy_account_session_path, method: :delete, class: 'button--link' %>
-          </li>
-        </ul>
-      </li>
+      <% if current_account&.admin? %>
+        <li class="menu-item hidden--lg-up">
+          <%= button_to 'Logout', destroy_account_session_path, method: :delete, class: 'primary-menu__link button--link', form_class: 'w--100pc' %>
+        </li>
+      <% end %>
     </ul>
   </nav>
 </header>
