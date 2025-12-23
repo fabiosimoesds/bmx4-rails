@@ -27,9 +27,26 @@ $section-md-padding: $spacing-6 $spacing-7;
 }
 
 .page-section {
+  @extend %contain;
   @extend %grid--s2-m4-l12;
 
   align-items: start;
+}
+
+.page-section__title {
+  position: relative;
+  padding-bottom: $spacing-2;
+
+  // Bottom Border
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30%;
+    height: $bw-3px;
+    background-color: $bc-secondary;
+  }
 }
 
 // Page Section Sidebar
@@ -73,7 +90,14 @@ $section-md-padding: $spacing-6 $spacing-7;
 // Page Section Main Body
 
 .page-section__body {
-  @extend %col-end--s2, %col-end--m4, %col-end--l9;
+  @extend %col-end--s2, %col-end--m2, %col-end--l6;
+
+  align-content: center;
+  height: 100%;
+}
+
+.page-section__image {
+  @extend %col-end--s2, %col-end--m2, %col-end--l6;
 }
 
 .page-body__section {

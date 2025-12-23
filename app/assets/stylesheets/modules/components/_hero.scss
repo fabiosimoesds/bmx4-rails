@@ -1,0 +1,55 @@
+.hero {
+  @extend %contain;
+
+  background-color: $background-color-lightest;
+  background-image: url('images/perfuratriz.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+  padding: 0;
+  top: 0;
+}
+
+.hero__filter {
+  background: linear-gradient(
+    90deg,
+    $primary-background-color-dark 0%,
+    $primary-background-color-dark 30%,
+    rgba($primary-background-color-dark, 0.1) 95%,
+    rgba($primary-background-color-dark, 0.0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: $spacing-10 $spacing-4;
+  width: 70%;
+
+  @include breakpoint-up($medium-screen) {
+    width: 40%;
+
+    .button {
+      width: 50%;
+    }
+  }
+
+  @include breakpoint-up($large-screen) {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
+  }
+}
+
+.hero__content {
+  color: $font-color-lightest;
+  text-align: left;
+
+  .hero__title {
+    color: $font-color-lightest;
+    margin-top: 0;
+  }
+
+  @include breakpoint-up($medium-screen) {
+    font-size: modular-scale(1);
+  }
+}
